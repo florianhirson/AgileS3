@@ -6,10 +6,10 @@ import javafx.util.Pair;
 
 public class Cart {
 
-	Map<Integer, Pair<Article, Integer>> cartMap;
+	Map<Integer, Integer> cartMap;
 			
 	public Cart(){
-		cartMap = new HashMap<Integer, Pair<Article, Integer>>();
+		cartMap = new HashMap<Integer, Integer>();
 	}
 	
 	/**
@@ -18,8 +18,9 @@ public class Cart {
 	 */
 	public double getTotalPrice(){
 		double total = 0.0;
-		for(Pair<Article, Integer> p : cartMap.values()){
-			total =+ p.getKey().getPrice()*p.getValue();
+		for(Integer i : cartMap.keySet()){
+			Article a = Bridge.getArticles(i)[0];
+			if(a != null) total =+ a.getPrice()*cartMap.get(i);
 		}
 		return total;
 	}
@@ -30,8 +31,9 @@ public class Cart {
 	 * @return true si l'objet existé et a été retiré, false sinon
 	 */
 	public boolean remove(int ref){
-		for(Pair<Article, Integer> p : cartMap.values()){
-			if(p.getKey().getReference()==ref){
+		for(Integer i : cartMap.keySet()){
+			Article a = Bridge.getArticles(i)[0];
+			if(a != null && a.getReference() == ref){
 				cartMap.remove(ref);
 				return true;
 			}
@@ -57,9 +59,9 @@ public class Cart {
 	public boolean add(int ref, int number){
 		Article a = Bridge.getArticles(ref)[0];
 		if(a == null) return false;
-		Pair<Article, Integer> p = cartMap.get(ref);
-		if(p != null) cartMap.put(ref, new Pair<Article, Integer>(a, p.getValue()+number));
-		else cartMap.put(ref, new Pair<Article, Integer>(a, number));
+		Integer i = cartMap.get(ref);
+		if(i != null) cartMap.put(ref, number+i);
+		else cartMap.put(ref, number);
 		return true;
 	}
 	
@@ -71,7 +73,7 @@ public class Cart {
 	public boolean set(int ref, int number){
 		Article a = Bridge.getArticles(ref)[0];
 		if(a == null) return false;
-		cartMap.put(ref, new Pair<Article, Integer>(a, number));
+		cartMap.put(ref, number);
 		return true;
 	}
 	

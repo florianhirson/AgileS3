@@ -8,6 +8,7 @@ public class Client extends Personne{
 	public Client(){
 		super();
 		this.role = false;
+		this.cart = new Cart();
 	}
 	
 	public String getCreditCard() {

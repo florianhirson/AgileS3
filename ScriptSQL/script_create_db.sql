@@ -72,6 +72,14 @@ CREATE TABLE status(
 INSERT INTO status VALUES(-2,'Erreur de livraison'),(-1,'Erreur de stock'),(0,'En attente'),(1,'En cours de preparation'),(2,'Expidie'),(3,'Livre');
 
 CREATE TABLE facture(
+<<<<<<< HEAD
+	idf serial,
+ 	qte integer NOT NULL,
+	idclient integer NOT NULL,
+	receveur text ,
+    reference integer NOT NULL,
+	nopanier integer NOT NULL,
+=======
 
 	idf serial,
 
@@ -85,6 +93,7 @@ CREATE TABLE facture(
 
 	nopanier integer NOT NULL,
 
+>>>>>>> 767f7402661c8a23650dc8bbf7ede1ae2af711ce
 	status integer DEFAULT 0,
 
 	CONSTRAINT pk_facture PRIMARY KEY(idf),
@@ -110,9 +119,12 @@ CREATE TABLE facture(
 
 
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 767f7402661c8a23650dc8bbf7ede1ae2af711ce
 INSERT INTO personne(nom,prenom,mail,login,mdp) 
 VALUES ('DURAND','Paul','flow.fb60@gmail.com','First','123456');
 
@@ -123,4 +135,8 @@ INSERT INTO article(reference,produit,prix,lib,image,marque)
 VALUES ('00001','bouteille vide',50.09,'une bouteille vide','http://www.embouteille.com/admin/images/produit/311_logo1_1302171015.jpeg','Aplpe');
 
 INSERT INTO facture(idclient,reference,qte,nopanier)VALUES (1,'00001',10,0);
+<<<<<<< HEAD
 select * from facture JOIN article USING (reference);
+=======
+select * from facture JOIN article USING (reference);
+>>>>>>> 767f7402661c8a23650dc8bbf7ede1ae2af711ce

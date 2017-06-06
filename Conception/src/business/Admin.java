@@ -1,4 +1,4 @@
-package buisness;
+package business;
 
 public class Admin extends Personne{
 	

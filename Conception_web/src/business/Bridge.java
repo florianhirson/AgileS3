@@ -1,9 +1,12 @@
 package business;
 
-import java.util.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Bridge {
 
@@ -46,7 +49,7 @@ public class Bridge {
 			ResultSet rs = stmt.executeQuery(requete);
 			while (rs.next())       {
 				for(int i=0;i<ref.length;i++)
-				if(rs.getInt("reference") = ref[i]){
+				if(rs.getInt("reference") == ref[i]){
 					want.add(new Article(rs.getString("produit"), rs.getString("lib"), rs.getString("image"), rs.getString("marque"), rs.getString("reference"), rs.getDouble("prix")));
 				}
 			}
@@ -112,8 +115,9 @@ public class Bridge {
 	 * @return un objet Client
 	 */
 	public static Client getClient(int ID) {
-		Client my;
+		Client my=null;
 		Connection con=null;
+		
 		try{
 
 			Class.forName("org.postgresql.Driver");
@@ -131,7 +135,7 @@ public class Bridge {
 			ResultSet rs = stmt.executeQuery(requete);
 			while(rs.next()){
 				if(rs.getInt("idpersonne") == ID)
-					my=new Client(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"));
+					my = new Client(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"));
 			}
 
 
@@ -158,7 +162,7 @@ public class Bridge {
 	 */
 	public static Admin getAdmin(int ID) {
 		
-		Admin my;
+		Admin my = null;
 		Connection con=null;
 		try{
 
@@ -206,12 +210,13 @@ public class Bridge {
 	 * @return un objet Order
 	 */
 	public static Order getOrder(int ID) {
-		Order my;
+		Order my = null;
 		Map<Integer, Integer> ref_qte=new HashMap<>();
 		Connection con=null;
 		
-		String nop,receveur,ref;
-		int idclient,status;
+		String receveur = null,ref = null;
+		Integer nop = null;
+		int idclient = 0,status = 0;
 		
 		
 		try{
@@ -235,7 +240,7 @@ public class Bridge {
 			while(rs.next()){
 				if(rs.getInt("nopanier") == ID){
 					ref_qte.put(rs.getInt("reference"), rs.getInt("qte"));
-					nop=rs.getInt("nopanier");
+					nop = rs.getInt("nopanier");
 					idclient=rs.getInt("idclient"); receveur=rs.getString("receveur"); ref=rs.getString("reference");
 					status=rs.getInt("status");
 					

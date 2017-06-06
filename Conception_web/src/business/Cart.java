@@ -19,7 +19,7 @@ public class Cart {
 	public double getTotalPrice() {
 		double total = 0.0;
 		for (Integer i : references_quantity.keySet()) {
-			Article a = Bridge.getArticles(i)[0];
+			Article a = Bridge.getArticles(i).get(0);
 			if (a != null) {
 				total += a.getPrice() * references_quantity.get(i);
 			}
@@ -36,7 +36,7 @@ public class Cart {
 	 */
 	public boolean remove(int ref) {
 		for (Integer i : references_quantity.keySet()) {
-			Article a = Bridge.getArticles(i)[0];
+			Article a = Bridge.getArticles(i).get(0);
 			if (a != null && a.getReference() == ref) {
 				references_quantity.remove(ref);
 				return true;
@@ -65,7 +65,7 @@ public class Cart {
 	 *         n'existe pas
 	 */
 	public boolean add(int ref, int number) {
-		Article a = Bridge.getArticles(ref)[0];
+		Article a = Bridge.getArticles(ref).get(0);
 		if (a == null) {
 			return false;
 		}
@@ -85,7 +85,7 @@ public class Cart {
 	 * @param number
 	 */
 	public boolean set(int ref, int number) {
-		Article a = Bridge.getArticles(ref)[0];
+		Article a = Bridge.getArticles(ref).get(0);
 		if (a == null) {
 			return false;
 		}

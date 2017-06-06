@@ -1,0 +1,16 @@
+package hendek.utilisateur;
+
+public class Me {
+	
+
+	private String login;
+	private Integer droit;//8
+	private String tok;//9
+	
+	protected Me(String key, int droit2, String token) {
+		login=key;
+		droit=droit2;
+		tok=token;
+	}
+
+}

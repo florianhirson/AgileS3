@@ -6,9 +6,9 @@ BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
 Command-line arguments:  -data /home/faunus/Agile/AgileS3/TFF/Code -os linux -ws gtk -arch x86_64
 
 This is a continuation of log file /home/faunus/Agile/AgileS3/TFF/Code/.metadata/.bak_3.log
-Created Time: 2017-06-06 22:43:27.709
+Created Time: 2017-06-06 23:09:25.417
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:27.709
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:09:25.417
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -178,7 +178,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:27.709
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:25.418
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -345,7 +345,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:43:32.236
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:09:26.736
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -515,7 +515,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:32.236
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:26.736
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -681,7 +681,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:32.237
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:26.736
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -848,7 +848,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:32.237
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:09:26.736
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -1018,7 +1018,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:32.237
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:26.736
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -1185,7 +1185,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:43:34.264
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:09:50.568
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -1355,7 +1355,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:34.264
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:50.569
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -1521,7 +1521,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:34.265
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:50.579
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -1688,7 +1688,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:34.265
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:09:50.580
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -1858,7 +1858,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:34.265
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:50.580
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -2025,7 +2025,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:43:39.775
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:09:53.592
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -2195,7 +2195,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:39.776
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:53.593
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -2361,7 +2361,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:39.776
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:53.593
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -2528,7 +2528,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:39.776
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:09:53.594
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -2698,7 +2698,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:39.776
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:53.594
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -2865,7 +2865,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:43:53.794
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:09:56.607
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -3035,7 +3035,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:53.794
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:56.608
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -3201,7 +3201,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:53.794
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:56.608
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -3368,7 +3368,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:53.794
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:09:56.609
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -3538,7 +3538,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:53.795
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:09:56.609
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -3705,7 +3705,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:43:55.310
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:00.623
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -3875,7 +3875,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:55.310
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:00.623
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -4041,7 +4041,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:55.310
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:00.623
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -4208,7 +4208,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:55.310
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:00.623
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -4378,7 +4378,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:55.310
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:00.624
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -4545,7 +4545,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:43:57.825
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:01.631
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -4715,7 +4715,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:57.825
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:01.631
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -4881,7 +4881,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:57.825
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:01.631
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -5048,7 +5048,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:43:57.826
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:01.632
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -5218,7 +5218,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:43:57.826
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:01.632
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -5385,7 +5385,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:00.344
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:10.143
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -5555,7 +5555,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:00.345
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:10.144
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -5721,7 +5721,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:00.345
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:10.145
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -5888,7 +5888,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:00.345
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:10.145
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -6058,7 +6058,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:00.346
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:10.145
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -6225,7 +6225,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:01.374
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:11.658
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -6395,7 +6395,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:01.374
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:11.659
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -6561,7 +6561,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:01.374
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:11.659
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -6728,7 +6728,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:01.374
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:11.659
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -6898,7 +6898,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:01.374
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:11.659
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -7065,7 +7065,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:02.395
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:15.165
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -7235,7 +7235,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:02.395
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:15.165
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -7401,7 +7401,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:02.395
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:15.165
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -7568,7 +7568,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:02.395
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:15.165
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -7738,7 +7738,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:02.395
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:15.166
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -7905,7 +7905,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:10.419
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:20.172
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -8075,7 +8075,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:10.419
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:20.172
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -8241,7 +8241,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:10.419
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:20.172
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -8408,7 +8408,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:10.420
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:20.172
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -8578,7 +8578,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:10.420
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:20.172
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -8745,7 +8745,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:13.445
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:24.181
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -8915,7 +8915,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:13.453
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:24.182
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -9081,7 +9081,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:13.453
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:24.182
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -9248,7 +9248,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:13.453
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:24.182
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -9418,7 +9418,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:13.453
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:24.182
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -9585,7 +9585,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:15.969
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:28.691
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -9755,7 +9755,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:15.969
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:28.692
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -9921,7 +9921,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:15.969
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:28.692
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -10088,7 +10088,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:15.969
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:28.693
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -10258,7 +10258,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:15.969
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:28.693
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -10425,7 +10425,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:25.759
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:33.207
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -10449,7 +10449,7 @@ org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations"
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
 	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
 Caused by: java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -10595,7 +10595,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:25.759
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:33.207
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -10622,7 +10622,7 @@ java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModificati
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
 	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
 Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.pde.ui (943).
@@ -10761,7 +10761,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:25.759
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:33.208
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -10788,7 +10788,7 @@ java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModificati
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
 	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
 Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.pde.ui (943).
@@ -10928,7 +10928,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:25.759
+!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 23:10:33.208
 !MESSAGE Exception occurred while creating compilation participant
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -10952,7 +10952,7 @@ org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations"
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
 	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
 Caused by: java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -11098,7 +11098,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:25.759
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:33.208
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -11125,7 +11125,7 @@ java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModificati
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
 	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
 Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.pde.ui (943).
@@ -11265,69 +11265,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
 
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:25.760
-!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.compilationUnitResourceExists(AbstractJpaProject.java:1438)
-	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.javaCompilationUnitDeltaIsRelevant(AbstractJpaProject.java:1427)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.javaCompilationUnitDeltaIsRelevant(InternalJpaProjectManager.java:1008)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.handleJavaCompilationUnitDelta(InternalJpaProjectManager.java:1000)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.handleJavaDelta(InternalJpaProjectManager.java:935)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.handleJavaElementChangedEvent(InternalJpaProjectManager.java:918)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.javaElementChanged(InternalJpaProjectManager.java:861)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$JavaElementChangeListener.elementChanged(InternalJpaProjectManager.java:1387)
-	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.fireReconcileDelta(DeltaProcessor.java:1504)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1463)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:765)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1265)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 4 2017-06-06 22:44:25.760
-!MESSAGE Exception occurred in listener of Java element change notification
-!STACK 0
-java.lang.NullPointerException
-	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.compilationUnitResourceExists(AbstractJpaProject.java:1438)
-	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.javaCompilationUnitDeltaIsRelevant(AbstractJpaProject.java:1427)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.javaCompilationUnitDeltaIsRelevant(InternalJpaProjectManager.java:1008)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.handleJavaCompilationUnitDelta(InternalJpaProjectManager.java:1000)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.handleJavaDelta(InternalJpaProjectManager.java:935)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.handleJavaElementChangedEvent(InternalJpaProjectManager.java:918)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.javaElementChanged(InternalJpaProjectManager.java:861)
-	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$JavaElementChangeListener.elementChanged(InternalJpaProjectManager.java:1387)
-	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1662)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1652)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.fireReconcileDelta(DeltaProcessor.java:1504)
-	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1463)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:765)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1265)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:109)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 22:44:31.590
+!ENTRY org.eclipse.jdt.core 4 2 2017-06-06 23:10:37.222
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
 !STACK 1
 org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
@@ -11344,8 +11282,7 @@ org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.pde.ds.annotations"
 	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
 	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
 	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1265)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1224)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:135)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
@@ -11361,7 +11298,7 @@ Caused by: java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/Mode
 	at java.lang.Class.getConstructor0(Class.java:3075)
 	at java.lang.Class.newInstance(Class.java:412)
 	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:184)
-	... 22 more
+	... 21 more
 Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.pde.ui (943).
 	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:116)
 	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:529)
@@ -11498,7 +11435,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:31.590
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:37.223
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -11518,8 +11455,7 @@ java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModificati
 	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
 	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
 	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1265)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1224)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:135)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
@@ -11665,7 +11601,7 @@ Caused by: java.lang.UnsupportedClassVersionError: OTRE: Class org.eclipse.objec
 	at org.eclipse.osgi.internal.weaving.WovenClassImpl.callHooks(WovenClassImpl.java:242)
 	at org.eclipse.osgi.internal.weaving.WeavingHookConfigurator.processClass(WeavingHookConfigurator.java:56)
 	... 104 more
-!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 22:44:31.591
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-06-06 23:10:37.223
 !MESSAGE Plug-in "org.eclipse.pde.ds.annotations" was unable to instantiate class "org.eclipse.pde.ds.internal.annotations.DSAnnotationCompilationParticipant".
 !STACK 0
 java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModification
@@ -11685,8 +11621,7 @@ java.lang.NoClassDefFoundError: org/eclipse/pde/internal/ui/util/ModelModificati
 	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
 	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
 	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1265)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1224)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:135)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
 	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)

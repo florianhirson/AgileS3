@@ -1,0 +1,12 @@
+package hendek.achat;
+
+import hendek.article.Article;
+import hendek.utilisateur.User;
+
+public class Panier {
+
+	Article articles = Article.getInstance();
+	User me = User.getInstance();
+	
+	
+}

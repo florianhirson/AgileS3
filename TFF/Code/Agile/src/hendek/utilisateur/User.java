@@ -78,23 +78,23 @@ public class User {
 
 	}
 
-	
-	
+
+
 	public String toString4console(){
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		String login="-1",password="-1";
 		String ret="";
 		int i=0;
-		
-		while(!signIn(login,password)&&i<5){
+
+		while(signIn(login,password)==null&&i<5){
 			System.out.println("Login : ");
 			login=sc.nextLine();
 			System.out.println("Mot de passe : ");
 			password=sc.nextLine();
 			i++;
 		}
-		
+
 		if(i>=5)System.out.println("Fin des essais");
 		else{
 			ret+="Login : "+login+"\n";
@@ -105,17 +105,22 @@ public class User {
 			ret+="droit : "+getDroit(login)+"\n";
 			ret+="token : "+getToken(login)+"\n";
 			ret+="date inscription : "+getInscription(login)+"\n";
-			
+
 		}
-		
+
 		return ret;
 	}
 
-	public boolean signIn(String pseudo,String password){
-		boolean ret=false;
+	public Me signIn(String pseudo,String password){
+		Me ret=null;
 		for(String key:mdp.keySet())
-			if(pseudo.equals(key)&&password.equals(mdp.get(key)))
-				ret=true;
+			if(pseudo.equals(key)&&password.equals(mdp.get(key))){
+				
+				
+				ret=new Me(key,password);
+			
+			
+			}
 
 		return ret;				
 	}

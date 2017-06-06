@@ -84,6 +84,7 @@ public class Article {
 		temp += "\ncategory: " + this.category;
 		temp += "\nprice: " + this.price;
 		temp += "\ndiscount: " + this.discount;
+		System.out.println(temp);
 		return temp;
 	}
 }

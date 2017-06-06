@@ -5,6 +5,11 @@ public class Client extends Personne{
 	String creditCard;
 	Cart cart;
 	
+	public Client(){
+		super();
+		this.role = false;
+	}
+	
 	public String getCreditCard() {
 		return creditCard;
 	}

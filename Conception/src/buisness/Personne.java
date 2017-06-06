@@ -7,7 +7,7 @@ public class Personne {
 	String phone;
 	String password;
 	String id;
-	String role;
+	Boolean role;
 	
 	public String getNom() {
 		return nom;
@@ -45,10 +45,10 @@ public class Personne {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getRole() {
+	public Boolean getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(Boolean role) {
 		this.role = role;
 	}
 }

@@ -1,4 +1,4 @@
-package buisness;
+package business;
 
 public class Article {
 	int reference;
@@ -6,18 +6,19 @@ public class Article {
 	String description;
 	String image_url;
 	String brand;
+	
 	String category;
 	double price;
 	double discount;
 
-	public Article(String n, String d, String i, String b, String c, double p) {
-		this.reference = (int) (Math.random() * 1000000);
-		this.name = n;
-		this.description = d;
-		this.image_url = i;
-		this.brand = b;
-		this.category = c;
-		this.price = p;
+	public Article(String name, String description, String image_url, String brand, String category, double price) {
+		this.reference = (int) (Math.random() * 1000000); // Remplacer par getNewReference() dans Bridge...
+		this.name = name;
+		this.description = description;
+		this.image_url = image_url;
+		this.brand = brand;
+		this.category = category;
+		this.price = price;
 		this.discount = 0.0;
 	}
 
@@ -58,6 +59,7 @@ public class Article {
 	}
 
 	public void setDiscount(double discount) {
+		if (discount > 0 && discount < 1)
 		this.discount = discount;
 	}
 
@@ -71,5 +73,17 @@ public class Article {
 
 	public String getBrand() {
 		return brand;
+	}
+
+	public String toString() {
+		String temp = "reference: " + this.reference;
+		temp += "\nname: " + this.name;
+		temp += "\ndescription: " + this.description;
+		temp += "\nimage_url: " + this.image_url;
+		temp += "\nbrand" + this.brand;
+		temp += "\ncategory: " + this.category;
+		temp += "\nprice: " + this.price;
+		temp += "\ndiscount: " + this.discount;
+		return temp;
 	}
 }

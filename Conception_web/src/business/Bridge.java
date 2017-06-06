@@ -196,7 +196,7 @@ public class Bridge {
 		return my;
 		
 		
-		return null;
+		
 	}
 
 	/**
@@ -206,8 +206,55 @@ public class Bridge {
 	 * @return un objet Order
 	 */
 	public static Order getOrder(int ID) {
+		Order my;
+		Map<Integer, Integer> ref_qte=new HashMap<>();
+		Connection con=null;
 		
-		return null;
+		String nop,receveur,ref;
+		int idclient,status;
+		
+		
+		try{
+
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi"; 
+			con = DriverManager.getConnection(url,nom,mdp);
+			String tmp = "";
+
+			String requete = "select *  from facture";
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(requete);
+			
+			
+			
+			while(rs.next()){
+				if(rs.getInt("nopanier") == ID){
+					ref_qte.put(rs.getInt("reference"), rs.getInt("qte"));
+					nop=rs.getInt("nopanier");
+					idclient=rs.getInt("idclient"); receveur=rs.getString("receveur"); ref=rs.getString("reference");
+					status=rs.getInt("status");
+					
+				}
+			}
+			my=new Order(nop,idclient, receveur, ref, status,ref_qte);
+
+		}
+		catch (Exception e) {
+			System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+		}
+		finally {	  
+			try{
+				con.close();	  
+			}catch (Exception e) {
+				System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+			}
+		}
+		return my;
 	}
 
 }

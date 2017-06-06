@@ -19,6 +19,8 @@ CREATE TABLE personne(
     	droit integer NOT NULL DEFAULT 0,
     	nom varchar(20) NOT NULL,
     	prenom varchar(20) NOT NULL,
+		login varchar (16) NOT NULL,
+		mdp varchar(20) NOT NULL,
     	mail text NOT NULL,
     	tok text NOT NULL DEFAULT md5((random())::text),
     	CONSTRAINT pk_personne PRIMARY KEY(idpersonne),
@@ -35,7 +37,7 @@ CREATE TABLE personne(
 
 CREATE TABLE article(
 
-    reference text,
+    reference integer,
     produit text,
     prix numeric(10,2),
     lib text,
@@ -49,7 +51,7 @@ CREATE TABLE article(
 CREATE TABLE commande(
 
     idc integer NOT NULL,
-    reference text NOT NULL,
+    reference integer NOT NULL,
     idclient integer NOT NULL,
     CONSTRAINT pk_commande PRIMARY KEY(idc,reference,idclient),
     CONSTRAINT fk_article FOREIGN KEY (reference)
@@ -63,14 +65,14 @@ CREATE TABLE commande(
     
 );
 
-INSERT INTO personne(nom,prenom,mail) 
-VALUES ('DURAND','Paul','flow.fb60@gmail.com');
+INSERT INTO personne(nom,prenom,mail,login,mdp) 
+VALUES ('DURAND','Paul','flow.fb60@gmail.com','First','123456');
 
-INSERT INTO personne(nom,prenom,mail,droit) 
-VALUES ('DUPONT','Michel','florianb32@live.fr',2);
+INSERT INTO personne(nom,prenom,mail,droit,login,mdp) 
+VALUES ('DUPONT','Michel','florianb32@live.fr',2,'admin','admin');
 
 INSERT INTO article(reference,produit,prix,lib,image,marque)
-VALUES ('FR00001','bouteille vide',50.09,'une bouteille vide','http://www.embouteille.com/admin/images/produit/311_logo1_1302171015.jpeg','Aplpe');
+VALUES ('00001','bouteille vide',50.09,'une bouteille vide','http://www.embouteille.com/admin/images/produit/311_logo1_1302171015.jpeg','Aplpe');
 
-INSERT INTO commande(idc,reference,idclient) VALUES (0,'FR00001',1);
+INSERT INTO commande(idc,reference,idclient) VALUES (0,'00001',1);
 select * from commande JOIN article USING (reference);

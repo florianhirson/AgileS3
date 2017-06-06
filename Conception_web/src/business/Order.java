@@ -6,7 +6,7 @@ import java.util.Map;
 public class Order {
 	private final int order_id;
 	private final int client_id;
-	private final String adress;
+	private final String address;
 	private final String recipient;
 	private int status;
 	private Map<Integer, Integer> references_quantity = new HashMap<Integer, Integer>();
@@ -15,7 +15,7 @@ public class Order {
 			Map<Integer, Integer> references_quantity) {
 		this.order_id = order_id;
 		this.client_id = client_id;
-		this.adress = adress;
+		this.address = adress;
 		this.recipient = recipient;
 		this.status = status;
 		this.references_quantity = references_quantity;
@@ -34,7 +34,7 @@ public class Order {
 	}
 
 	public String getAdress() {
-		return adress;
+		return address;
 	}
 
 	public String getRecipient() {

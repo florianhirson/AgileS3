@@ -1,7 +1,9 @@
 package business;
 
+import java.util.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 public class Bridge {
 
@@ -24,12 +26,83 @@ public class Bridge {
 	 *            les references vers les articles
 	 * @return un tableau d'article
 	 */
-	public static Article[] getArticles(int... ref) {
-		return null;
+	public static ArrayList<Article> getArticles(int... ref) {
+		ArrayList<Article> want = new ArrayList<>();
+		Connection con=null;
+		try{
+
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi"; 
+			con = DriverManager.getConnection(url,nom,mdp);
+			String tmp = "";
+
+			String requete = "select *  from article";
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(requete);
+			while (rs.next())       {
+				for(int i=0;i<ref.length;i++)
+				if(rs.getInt("reference") = ref[i]){
+					want.add(new Article(rs.getString("produit"), rs.getString("lib"), rs.getString("image"), rs.getString("marque"), rs.getString("reference"), rs.getDouble("prix")));
+				}
+			}
+
+
+		}
+		catch (Exception e) {
+			System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+		}
+		finally {	  
+			try{
+				con.close();	  
+			}catch (Exception e) {
+				System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+			}
+		}
+		
+		return want;
 	}
 
-	public static Article[] getAllArticles() {
-		return null;
+	public static ArrayList<Article> getAllArticles() {
+		ArrayList<Article> want = new ArrayList<>();
+		Connection con=null;
+		try{
+
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi"; 
+			con = DriverManager.getConnection(url,nom,mdp);
+			String tmp = "";
+
+			String requete = "select *  from article";
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(requete);
+			while (rs.next())       {
+				want.add(new Article(rs.getString("produit"), rs.getString("lib"), rs.getString("image"), rs.getString("marque"), rs.getString("reference"), rs.getDouble("prix")));
+			}
+
+
+		}
+		catch (Exception e) {
+			System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+		}
+		finally {	  
+			try{
+				con.close();	  
+			}catch (Exception e) {
+				System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+			}
+		}
+		
+		return want;
 	}
 
 	/**
@@ -39,7 +112,42 @@ public class Bridge {
 	 * @return un objet Client
 	 */
 	public static Client getClient(int ID) {
-		return null;
+		Client my;
+		Connection con=null;
+		try{
+
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi"; 
+			con = DriverManager.getConnection(url,nom,mdp);
+			String tmp = "";
+
+			String requete = "select *  from personne";
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(requete);
+			while(rs.next()){
+				if(rs.getInt("idpersonne") == ID)
+					my=new Client(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"));
+			}
+
+
+		}
+		catch (Exception e) {
+			System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+		}
+		finally {	  
+			try{
+				con.close();	  
+			}catch (Exception e) {
+				System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+			}
+		}
+		
+		return my;
 	}
 
 	/**
@@ -49,7 +157,46 @@ public class Bridge {
 	 * @return un objet Admin
 	 */
 	public static Admin getAdmin(int ID) {
-		return null;
+		
+		Admin my;
+		Connection con=null;
+		try{
+
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi"; 
+			con = DriverManager.getConnection(url,nom,mdp);
+			String tmp = "";
+
+			String requete = "select *  from personne";
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(requete);
+			while(rs.next()){
+				if(rs.getInt("idpersonne") == ID)
+					my=new Admin(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"));
+			}
+
+
+		}
+		catch (Exception e) {
+			System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+		}
+		finally {	  
+			try{
+				con.close();	  
+			}catch (Exception e) {
+				System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+			}
+		}
+		
+		return my;
+		
+		
+		
 	}
 
 	/**
@@ -59,7 +206,55 @@ public class Bridge {
 	 * @return un objet Order
 	 */
 	public static Order getOrder(int ID) {
-		return null;
+		Order my;
+		Map<Integer, Integer> ref_qte=new HashMap<>();
+		Connection con=null;
+		
+		String nop,receveur,ref;
+		int idclient,status;
+		
+		
+		try{
+
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi"; 
+			con = DriverManager.getConnection(url,nom,mdp);
+			String tmp = "";
+
+			String requete = "select *  from facture";
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(requete);
+			
+			
+			
+			while(rs.next()){
+				if(rs.getInt("nopanier") == ID){
+					ref_qte.put(rs.getInt("reference"), rs.getInt("qte"));
+					nop=rs.getInt("nopanier");
+					idclient=rs.getInt("idclient"); receveur=rs.getString("receveur"); ref=rs.getString("reference");
+					status=rs.getInt("status");
+					
+				}
+			}
+			my=new Order(nop,idclient, receveur, ref, status,ref_qte);
+
+		}
+		catch (Exception e) {
+			System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+		}
+		finally {	  
+			try{
+				con.close();	  
+			}catch (Exception e) {
+				System.out.println("<h1>Oups ! (" + e.getMessage() + ")</h1>");
+			}
+		}
+		return my;
 	}
 
 }

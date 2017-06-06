@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<title>Cart</title>
 </head>
 <body>
-
+<center>Contenu de votre panier :</center>
+<table class="table table-hover">
+<tr>
+<th>Nom</th><th>Prix</th><th>Quantité</th>
+</tr>
+</table>
 </body>
 </html> 

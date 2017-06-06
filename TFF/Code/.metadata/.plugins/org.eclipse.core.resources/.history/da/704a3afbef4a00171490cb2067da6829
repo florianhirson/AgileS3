@@ -1,0 +1,12 @@
+package hendek;
+import hendek.article.*;
+
+public class Main {
+
+	public static void main(String args[]){
+		Article article = Article.getInstance();
+		
+		System.out.println(article);
+		
+	}
+}

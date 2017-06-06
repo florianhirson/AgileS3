@@ -2,6 +2,7 @@ package hendek.article;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -15,9 +16,17 @@ public class Article {
 		private HashMap<Integer,String> img;
 		private HashMap<Integer,String> vendeur;
 		private int nbArticle=0;
+		private static Article singleton=null;
+		
+		public static Article getInstance(){
+			if(singleton==null){
+				singleton=new Article();
+			}
+			return singleton;
+		}
 		
 		
-		public Article(){
+		private Article(){
 			prix = new HashMap<>();
 			desc = new HashMap<>();
 			lib = new HashMap<>();
@@ -29,9 +38,9 @@ public class Article {
 			try{
 
 			    Class.forName("org.postgresql.Driver");
-				String url = "jdbc:postgresql://psqlserv/n2p1";
-				String nom = "barbetf";
-				String mdp = "moi";
+				String url = "jdbc:postgresql://217.182.171.28:5432/hendek";
+				String nom = "hendek";
+				String mdp = "hendek";
 				con = DriverManager.getConnection(url,nom,mdp);
 
 				Statement stmt = con.createStatement();
@@ -52,13 +61,15 @@ public class Article {
 				while(rs.next())
 					vendeur.put(rs.getInt("idart"), rs.getString("entreprise"));
 				
+				
+				
 			}catch (Exception e) {
 				System.out.println("[ERROR]"+e.getMessage()+"");
 			}finally{	  
 				try{
 					con.close();
 				}catch(Exception e){
-					System.out.println("[ERROR]"+e.getMessage()+"");
+					System.out.println("[ERRORclose]"+e.getMessage()+"");
 				}
 			}
 		}
@@ -78,6 +89,65 @@ public class Article {
 			
 			return ret;
 			
+		}
+		
+		
+		public boolean addArticle(String libelle,Double price,String descr,
+				String image,String entreprise){
+			boolean ret=false;
+			Connection con=null;
+			int idart=0;
+			
+			try{
+
+			    Class.forName("org.postgresql.Driver");
+				String url = "jdbc:postgresql://217.182.171.28:5432/hendek";
+				String nom = "hendek";
+				String mdp = "hendek";
+				con = DriverManager.getConnection(url,nom,mdp);
+
+				String query = "INSERT INTO article";
+				query+="(libelle,description,prix,image) VALUES(?,?,?,?);";
+				
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, libelle);
+				ps.setString(2, descr);
+				ps.setDouble(3, price);
+				ps.setString(4, image);
+				ps.executeUpdate();
+
+				
+				
+				for(int key:lib.keySet())
+					idart=key;
+				idart++;
+				lib.put(idart,libelle);
+				desc.put(idart, descr);
+				prix.put(idart,price);
+				img.put(idart,image);
+				
+					
+				ps = con.prepareStatement("INSERT INTO infoart VALUES (?,?);");
+				ps.setInt(0, idart);
+				ps.setString(2,entreprise);
+				ps.executeUpdate();
+				
+				vendeur.put(idart,entreprise);
+				nbArticle++;
+				
+			}catch (Exception e) {
+				System.out.println("[ERROR2]"+e.getMessage()+"");
+			}finally{	  
+				try{
+					con.close();
+				}catch(Exception e){
+					System.out.println("[ERRORclose2]"+e.getMessage()+"");
+				}
+			}
+			
+			
+			
+			return ret;
 		}
 		
 		public String getVendeur(int id){
@@ -138,6 +208,7 @@ public class Article {
 		public Map<Integer,String> getAllLibelle(){
 			return lib;
 		}
+		
 		
 		
 }

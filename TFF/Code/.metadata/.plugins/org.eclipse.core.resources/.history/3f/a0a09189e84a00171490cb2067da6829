@@ -1,0 +1,10 @@
+package hendek.utilisateur;
+
+import java.util.HashMap;
+
+public class User {
+
+		private HashMap<String,String> mdp;
+	
+	
+}

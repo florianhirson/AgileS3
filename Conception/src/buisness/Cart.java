@@ -1,4 +1,4 @@
-package metier;
+package buisness;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class Cart {
 	
 	public boolean Remove(int ref){
 		for(Article a : cartMap.values()){
-			if(a.getRef()==ref){
+			if(a.getReference()==ref){
 				cartMap.remove(ref);
 				return true;
 			}

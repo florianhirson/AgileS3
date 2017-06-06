@@ -12,7 +12,7 @@
 	Article a = new Article("rateau", "Un rateau efficace", "http://lol.fr/lol.png", "jardinor", "jardin", 12.99);
 %>
 
-<%= a %>
+<%= a.toString().replaceAll("\n", "<br>") %>
 
 </body>
 </html>

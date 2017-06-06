@@ -2,7 +2,6 @@ package business;
 
 import java.util.HashMap;
 import java.util.Map;
-import javafx.util.Pair;
 
 public class Cart {
 

@@ -99,7 +99,7 @@ public class Article {
 		public void rmArticle(int id){
 			
 			Connection con=null;
-			
+			int idart=0;
 			
 			try{
 

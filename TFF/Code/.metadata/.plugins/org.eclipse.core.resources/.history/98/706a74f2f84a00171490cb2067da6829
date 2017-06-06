@@ -96,35 +96,6 @@ public class Article {
 			
 		}
 		
-		public void rmArticle(int id){
-			
-			Connection con=null;
-			
-			
-			try{
-
-			    Class.forName("org.postgresql.Driver");
-				String url = "jdbc:postgresql://217.182.171.28:5432/hendek";
-				String nom = "hendek";
-				String mdp = "hendek";
-				con = DriverManager.getConnection(url,nom,mdp);
-				Statement stmt = con.createStatement();
-				stmt = con.createStatement();
-				String query = "DELETE FROM article WHERE idart="+id+";";
-				stmt.executeUpdate(query);
-				singleton=new Article();
-				
-			}catch (Exception e) {
-				System.out.println("[ERROR2]"+e.getMessage()+"");
-			}finally{	  
-				try{
-					con.close();
-				}catch(Exception e){
-					System.out.println("[ERRORclose2]"+e.getMessage()+"");
-				}
-			}
-			
-		}
 		
 		public void addArticle(String libelle,Double price,String descr,
 				String image,String entreprise,int stock){
@@ -199,7 +170,7 @@ public class Article {
 				stmt.executeUpdate(query);
 				}
 				
-				singleton=new Article();
+				
 			}catch (Exception e) {
 				System.out.println("[ERROR]"+e.getMessage()+"");
 			}finally{	  
@@ -219,8 +190,6 @@ public class Article {
 					miseAJour();
 				}
 		}
-		
-		
 		
 		public int getStock(int id){
 			for(Integer key:stock.keySet())

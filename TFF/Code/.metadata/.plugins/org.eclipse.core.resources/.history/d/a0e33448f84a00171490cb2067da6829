@@ -96,39 +96,10 @@ public class Article {
 			
 		}
 		
-		public void rmArticle(int id){
-			
-			Connection con=null;
-			
-			
-			try{
-
-			    Class.forName("org.postgresql.Driver");
-				String url = "jdbc:postgresql://217.182.171.28:5432/hendek";
-				String nom = "hendek";
-				String mdp = "hendek";
-				con = DriverManager.getConnection(url,nom,mdp);
-				Statement stmt = con.createStatement();
-				stmt = con.createStatement();
-				String query = "DELETE FROM article WHERE idart="+id+";";
-				stmt.executeUpdate(query);
-				singleton=new Article();
-				
-			}catch (Exception e) {
-				System.out.println("[ERROR2]"+e.getMessage()+"");
-			}finally{	  
-				try{
-					con.close();
-				}catch(Exception e){
-					System.out.println("[ERRORclose2]"+e.getMessage()+"");
-				}
-			}
-			
-		}
 		
 		public void addArticle(String libelle,Double price,String descr,
 				String image,String entreprise,int stock){
-			
+			boolean ret=false;
 			Connection con=null;
 			int idart=0;
 			
@@ -199,7 +170,7 @@ public class Article {
 				stmt.executeUpdate(query);
 				}
 				
-				singleton=new Article();
+				
 			}catch (Exception e) {
 				System.out.println("[ERROR]"+e.getMessage()+"");
 			}finally{	  
@@ -214,13 +185,9 @@ public class Article {
 		
 		public void setStock(int id,int modif){
 			for(Integer key:stock.keySet())
-				if(key==id){
+				if(key==id)
 					stock.replace(key, stock.get(key), modif);
-					miseAJour();
-				}
 		}
-		
-		
 		
 		public int getStock(int id){
 			for(Integer key:stock.keySet())
@@ -238,10 +205,8 @@ public class Article {
 		
 		public void setImage(int id,String modif){
 			for(Integer key:img.keySet())
-				if(key==id){
+				if(key==id)
 					img.replace(key, img.get(key), modif);
-					miseAJour();
-				}
 		}
 		
 		public String getImage(int id){
@@ -253,10 +218,8 @@ public class Article {
 		
 		public void setPrix(int id,double modif){
 			for(Integer key:prix.keySet())
-				if(key==id){
+				if(key==id)
 					prix.replace(key, prix.get(key), modif);
-					miseAJour();	
-				}
 		}
 		
 		public Double getPrix(int id){
@@ -266,28 +229,11 @@ public class Article {
 			return null;
 		}
 		
-		public void setLibelle(int id,String modif){
-			for(Integer key:lib.keySet())
-				if(key==id){
-					lib.replace(key, lib.get(key), modif);
-					miseAJour();	
-				}
-		}
-		
 		public String getLibelle(int id){
 			for(Integer key:lib.keySet())
 				if(key==id)
 					return lib.get(key);
 			return null;
-		}
-		
-
-		public void setDescription(int id,String modif){
-			for(Integer key:desc.keySet())
-				if(key==id){
-					desc.replace(key, desc.get(key), modif);
-					miseAJour();	
-				}
 		}
 		
 		public String getDescription(int id){

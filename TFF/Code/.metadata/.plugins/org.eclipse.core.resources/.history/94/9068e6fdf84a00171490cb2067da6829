@@ -99,7 +99,7 @@ public class Article {
 		public void rmArticle(int id){
 			
 			Connection con=null;
-			
+			int idart=0;
 			
 			try{
 
@@ -111,8 +111,10 @@ public class Article {
 				Statement stmt = con.createStatement();
 				stmt = con.createStatement();
 				String query = "DELETE FROM article WHERE idart="+id+";";
-				stmt.executeUpdate(query);
-				singleton=new Article();
+				
+				
+
+				
 				
 			}catch (Exception e) {
 				System.out.println("[ERROR2]"+e.getMessage()+"");
@@ -199,7 +201,7 @@ public class Article {
 				stmt.executeUpdate(query);
 				}
 				
-				singleton=new Article();
+				
 			}catch (Exception e) {
 				System.out.println("[ERROR]"+e.getMessage()+"");
 			}finally{	  

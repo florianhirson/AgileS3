@@ -30,28 +30,7 @@
 	  
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 	
-		<div style="background-color:#ffffff; margin: 1%; border-radius: 10px; padding: 1%">
-			<form action="./Select.jsp? method="GET">
-  				<div class="form-group">
-   					 <label for="Search">Rechercher :</label>
-   					 <input style="width=80%" type="text" class="form-control" id="search" name="search" placeholder="ex : Cocktails au white spirit">
- 				</div>
-			</form>
-		</div>
 		
-		
-		<% Article articles = Article.getInstance(); %>
-		<% for(Integer i: articles.getAllLibelle().keySet()){%>
-		<% 		if(request.getParameter("search")==null || articles.getLibelle(i).contains(request.getParameter("search"))){ %>
-			<div style="margin: 1%; border-radius: 10px;">
-				<img src="<%=articles.getImage(i)%>" alt="<%=articles.getLibelle(i)%>" style="width:10%;height:10%;display: inline-block;">
-				<div style="display: inline-block;">
-				<h3 style="margin-bottom:1%"><a href=#><%=articles.getLibelle(i)%><small style="margin-left:5%;"><%=articles.getPrix(i)%>&euro;</small></a></h3>
-				<p><%=articles.getDescription(i)%></p>
-				</div>
-			</div>
-		<% }} %>
-		</div>
 		
 	</div>
   </body>

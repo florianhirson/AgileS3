@@ -1,4 +1,4 @@
-package utilisateur;
+package hendek.utilisateur;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -34,7 +34,7 @@ public class Me {
 			Statement stmt = con.createStatement();
 			stmt = con.createStatement();
 
-			String query = "select * from utilisateur where login='"+login+"' AND mdp='"+password+"'";
+			String query = "select * from utilisateur where login="+login+"AND mdp="+password;
 			ResultSet rs = stmt.executeQuery(query);
 
 			if(rs.next()){

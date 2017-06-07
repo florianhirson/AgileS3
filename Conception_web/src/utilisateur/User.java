@@ -1,4 +1,4 @@
-package utilisateur;
+package hendek.utilisateur;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -199,6 +199,13 @@ public class User {
 		for(String key:mail.keySet())
 			if(key.equals(login))
 				return mail.get(key);
+		return null;
+	}
+	
+	public String getMDP(String login){
+		for(String key:mdp.keySet())
+			if(key.equals(login))
+				return mdp.get(key);
 		return null;
 	}
 

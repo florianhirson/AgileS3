@@ -43,7 +43,7 @@
 						</div>
 
 						<button type="submit" class="btn btn-success btn-block">Envoyer</button>
-						<%
+						<%						
 						Connection con=null;
 						
 						    
@@ -51,10 +51,10 @@
 						    Class.forName("org.postgresql.Driver");
 						    
 						    // connexion a la base
-						    con = DriverManager.getConnection("jdbc:postgresql://217.182.171.28:5432/hendek","hendek","hendek");
+						    con = DriverManager.getConnection("jdbc:postgresql://psqlserv/n2p1","barbetf","moi");
 						    String login = request.getParameter("login");
 						    // execution de la requete
-							PreparedStatement ps = con.prepareStatement("select * from users where login=? and mdp=?");
+							PreparedStatement ps = con.prepareStatement("select * from utilisateur where login=? and mdp=?");
 							ps.setString(1, request.getParameter("login"));
 							ps.setString(2, request.getParameter("mdp"));
 						    ResultSet rs = ps.executeQuery();

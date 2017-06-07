@@ -23,88 +23,7 @@ public class Bridge {
 		connection.close();
 	}
 
-	public static ArrayList<Article> getArticles(int... references) {
-		ArrayList<Article> articles = new ArrayList<>();
-		try {
-			connect();
-
-			String query = "SELECT * FROM article;";
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
-			while (rs.next()) {
-				for (int i = 0; i < references.length; i++) {
-					if (rs.getInt("reference") == references[i]) {
-						articles.add(new Article(rs.getString("name"), rs.getString("description"),
-								rs.getString("image_url"), rs.getString("brand"), rs.getString("category"),
-								rs.getDouble("price"), rs.getInt("quantity")));
-					}
-				}
-			}
-		} catch (Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally {
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-
-		return articles;
-	}
-
-	public static ArrayList<Article> searchArticles(String keyword, boolean searchByName, boolean searchByBrand,
-			boolean searchByCategory) {
-		ArrayList<Article> articles = new ArrayList<>();
-		try {
-			connect();
-
-			if (searchByName == false && searchByBrand == false && searchByCategory == false) {
-				return null;
-			}
-
-			String query = "SELECT * FROM article WHERE";
-
-			if (searchByName) {
-				query += " name LIKE '%" + keyword + "%'";
-			}
-
-			if (searchByName && searchByBrand) {
-				query += " AND";
-			}
-
-			if (searchByBrand) {
-				query += " brand LIKE '%" + keyword + "%';";
-			}
-
-			if ((searchByName || searchByBrand) && searchByCategory) {
-				query += " AND";
-			}
-
-			if (searchByBrand) {
-				query += " category LIKE '%" + keyword + "%';";
-			}
-
-			query += ";";
-
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
-			while (rs.next()) {
-				articles.add(new Article(rs.getString("name"), rs.getString("description"), rs.getString("image_url"),
-						rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getInt("quantity")));
-			}
-		} catch (Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally {
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-
-		return articles;
-	}
+	// Person
 
 	protected static Person getPerson(int id) {
 		try {
@@ -114,8 +33,7 @@ public class Bridge {
 
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(query);
-			if (rs.getFetchSize() == 1) {
-				rs.next();
+			if (rs.next()) {
 				if (rs.getBoolean("is_admin")) {
 					return new Admin(new Person(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"),
 							rs.getString("mail"), rs.getString("password"), rs.getString("default_adress"),
@@ -188,7 +106,207 @@ public class Bridge {
 		return null;
 	}
 
+	// Article
+
+	public static Article getArticle(int reference) {
+		try {
+			connect();
+
+			String query = "SELECT * FROM article WHERE reference='" + reference + "';";
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			if (rs.next()) {
+				return new Article(rs.getString("name"), rs.getString("description"), rs.getString("image_url"),
+						rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getInt("quantity"));
+			}
+		} catch (
+
+		Exception ex)
+
+		{
+			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+		} finally
+
+		{
+			try {
+				disconnect();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return null;
+
+	}
+
+	public static ArrayList<Article> getAllArticles() {
+		return getAllArticlesSortedBy(null);
+	}
+
+	public static ArrayList<Article> getAllArticlesWhere(String criteria) {
+		return getAllArticlesSortedBy(" WHERE " + criteria);
+	}
+
+	public static ArrayList<Article> getAllArticlesSortedBy(String column) {
+		return getAllArticlesSortedBy(" SORTED BY " + column);
+	}
+
+	private static ArrayList<Article> getAllArticles(String criteria) {
+		ArrayList<Article> articles = new ArrayList<>();
+		try {
+			connect();
+
+			String query = "SELECT * FROM article";
+			if (criteria != null) {
+				query += criteria;
+			}
+			query += ";";
+
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			while (rs.next()) {
+				articles.add(new Article(rs.getString("name"), rs.getString("description"), rs.getString("image_url"),
+						rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getInt("quantity")));
+			}
+		} catch (Exception ex) {
+			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+		} finally {
+			try {
+				disconnect();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return articles;
+	}
+
+	public static ArrayList<Article> searchArticles(String keyword, boolean searchByName, boolean searchByBrand,
+			boolean searchByCategory) {
+		ArrayList<Article> articles = new ArrayList<>();
+		try {
+			connect();
+
+			if (searchByName == false && searchByBrand == false && searchByCategory == false) {
+				return null;
+			}
+
+			String query = "SELECT * FROM article WHERE";
+
+			if (searchByName) {
+				query += " name LIKE '%" + keyword + "%'";
+			}
+
+			if (searchByName && searchByBrand) {
+				query += " AND";
+			}
+
+			if (searchByBrand) {
+				query += " brand LIKE '%" + keyword + "%';";
+			}
+
+			if ((searchByName || searchByBrand) && searchByCategory) {
+				query += " AND";
+			}
+
+			if (searchByBrand) {
+				query += " category LIKE '%" + keyword + "%';";
+			}
+
+			query += ";";
+
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			while (rs.next()) {
+				articles.add(new Article(rs.getString("name"), rs.getString("description"), rs.getString("image_url"),
+						rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getInt("quantity")));
+			}
+		} catch (Exception ex) {
+			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+		} finally {
+			try {
+				disconnect();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return articles;
+	}
+
+	public static boolean containsArticle(int reference, int quantity) {
+		try {
+			connect();
+
+			String query = "SELECT * FROM article WHERE reference='" + reference + "';";
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			if (rs.next()) {
+				if (rs.getInt("quantity") >= quantity) {
+					return true;
+				}
+			}
+		} catch (
+
+		Exception ex)
+
+		{
+			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+		} finally
+
+		{
+			try {
+				disconnect();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return false;
+	}
+
+	// Order
+
 	public static Order getOrder(int id) {
+		try {
+			connect();
+
+			Map<Integer, Integer> references_quantity = new HashMap<Integer, Integer>();
+
+			String query = "SELECT * FROM xline WHERE id='" + id + "';";
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			while (rs.next()) {
+				references_quantity.put(rs.getInt("reference"), rs.getInt("quantity"));
+			}
+
+			query = "SELECT * FROM order WHERE id='" + id + "';";
+
+			statement = connection.createStatement();
+			rs = statement.executeQuery(query);
+			if (rs.getFetchSize() == 1) {
+				rs.next();
+				return new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("address"),
+						rs.getString("recipient"), rs.getInt("status"), rs.getDate("xdate"), references_quantity);
+			}
+
+		} catch (
+
+		Exception ex) {
+			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+		} finally
+
+		{
+			try {
+				disconnect();
+			} catch (Exception ex) {
+				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+			}
+		}
+		return null;
+	}
+
+	public static void addOrder(Order order) {
 		try {
 			connect();
 

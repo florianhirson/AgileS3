@@ -1,105 +1,103 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
-
 	Map<Integer, Integer> references_quantity;
+	double shipping_fee = 0.0;
 
 	public Cart() {
 		references_quantity = new HashMap<Integer, Integer>();
 	}
 
-	/**
-	 * Calcul le prix total du panier
-	 * 
-	 * @return le prix total du panier
-	 */
+	public ArrayList<Integer> getAllReferences() {
+		ArrayList<Integer> references = new ArrayList<Integer>();
+		for (Integer reference : references_quantity.keySet()) {
+			references.add(reference);
+		}
+		return references;
+	}
+
+	public ArrayList<Article> getAllArticles() {
+		ArrayList<Article> articles = new ArrayList<Article>();
+		for (Integer reference : references_quantity.keySet()) {
+			articles.add(Bridge.getArticle(reference));
+		}
+		return articles;
+	}
+
+	public void put(int reference, int quantity) {
+		if (Bridge.containsArticle(reference, quantity)) {
+			references_quantity.put(reference, quantity);
+		}
+	}
+
+	public void remove(int reference) {
+		references_quantity.remove(reference);
+	}
+
+	public double getShipping_fee() {
+		return shipping_fee;
+	}
+
+	public void setShipping_fee(double shipping_fee) {
+		this.shipping_fee = shipping_fee;
+	}
+
+	public double getTotalCount() {
+		int count = 0;
+		for (Integer reference : references_quantity.keySet()) {
+			count += references_quantity.get(reference);
+		}
+		return count;
+	}
+
 	public double getTotalPrice() {
-		double total = 0.0;
-		for (Integer i : references_quantity.keySet()) {
-			Article a = Bridge.getArticles(i).get(0);
-			if (a != null) {
-				total += a.getPrice() * references_quantity.get(i);
+		double price = shipping_fee;
+		for (Integer reference : references_quantity.keySet()) {
+			Article article = Bridge.getArticle(reference);
+			if (article != null) {
+				price += article.getPrice() * references_quantity.get(reference) * (1 - article.getDiscount());
 			}
 		}
-		return total;
+		return price;
 	}
 
-	/**
-	 * Retire un article du panier
-	 * 
-	 * @param ref,
-	 *            la reference de l'article
-	 * @return true si l'objet existé et a été retiré, false sinon
-	 */
-	public boolean remove(int ref) {
-		for (Integer i : references_quantity.keySet()) {
-			Article a = Bridge.getArticles(i).get(0);
-			if (a != null && a.getReference() == ref) {
-				references_quantity.remove(ref);
-				return true;
+	public double getTotalDiscount() {
+		double discount = 0.0;
+		for (Integer reference : references_quantity.keySet()) {
+			Article article = Bridge.getArticle(reference);
+			if (article != null) {
+				discount += article.getPrice() * references_quantity.get(reference) * article.getDiscount();
 			}
 		}
-		return false;
-	}
-
-	/**
-	 * Ajoute un article au panier (un seul exemplaire)
-	 * 
-	 * @param ref
-	 * @return true si l'article a été ajouté, false en cas d'erreur ou si il
-	 *         n'existe pas
-	 */
-	public boolean add(int ref) {
-		return this.add(ref, 1);
-	}
-
-	/**
-	 * Ajoute un certain nombre du meme article au panier
-	 * 
-	 * @param ref
-	 * @param number
-	 * @return true si l'article a été ajouté, false en cas d'erreur ou si il
-	 *         n'existe pas
-	 */
-	public boolean add(int ref, int number) {
-		Article a = Bridge.getArticles(ref).get(0);
-		if (a == null) {
-			return false;
-		}
-		Integer i = references_quantity.get(ref);
-		if (i != null) {
-			references_quantity.put(ref, number + i);
-		} else {
-			references_quantity.put(ref, number);
-		}
-		return true;
-	}
-
-	/**
-	 * Initialise un article a un certain nombre
-	 * 
-	 * @param ref
-	 * @param number
-	 */
-	public boolean set(int ref, int number) {
-		Article a = Bridge.getArticles(ref).get(0);
-		if (a == null) {
-			return false;
-		}
-		references_quantity.put(ref, number);
-		return true;
+		return discount;
 	}
 
 	@Override
 	public String toString() {
-
 		String temp = "Contenu du panier :";
-		for (int i = 0; i < this.references_quantity.size(); i++) {
-			temp += "\nArticle " + i + " :\n" + this.references_quantity.get(i).toString();
+		for (Integer reference : references_quantity.keySet()) {
+			Article article = Bridge.getArticle(reference);
+			temp += "\n   Article " + article.getName() + " :\n" + this.references_quantity.get(reference).toString();
 		}
-		return null;
+		return temp;
+	}
+
+	public String toHTML() {
+		String temp = "<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
+		for (Integer reference : references_quantity.keySet()) {
+			Article article = Bridge.getArticle(reference);
+			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getReference() + "</td><td><img src=\""
+					+ article.getImage_url()
+					+ "\" class=\"img-responsive img-thumbnail\" style=\"width:10%; height:auto ; display:inline-block ; float:right \" alt=\""
+					+ article.getName() + "\" /></td></tr>\n";
+
+		}
+		temp += "<tr><td>Remises :</td><td>" + this.getTotalDiscount() + " </td><td>euros TTC</td></tr>\n";
+		temp += "<tr><td>Montant a payé :</td><td>" + this.getTotalPrice() + " </td><td>euros TTC</td></tr>\n";
+		return temp;
 	}
 }

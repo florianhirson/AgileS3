@@ -1,15 +1,27 @@
 ﻿DROP FUNCTION IF EXISTS fact_gen(varchar,date);
 DROP FUNCTION IF EXISTS fact_gen_other(varchar,date,text);
+
 DROP TABLE IF EXISTS facture;
 DROP TABLE IF EXISTS lignefact;
 
 DROP TABLE IF EXISTS utilisateur;
 DROP TABLE IF EXISTS status;
+DROP TABLE IF EXISTS droit;
 
 DROP TABLE IF EXISTS infoart;
 
 DROP TABLE IF EXISTS article;
 DROP TABLE IF EXISTS vendeur;
+
+
+CREATE TABLE droit(
+        iddroit serial,
+    libelle text NOT NULL,
+    CONSTRAINT pk_droit PRIMARY KEY(iddroit)
+);
+
+INSERT INTO droit(iddroit,libelle)VALUES(-1,'BlackList'),(0,'En validation');
+INSERT INTO droit(libelle)VALUES('Normal'),('Admin');
 
 
 CREATE TABLE utilisateur(
@@ -28,8 +40,8 @@ CREATE TABLE utilisateur(
 		REFERENCES droit(iddroit)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE,
-	CONSTRAINT check_mail CHECK(mail LIKE  '%_@_%.__%'),
-	CONSTRAINT unique_mail UNIQUE(mail)
+	CONSTRAINT check_mail CHECK(mail LIKE  '%_@_%.__%')
+
 
 );
 

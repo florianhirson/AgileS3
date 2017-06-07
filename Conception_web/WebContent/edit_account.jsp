@@ -17,9 +17,8 @@
 
 	<header
 		style="background-color: #3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
-		<H1
-			style="color: white; font-size: 600%; font-weight: bold; margin-left: 1%; display: inline-block;">HENDEK</H1>
-	</header>
+		<H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;"><a href=./acceuil.jsp>HENDEK</a></H1>
+      </header>
 
 	<div style="margin-left: 3%; margin-right: 3%;">
 		<a class="btn btn-default" href="#" role="button"

@@ -23,9 +23,8 @@
 	<div style="margin-left: 3%; margin-right: 3%;">
 		<a class="btn btn-default" href="#" role="button"
 			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Panier</a> <a class="btn btn-default" href="#" role="button"
-			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Compte</a> <a class="btn btn-default" href="#" role="button"
+			Panier</a> <a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
+		 <a class="btn btn-default" href="#" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
 			Commandes</a> <a class="btn btn-default" href="#" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>

@@ -11,6 +11,18 @@ public class Cart {
 	public Cart() {
 		references_quantity = new HashMap<Integer, Integer>();
 	}
+	
+	public Map<Integer, Integer> getReferencesQuantity() {
+		return references_quantity;
+	}
+
+	public double getShipping_fee() {
+		return shipping_fee;
+	}
+
+	public void setShipping_fee(double shipping_fee) {
+		this.shipping_fee = shipping_fee;
+	}
 
 	public ArrayList<Integer> getAllReferences() {
 		ArrayList<Integer> references = new ArrayList<Integer>();
@@ -36,14 +48,6 @@ public class Cart {
 
 	public void remove(int reference) {
 		references_quantity.remove(reference);
-	}
-
-	public double getShipping_fee() {
-		return shipping_fee;
-	}
-
-	public void setShipping_fee(double shipping_fee) {
-		this.shipping_fee = shipping_fee;
 	}
 
 	public double getTotalCount() {
@@ -75,6 +79,11 @@ public class Cart {
 		}
 		return discount;
 	}
+	
+	public void resetCart(){
+		references_quantity.clear();
+		shipping_fee = 0.0;
+	}
 
 	@Override
 	public String toString() {
@@ -90,7 +99,7 @@ public class Cart {
 		String temp = "<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
 		for (Integer reference : references_quantity.keySet()) {
 			Article article = Bridge.getArticle(reference);
-			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getREFERENCE() + "</td><td><img src=\""
+			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getReference() + "</td><td><img src=\""
 					+ article.getImage_url()
 					+ "\" class=\"img-responsive img-thumbnail\" style=\"width:10%; height:auto ; display:inline-block ; float:right \" alt=\""
 					+ article.getName() + "\" /></td></tr>\n";

@@ -11,27 +11,27 @@ DROP TABLE IF EXISTS xline CASCADE;
 CREATE TABLE person(
 id serial,
 is_admin boolean NOT NULL DEFAULT FALSE,
-last_name varchar(20) NOT NULL,
 first_name varchar(20) NOT NULL,
+last_name varchar(20) NOT NULL,
 mail varchar(100) NOT NULL,
 password varchar(20) NOT NULL,
-default_adress text,
+default_address text,
 phone varchar(10),
+cerdit_card_number varchar(16) NOT NULL,
+cerdit_card_date date NOT NULL,
 CONSTRAINT pk_person PRIMARY KEY(id),
 CONSTRAINT unique_mail UNIQUE (mail),
-CONSTRAINT check_mail CHECK(mail LIKE '%_@_%.__%')
+CONSTRAINT check_mail CHECK(mail LIKE '%_@_%.__%'),
+CONSTRAINT check_cerdit_card_number CHECK(mail LIKE '%[^0-9]%')
 );
 
 CREATE TABLE unchecked(
-id serial,
-is_admin boolean NOT NULL DEFAULT FALSE,
-last_name varchar(20) NOT NULL,
+mail varchar(100),
 first_name varchar(20) NOT NULL,
-mail varchar(100) NOT NULL,
+last_name varchar(20) NOT NULL,
 password varchar(20) NOT NULL,
-default_adress text,
-phone varchar(10),
-code text NOT NULL DEFAULT MD5(RANDOM()::varchar(10)),
+code text NOT NULL,
+xdate date NOT NULL,
 CONSTRAINT pk_unchecked PRIMARY KEY(id)
 );
 

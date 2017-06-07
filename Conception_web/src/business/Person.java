@@ -30,19 +30,19 @@ public class Person {
 		this.phone = person.phone;
 	}
 
-	public String getDefault_adress() {
+	public String getDefaultAdress() {
 		return default_adress;
 	}
 
-	public void setDefault_adress(String default_adress) {
+	public void setDefaultAdress(String default_adress) {
 		this.default_adress = default_adress;
 	}
 
-	public String getFirst_name() {
+	public String getFirstName() {
 		return first_name;
 	}
 
-	public String getLast_name() {
+	public String getLastName() {
 		return last_name;
 	}
 

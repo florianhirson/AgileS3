@@ -44,7 +44,7 @@ public class Order {
 		this.references_quantity = references_quantity;
 	}
 
-	public int getID() {
+	public int getId() {
 		return ID;
 	}
 
@@ -94,7 +94,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		String temp = "Commande : " + getOrder_id() + "\nClient : " + getPerson() + "\nStatus : "
+		String temp = "Commande : " + getId() + "\nClient : " + getPerson() + "\nStatus : "
 				+ getStatusToString() + "\nAddresse : " + getAddress() + "\nDestinataire : " + getRecipient()
 				+ "\nContenu de la commande :";
 		for (Integer reference : references_quantity.keySet()) {

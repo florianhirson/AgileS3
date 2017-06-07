@@ -1,6 +1,7 @@
 package business;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -10,18 +11,47 @@ import java.util.List;
 import java.util.Map;
 
 public class Bridge {
-	private static Connection connection = null;
+	private static String db_url = "jdbc:postgresql://psqlserv/n2p1";
+	private static String db_username = "dujardir";
+	private static String db_password = "moi";
 
-	private static void connect() throws Exception {
-		Class.forName("org.postgresql.Driver");
-		String url = "jdbc:postgresql://psqlserv/n2p1";
-		String nom = "dujardir";
-		String mdp = "moi";
-		connection = DriverManager.getConnection(url, nom, mdp);
+	private static ResultSet executeQuery(String query) throws Exception {
+		Connection connection = null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			connection = DriverManager.getConnection(db_url, db_username, db_password);
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			return rs;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new Exception("Erreur : " + ex.getMessage());
+		}	finally {
+			try {
+				connection.close();
+			} catch (Exception ex) {
+				throw new Exception("Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+			}
+		}
 	}
 
-	private static void disconnect() throws Exception {
-		connection.close();
+	private static void executeUpdate(String query) throws Exception {
+		Connection connection = null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			connection = DriverManager.getConnection(db_url, db_username, db_password);
+			Statement statement = connection.createStatement();
+			statement.executeUpdate(query);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new Exception("Erreur : " + ex.getMessage());
+		}	finally {
+			try {
+				connection.close();
+			} catch (Exception ex) {
+				throw new Exception("Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+			}
+		}
 	}
 
 	// Person ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
@@ -32,12 +62,8 @@ public class Bridge {
 	 */
 	protected static Person getPerson(int id) {
 		try {
-			connect();
-
 			String query = "SELECT * FROM person WHERE id=" + id + ";";
-
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			if (rs.next()) {
 				if (rs.getBoolean("is_admin")) {
@@ -53,15 +79,8 @@ public class Bridge {
 				}
 			}
 		} catch (	Exception ex)	{
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally	{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
-
 		return null;
 	}
 
@@ -72,15 +91,10 @@ public class Bridge {
 	 */
 	public static Person getPerson(String mail, String password) {
 		try {
-			connect();
-
 			String query = "SELECT * FROM person WHERE mail=" + mail + ";";
+			ResultSet rs = executeQuery(query);
 
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
-
-			if (rs.getFetchSize() == 1) {
-				rs.next();
+			if (rs.next()) {
 				if (rs.getString("password").equals(password)) {
 					if (rs.getBoolean("is_admin")) {
 						return new Admin(new Person(rs.getInt("id"), rs.getString("first_name"),
@@ -96,15 +110,8 @@ public class Bridge {
 				}
 			}
 		} catch (	Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally	{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
-
 		return null;
 	}
 
@@ -115,16 +122,14 @@ public class Bridge {
 	protected static List<Person> getAllPersonsFILTERED(String filter) {
 		ArrayList<Person> persons = new ArrayList<>();
 		try {
-			connect();
+
 
 			String query = "SELECT * FROM person";
 			if (filter != null) {
 				query += filter;
 			}
 			query += ";";
-
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			while (rs.next()) {
 				if (rs.getBoolean("is_admin")) {
@@ -134,15 +139,8 @@ public class Bridge {
 				}
 			}
 		} catch (Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally {
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
-
 		return persons;
 	}
 
@@ -153,23 +151,57 @@ public class Bridge {
 	 */
 	public static void updatePerson(int id, String column, String new_value) {
 		try {
-			connect();
-
 			String query = "UPDATE person SET " + column + " = " + new_value + " WHERE id = " + id + ";" ;
-			Statement statement = connection.createStatement();
-			statement.executeQuery(query);
-		} catch (
+			executeUpdate(query);
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		}
+	}
 
-				Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
+	/**
+	 * @return client Client a ajouter
+	 */
+	public static void addClient(Client client) {
+		try {
+			int code = (int) Math.random() * 100000000;
+			String query = "INSERT INTO unchecked(first_name, last_name, mail, password, code) VALUES (" + client.getFirstName() + ", "+ client.getLastName() + ", "+ client.getMail() + ", "+ client.getPassword() + ", "+ code +  ", " + new Date(new java.util.Date().getTime()) + ");";
+			executeUpdate(query);
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		}
+	}
 
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
+	/**
+	 * @param mail Mail du client a ajouter
+	 * @param code Code de validation
+	 */
+	public static void verifyClient(String mail, int code) {
+		try {
+			String query = "SELECT * FROM unchecked WHERE mail=" + mail + ";";
+			ResultSet rs = executeQuery(query);
+			if (rs.next()) {
+				if (rs.getString("code").equals(code)) {
+					query = "INSERT INTO person(first_name, last_name, mail, password) VALUES (" + rs.getString("first_name") + ", "+ rs.getString("last_name") + ", "+ rs.getString("mail") + ", "+ rs.getString("password") + ");";
+					executeUpdate(query);					
+
+					query = "DELETE FROM unchecked WHERE mail=" + mail + ";";
+					executeUpdate(query);
+				}
 			}
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
+	}
+
+	/**
+	 * @param id ID à supprimer
+	 */
+	protected static void removePerson(int id) {
+		try {
+			String query = "DELETE FROM person WHERE id=" + id + ";";
+			executeUpdate(query);
+		} catch (	Exception ex)	{
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
 
@@ -183,63 +215,31 @@ public class Bridge {
 	 */
 	public static Article getArticle(int reference) {
 		try {
-			connect();
-
 			String query = "SELECT * FROM article WHERE reference=" + reference + ";";
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			if (rs.next()) {
 				return new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"), rs.getString("image_url"), rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity"));
 			}
-		} catch (
-
-				Exception ex)
-
-		{
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
+		} catch (Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
-
 		return null;
 	}
 
 	public static boolean containsArticle(int reference, int quantity) {
 		try {
-			connect();
-
 			String query = "SELECT * FROM article WHERE reference=" + reference + ";";
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			if (rs.next()) {
 				if (rs.getInt("quantity") >= quantity) {
 					return true;
 				}
 			}
-		} catch (
-
-				Exception ex)
-
-		{
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
+		} catch (	Exception ex)	{
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
-
 		return false;
 	}
 
@@ -254,9 +254,7 @@ public class Bridge {
 		if (searchByName == false && searchByBrand == false && searchByCategory == false) {
 			return null;
 		}
-
 		String filter = " WHERE";
-
 		if (searchByName) {
 			filter += " name LIKE %" + keyword + "%";
 		}
@@ -273,7 +271,6 @@ public class Bridge {
 			filter += " category LIKE %" + keyword + "%;";
 		}
 		filter += ";";
-
 		return getAllArticlesFILTERED(filter);
 	}
 
@@ -299,30 +296,19 @@ public class Bridge {
 	protected static List<Article> getAllArticlesFILTERED(String filter) {
 		ArrayList<Article> articles = new ArrayList<>();
 		try {
-			connect();
-
 			String query = "SELECT * FROM article";
 			if (filter != null) {
 				query += filter;
 			}
 			query += ";";
-
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			while (rs.next()) {
 				articles.add(new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"), rs.getString("image_url"), rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity")));
 			}
 		} catch (Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally {
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 		return articles;
 	}
 
@@ -331,31 +317,19 @@ public class Bridge {
 	 */
 	public static void addArticle(Article article) {
 		try {
-			connect();
-
-			Statement statement = connection.createStatement();
 			String query = "INSERT INTO brand(name) VALUES (" + article.getBrand() + ");";
-			statement.executeUpdate(query);
-			
-			statement = connection.createStatement();
-			query = "INSERT INTO category(name) VALUES (" + article.getCategory() + ");";
-			statement.executeUpdate(query);
+			executeUpdate(query);
 
-			statement = connection.createStatement();
+			query = "INSERT INTO category(name) VALUES (" + article.getCategory() + ");";
+			executeUpdate(query);
+
 			query = "INSERT INTO article(name, description, image_url, brand, category, price, discount, quantity) VALUES (" + article.getName() + ", " + article.getDescription() + ", " + article.getImage_url() + article.getBrand() + ", " + article.getCategory() + ", " + article.getPrice() + article.getDiscount() + ", " + article.getQuantity() + ");";
-			statement.executeUpdate(query);
+			executeUpdate(query);
 		} catch (	Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
-		}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 	}
-	
+
 	/**
 	 * @param reference Reference de l'Article a modifier
 	 * @param column Collone a modifier
@@ -363,24 +337,11 @@ public class Bridge {
 	 */
 	public static void updateArticle(int reference, String column, String new_value) {
 		try {
-			connect();
-
 			String query = "UPDATE article SET " + column + " = " + new_value + " WHERE reference = " + reference + ";" ;
-			Statement statement = connection.createStatement();
-			statement.executeQuery(query);
-		} catch (
-
-				Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
-		}
+			executeQuery(query);
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 	}
 
 	/**
@@ -389,31 +350,17 @@ public class Bridge {
 	 */
 	public static void updateArticleQuantity(int reference, int difference) {
 		try {
-			connect();
-
 			String query = "SELECT * FROM article WHERE reference=" + reference + ";";
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			if (rs.next()) {
 				updateArticle(reference, "quantity", Integer.valueOf(rs.getInt("quantity") + difference).toString());
 			}
-
-		} catch (
-
-				Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
-		
+
 
 	// Brand and Category ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
 
@@ -423,49 +370,28 @@ public class Bridge {
 	 */
 	public static void addBrand(String name) {
 		try {
-			connect();
-
-			Statement statement = connection.createStatement();
 			String query = "INSERT INTO brand(name) VALUES (" + name + ");";
-			statement.executeUpdate(query);
+			executeUpdate(query);
 		} catch (	Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
-		}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 	}
-	
+
 	/**
 	 * @return ArrayList contenant toutes les marques
 	 */
 	protected static List<String> getAllBrands() {
 		ArrayList<String> brands = new ArrayList<>();
 		try {
-			connect();
-
 			String query = "SELECT * FROM brand;";
-
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			while (rs.next()) {
 				brands.add(rs.getString("name"));
 			}
 		} catch (Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally {
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
-
 		return brands;
 	}
 
@@ -474,94 +400,57 @@ public class Bridge {
 	 */
 	public static void addCategory(String name) {
 		try {
-			connect();
-
-			Statement statement = connection.createStatement();
 			String query = "INSERT INTO category(name) VALUES (" + name + ");";
-			statement.executeUpdate(query);
+			executeUpdate(query);
 		} catch (	Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
-		}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 	}
-	
+
 	/**
 	 * @return ArrayList contenant toutes les categories
 	 */
 	protected static List<String> getAllCategories() {
 		ArrayList<String> categories = new ArrayList<>();
 		try {
-			connect();
-
 			String query = "SELECT * FROM brand;";
-
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			while (rs.next()) {
 				categories.add(rs.getString("name"));
 			}
 		} catch (Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally {
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 		return categories;
 	}
-	
+
 
 	// Order ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
 
-	
+
 	/**
 	 * @return Order correspondant a l'ID, null si non trouve
 	 */
 	public static Order getOrder(int id) {
 		try {
-			connect();
-
 			Map<Integer, Integer> references_quantity = new HashMap<Integer, Integer>();
-
 			String query = "SELECT * FROM xline WHERE id=" + id + ";";
-			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			while (rs.next()) {
 				references_quantity.put(rs.getInt("reference"), rs.getInt("quantity"));
 			}
 
 			query = "SELECT * FROM order WHERE id=" + id + ";";
-
-			statement = connection.createStatement();
-			rs = statement.executeQuery(query);
+			rs = executeQuery(query);
 			if (rs.next()) {
 				return new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("recipient"), rs.getString("address"), rs.getInt("status"), rs.getDate("xdate"), references_quantity);
 			}
 
-		} catch (
-
-				Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
-		}
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 		return null;
 	}
 
@@ -570,14 +459,11 @@ public class Bridge {
 	 */
 	public static void addOrder(Order order) {
 		try {
-			connect();
-
 			String query = "INSERT INTO xorder(person, recipient, address, status, xdate) VALUES (" + order.getPerson() + ", " + order.getRecipient() + ", " + order.getAddress() + ", " + order.getStatus()  + ", " + order.getDate() + ");";
-			Statement statement = connection.createStatement();
-			statement.executeUpdate(query);				
+			executeUpdate(query);				
 
 			query = "SELECT * FROM xorder WHERE id=(SELECT MAX(id) FROM xorder;);";
-			ResultSet rs = statement.executeQuery(query);
+			ResultSet rs = executeQuery(query);
 
 			int id = 0;
 
@@ -588,19 +474,12 @@ public class Bridge {
 			for (int reference : order.getReferencesQuantity().keySet()){
 				int quantity = order.getReferencesQuantity().get(reference) ;
 				query = "INSERT INTO xline(id, reference, quantity) VALUES (" + id + ", " + reference + ", " + quantity + ");";
-				statement.executeUpdate(query);				
+				executeUpdate(query);				
 				updateArticleQuantity(reference, quantity * -1);
 			}
 		} catch (	Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
-		}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
 	}
 
 	/**
@@ -610,20 +489,10 @@ public class Bridge {
 	 */
 	public static void updateOrder(int id, String column, String new_value) {
 		try {
-			connect();
-
 			String query = "UPDATE xorder SET " + column + " = " + new_value + " WHERE id = " + id + ";" ;
-			Statement statement = connection.createStatement();
-			statement.executeQuery(query);	
+			executeQuery(query);	
 		} catch (	Exception ex) {
-			System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-		} finally
-		{
-			try {
-				disconnect();
-			} catch (Exception ex) {
-				System.out.println("<h1>Oups ! (" + ex.getMessage() + ")</h1>");
-			}
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
 }

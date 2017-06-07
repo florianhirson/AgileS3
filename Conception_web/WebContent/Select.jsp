@@ -50,7 +50,7 @@
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(i)%>" alt="<%=articles.getLibelle(i)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
-				<h3 style="margin-bottom:1%"><a href=#><%=articles.getLibelle(i)%><small style="margin-left:5%;"><%=articles.getPrix(i)%>&euro;</small></a></h3>
+				<h3 style="margin-bottom:1%"><a href=Article.jsp?id=<%=i%>><%=articles.getLibelle(i)%><small style="margin-left:5%;"><%=articles.getPrix(i)%>&euro;</small></a></h3>
 				<p><%=articles.getDescription(i)%></p>
 				</div>
 				<a class="btn btn-default" href="./AjouterPanier.jsp?page=Select.jsp&id=<%=i%>" role="button" style="width: 10%;background-color:#dfe3ee; position: Absolute; right: 5%;">Ajouter au panier</a>

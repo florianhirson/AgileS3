@@ -84,10 +84,11 @@ public class Article {
 			
 			for(int key:lib.keySet()){
 				
-				ret+="Article "+key+" :\n";
-				ret+=lib.get(key)+"\nprix : "+prix.get(key)+" €\n";
-				ret+="Description : "+desc.get(key)+"\nVendu par : "+vendeur.get(key);
-				ret+="\nAperçu : "+img.get(key)+" ";
+				ret+="<header>Article "+key+"</header>";
+				ret+="<p>"+lib.get(key)+"</p><p>prix : "+prix.get(key)+" €</p>";
+				ret+="<p>Description : "+desc.get(key)+"\nVendu par : "+vendeur.get(key);
+				ret+="</p><p>Aperçu : "+img.get(key)+"</p>";
+				ret+="<p>En stock : "+stock.get(key)+"</p>";
 				ret+="\n------------------------------------------\n";
 			}
 			

@@ -6,7 +6,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d62a6a2123ba9bff074e256455e194f0847a51d
 import article.Article;
 import utilisateur.Me;
 import utilisateur.User;
@@ -42,18 +45,18 @@ public class Panier {
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()){
-				lib.put(rs.getString("idart"),rs.getString("produit"));
+				lib.put(rs.getString("idart"),rs.getString("libelle"));
 				price.put(rs.getString("idart"),rs.getDouble("prix"));
 				nbArticle++;
 			}
 			
 		}catch (Exception e) {
-			System.out.println("[ERROR]"+e.getMessage()+"");
+			System.out.println("[ERROR]pan "+e.getMessage()+"");
 		}finally{	  
 			try{
 				con.close();
 			}catch(Exception e){
-				System.out.println("[ERROR]"+e.getMessage()+"");
+				System.out.println("[ERROR]closep"+e.getMessage()+"");
 			}
 		}
 
@@ -63,6 +66,11 @@ public class Panier {
 	public void addPanier(String id,int count){
 		produits.put(id,count);
 
+	}
+	
+	public void addPanier(int i, int count) {
+		produits.put(i+"",count);
+		
 	}
 
 	public Integer getCount(String id){
@@ -132,7 +140,7 @@ public class Panier {
 	public String toString(){//c'est le toHTML()
 
 		String ret="";
-
+		
 		for(String id : produits.keySet()){
 			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td></tr>";
 
@@ -141,8 +149,11 @@ public class Panier {
 		}
 
 		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" €</td></tr>";
+		ret+="<tr><td>Hendek vous souhaite un bon Achat M. </td><td>"+myAccount.getLogin()+"</td></tr>";
 		return ret;
 	}
+
+	
 
 	
 }

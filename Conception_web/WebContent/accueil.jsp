@@ -5,23 +5,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <title>Hendek</title>
 </head>
-
+		<%if (session.getAttribute("login") == null)
+			response.sendRedirect("Login.jsp");%>
 	<body style="background-color:#f7f7f7;">
 	
        <header style="background-color:#3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
     <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;">HENDEK</H1>
       </header>
-	  
+	  <h2 class="text-center"><%="Bonjour "+session.getAttribute("login")%></h2>
 	<div style="margin-left: 3%; margin-right: 3%;">
 	    <a class="btn btn-default" href="#" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
-		<%if(request.getAttribute("login")==null){ %>
-		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
-		<%}else{%>
-		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
-		<%}%>
+		<a class="btn btn-default" href="LogOut.jsp" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
 	</div>
 	  
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">

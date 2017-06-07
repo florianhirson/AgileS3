@@ -67,6 +67,7 @@ CREATE TABLE article(
 	idart serial,
 	libelle text NOT NULL,
 	description text DEFAULT '?',
+	category varchar(20) DEFAULT 'divers',
 	stock int DEFAULT -1,
 	prix numeric(10,2) NOT NULL,
 	image text DEFAULT 'http://www.logementtunisie.com/images/upload/inconnu.jpg',
@@ -76,6 +77,7 @@ CREATE TABLE article(
 );
 
 INSERT INTO article(libelle,prix,stock) VALUES ('bouteille vide',50.09,80000),('biscuit',7.00,70000);
+INSERT INTO article(libelle,prix,stock)VALUES('Livre pendu',40,50),('Manuel de survie face au poubelle',80,500);
 
 CREATE TABLE infoart(
 	idart integer,
@@ -92,6 +94,8 @@ CREATE TABLE infoart(
 );
 
 INSERT INTO infoart VALUES (1,'Aplep');
+
+INSERT INTO infoart(idart) VALUES (2),(3),(4);
 
 CREATE TABLE lignefact(
 	idligne serial,
@@ -114,6 +118,7 @@ CREATE TABLE lignefact(
 );
 
 INSERT INTO lignefact(login,idart,qte) VALUES ('Faunus',1,10),('Faunus',2,2);
+
 
 CREATE TABLE facture(
 	nofacture serial,

@@ -3,22 +3,29 @@
 <%@page import="java.util.*"%>
 
 <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>Hendek</title>
+</head>
 
-
-<html lang="fr">
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Page de login</title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<body style="background-color:#f7f7f7;">
 	
-	</head>
-	<body>
+       <header style="background-color:#3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
+    <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;">HENDEK</H1>
+      </header>
+	  
+	<div style="margin-left: 3%; margin-right: 3%;">
+	    <a class="btn btn-default" href="#" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
+	</div>
+	  
+	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
+	
 		<div class="container">
 			<div class="page-header">
 		    	<h1 style ="text-align: center;">Connexion à notre site de commerce en ligne HENDEK</h1>
@@ -27,7 +34,7 @@
 	        	<div class="col-xs-6 col-xs-offset-3">
 					<form id="loginForm" method="POST" action="">
 						<div class="form-group">
-							<label for="login" class="control-label">Mail</label>
+							<label for="login" class="control-label">Login</label>
 							<input type="text" class="form-control" id="login" name="login" value="">
 						</div>
 						<div class="form-group">
@@ -37,10 +44,6 @@
 
 						<button type="submit" class="btn btn-success btn-block">Envoyer</button>
 						<%
-						/* Class.forName("org.postgresql.Driver");
-						Connection con = DriverManager.getConnection("jdbc:postgresql://217.182.171.28:5432/hendek","hendek", "hendek");
-						Statement stmt= con.createStatement(); */
-						
 						Connection con=null;
 						
 						    
@@ -88,5 +91,6 @@
 				</div>
 			</div>
 		</div>
-	</body>
-</html>
+		
+	</div>
+  </body>

@@ -16,7 +16,7 @@ public class Article {
 		private HashMap<Integer,String> img;
 		private HashMap<Integer,String> vendeur;
 		private HashMap<Integer,Integer> stock;
-		
+		private HashMap<Integer,String> cat;
 		
 		private int nbArticle=0;
 		private static Article singleton=null;
@@ -36,6 +36,7 @@ public class Article {
 			img = new HashMap<>();
 			vendeur = new HashMap<>();
 			stock=new HashMap<>();
+			cat=new HashMap<>();
 			
 			Connection con=null;
 			
@@ -59,6 +60,8 @@ public class Article {
 					prix.put(rs.getInt("idart"),rs.getDouble("prix"));
 					img.put(rs.getInt("idart"),rs.getString("image"));
 					stock.put(rs.getInt("idart"), rs.getInt("stock"));
+					cat.put(rs.getInt("idart"),rs.getString("category"));
+					
 					nbArticle++;
 				}
 				
@@ -194,7 +197,7 @@ public class Article {
 				for(int key:lib.keySet()){
 				
 				query= "UPDATE article SET ";
-				query+="libelle="+lib.get(key)+",description="+desc.get(key)+",stock="+stock.get(key)+",prix="+prix.get(key)+",image="+img.get(key)+" WHERE idart="+key+";";
+				query+="libelle="+lib.get(key)+",description="+desc.get(key)+",stock="+stock.get(key)+",prix="+prix.get(key)+",image="+img.get(key)+",category="+cat.get(key)+" WHERE idart="+key+";";
 				
 				stmt.executeUpdate(query);
 				}
@@ -211,6 +214,20 @@ public class Article {
 			}
 		}
 		
+		public String getCat(int id){
+			for(Integer key:cat.keySet())
+				if(key==id)
+					return cat.get(key);
+			return null;
+		}
+		
+		public void setCat(int id,String modif){
+			for(Integer key:cat.keySet())
+				if(key==id){
+					img.replace(key, cat.get(key), modif);
+					miseAJour();
+				}
+		}
 		
 		public void setStock(int id,int modif){
 			for(Integer key:stock.keySet())
@@ -219,6 +236,7 @@ public class Article {
 					miseAJour();
 				}
 		}
+		
 		
 		
 		
@@ -325,6 +343,9 @@ public class Article {
 			return lib;
 		}
 		
+		public Map<Integer,String> getAllCat(){
+			return cat;
+		}
 		
 		
 }

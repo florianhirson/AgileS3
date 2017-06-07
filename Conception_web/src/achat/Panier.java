@@ -41,7 +41,7 @@ public class Panier {
 			Statement stmt = con.createStatement();
 			stmt = con.createStatement();
 
-			String query = "select libelle,prix,idart from article";
+			String query = "select libelle,prix,idart,image from article";
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()){
@@ -146,11 +146,11 @@ public class Panier {
 		String ret="";
 		ret+="<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
 		for(String id : produits.keySet()){
-			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td><td><img href=\""+apercu.get(id)+"\" style=\"width: 10%; height: 10%; display: inline-block;\" alt=\""+lib.get(id)+"\" /></td></tr>";
+			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td><td><img href=\""+apercu.get(id)+"\" style=\"width: 10%; height: 10%; display: inline-block;\" alt=\""+lib.get(id)+"\" /></td></tr>\n";
 		
 		}
 
-		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" </td><td>euros TTC</td></tr>";
+		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" </td><td>euros TTC</td></tr>\n";
 		return ret;
 	}
 

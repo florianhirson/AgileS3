@@ -17,7 +17,11 @@
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
-		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
+		<%if(request.getAttribute("login")==null){ %>
+		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
+		<%}else{%>
+		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
+		<%}%>
 	</div>
 	  
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">

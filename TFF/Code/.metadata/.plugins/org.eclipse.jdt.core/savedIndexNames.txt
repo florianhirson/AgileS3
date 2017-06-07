@@ -1,18 +1,2 @@
 INDEX VERSION 1.127+/home/infoetu/barbetf/Documents/Agile/AgileS3/TFF/Code/.metadata/.plugins/org.eclipse.jdt.core
-2359858367.index
-1469615711.index
-467566071.index
-2609942418.index
-2653735158.index
-3840181845.index
-747742781.index
-2125921259.index
 936176080.index
-2999326421.index
-2580785110.index
-644665015.index
-615703219.index
-2290877554.index
-3885903570.index
-3021321478.index
-671300235.index

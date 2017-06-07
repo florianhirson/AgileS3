@@ -24,11 +24,11 @@
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 	
 		<div style="background-color:#ffffff; margin: 1%; border-radius: 10px; padding: 1%">
-			<form>
-				<div class="form-group">
-					<h2><label for="search">Rechercher un article :</label><h2>
-					<input type="text" class="form-control" id="search" placeholder="ex : cocktails au white spirit">
-				</div>
+			<form action="./Select.jsp? method="GET">
+  				<div class="form-group">
+   					 <label for="Search">Rechercher :</label>
+   					 <input style="width=80%" type="text" class="form-control" id="search" name="search" placeholder="ex : Cocktails au white spirit">
+ 				</div>
 			</form>
 		</div>
 	

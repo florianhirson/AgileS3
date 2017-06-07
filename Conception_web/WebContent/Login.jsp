@@ -13,12 +13,12 @@
 	<body style="background-color:#f7f7f7;">
 	
        <header style="background-color:#3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
-    <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;">HENDEK</H1>
+     <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;"><a style="color:white" href=./accueil.jsp>HENDEK</a></H1>
       </header>
 	  
 	<div style="margin-left: 3%; margin-right: 3%;">
 	    <a class="btn btn-default" href="#" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
-		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
+		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
@@ -75,14 +75,14 @@
 						    } else { 
 						    	out.println("<div class='container'>");
 							    	out.println("<div class='page-header'>");
-										out.println("<h1>Authentification</h1>");
+							
 									out.println("</div>");
 							    	
 									out.println("<div class='row'>");
 										out.println("<div class='col-xs-12'>");
-											out.println("<div class='alert alert-danger' role='alert'>Login ou mot de passe incorrect.</div>");
+										//	out.println("<div class='alert alert-danger' role='alert'>Login ou mot de passe incorrect.</div>");
 										    con.close();
-										    out.println("<a href='../login.html'><button type='button' class='btn btn-default btn-lg'>Retour</button></a>");
+								
 									    out.println("</div>");
 								    out.println("</div>");
 							    out.println("</div>");

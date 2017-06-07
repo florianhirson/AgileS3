@@ -9,19 +9,22 @@
 
 	<body style="background-color:#f7f7f7;">
 	
+			<%if (session.getAttribute("login") == null)
+			response.sendRedirect("Login.jsp");%>
+	
        <header style="background-color:#3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
-    <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;">HENDEK</H1>
+    <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;"><a style="color:white" href=./accueil.jsp>HENDEK</a></H1>
       </header>
 	  
 	<div style="margin-left: 3%; margin-right: 3%;">
 	    <a class="btn btn-default" href="#" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
-		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
+		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
-		<%if(request.getAttribute("login")==null){ %>
+			<%if(session.getAttribute("login")==null){ %>
 		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
 		<%}else{%>
-		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
+		<a class="btn btn-default" href="./LogOut.jsp" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
 		<%}%>
 	</div>
 	  

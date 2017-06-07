@@ -10,9 +10,9 @@
 		import="java.io.*,javax.servlet.*, javax.servlet.http.*, javax.servlet.annotation.*,java.sql.*"%>
 
 	<%
-		session = req.getSession(true);
+		session = request.getSession(true);
 		session.invalidate();
-		res.sendRedirect("Login.jsp");
+		response.sendRedirect("Login.jsp");
 	%>
 
 

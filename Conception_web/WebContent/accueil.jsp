@@ -10,6 +10,9 @@
 	crossorigin="anonymous">
 <title>Hendek</title>
 </head>
+<%if (application.getAttribute("articles")==null)
+			response.sendRedirect("Login.jsp");%>
+
 <%if (session.getAttribute("login") == null)
 			response.sendRedirect("Login.jsp");%>
 <body style="background-color: #f7f7f7;">
@@ -99,7 +102,6 @@
 					au panier</a>
 			</div>
 
-			div2
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(r2)%>"
 					alt="<%=articles.getLibelle(r2)%>"
@@ -118,7 +120,6 @@
 					au panier</a>
 			</div>
 
-			fin
 		</div>
 
 	</div>

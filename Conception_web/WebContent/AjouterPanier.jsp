@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-salut
 <% if(session.getAttribute("panier")!=null){%>
 <% ((Panier)session.getAttribute("panier")).addPanier(request.getParameter("id"), 1); %>
 <% response.sendRedirect("./"+request.getParameter("page"));%>

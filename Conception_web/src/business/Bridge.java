@@ -135,7 +135,7 @@ public class Bridge {
 			ResultSet rs = stmt.executeQuery(requete);
 			while(rs.next()){
 				if(rs.getInt("idpersonne") == ID)
-					my = new Client(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"));
+					my = new Client(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"), rs.getString("phone"));
 			}
 
 
@@ -181,7 +181,7 @@ public class Bridge {
 			ResultSet rs = stmt.executeQuery(requete);
 			while(rs.next()){
 				if(rs.getInt("idpersonne") == ID)
-					my=new Admin(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"));
+					my=new Admin(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), "null", rs.getString("mdp"), rs.getString("phone"));
 			}
 
 

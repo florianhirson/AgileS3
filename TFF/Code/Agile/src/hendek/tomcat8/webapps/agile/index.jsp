@@ -2,7 +2,9 @@
 <%@ page import="java.sql.*"  %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="metier.*" %>
+<%@ page import="hendek.utilisateur.*" %>
+<%@ page import="hendek.achat.*" %>
+<%@ page import="hendek.article.*" %>
 <!DOCTYPE html>
 <html>
 	<head>

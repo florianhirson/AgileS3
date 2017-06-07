@@ -58,6 +58,7 @@
 							ps.setString(1, request.getParameter("login"));
 							ps.setString(2, request.getParameter("mdp"));
 						    ResultSet rs = ps.executeQuery();
+						    String retour = request.getParameter("page");
 						    
 						    if(rs.next()) {
 								 session = request.getSession(true);
@@ -65,7 +66,12 @@
 								
 								session.setAttribute("login", login);
 								con.close();
-								response.sendRedirect("show_articles.jsp");
+								if(retour != null) {
+									response.sendRedirect(retour+".jsp");
+								} else {
+									response.sendRedirect("accueil.jsp");
+								}
+									
 						    } else { 
 						    	out.println("<div class='container'>");
 							    	out.println("<div class='page-header'>");

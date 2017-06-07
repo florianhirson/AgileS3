@@ -6,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
-<<<<<<< HEAD
-
-=======
->>>>>>> 9d62a6a2123ba9bff074e256455e194f0847a51d
 import article.Article;
 import utilisateur.Me;
 import utilisateur.User;

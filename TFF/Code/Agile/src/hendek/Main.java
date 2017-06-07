@@ -16,7 +16,9 @@ public class Main {
 		
 		Panier myPan = new Panier("Faunus","123456");
 		
-		//myPan.addPanier(1, 10);
+		myPan.addPanier(1, 10);
+		
+		System.out.println(myPan.toString());
 		
 	}
 }

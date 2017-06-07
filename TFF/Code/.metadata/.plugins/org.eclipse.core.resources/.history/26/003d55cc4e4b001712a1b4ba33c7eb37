@@ -18,7 +18,5 @@ public class Main {
 		
 		myPan.addPanier(1, 10);
 		
-		System.out.println(myPan.toString());
-		
 	}
 }

@@ -1,4 +1,4 @@
- package hendek.achat;
+package hendek.achat;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -137,7 +137,7 @@ public class Panier {
 	public String toString(){//c'est le toHTML()
 
 		String ret="";
-		
+
 		for(String id : produits.keySet()){
 			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td></tr>";
 
@@ -146,7 +146,6 @@ public class Panier {
 		}
 
 		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" €</td></tr>";
-		ret+="<tr><td>Hendek vous souhaite un bon Achat M. </td><td>"+myAccount.getLogin()+"</td></tr>";
 		return ret;
 	}
 

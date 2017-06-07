@@ -1,4 +1,4 @@
-package achat;
+package hendek.achat;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-import article.Article;
-import utilisateur.Me;
-import utilisateur.User;
+import hendek.article.Article;
+import hendek.utilisateur.Me;
+import hendek.utilisateur.User;
 
 public class Panier {
 
@@ -18,6 +18,7 @@ public class Panier {
 	private Map<String,String> lib;
 	private Map<String,Double> price; 
 	private int nbArticle=0;
+	private int contentPan=0;
 	private Me myAccount;
 
 	public Panier(String login,String password){
@@ -59,16 +60,26 @@ public class Panier {
 
 
 	}
+	
+	public int getNbContent(){
+		return contentPan;
+	}
 
 	public void addPanier(String id,int count){
 		produits.put(id,count);
+<<<<<<< HEAD
 		nbArticle++;
+=======
+		contentPan++;
+>>>>>>> d8c25d26ae9673b083e1736bf3cd2bb5708fa2f9
 
 	}
 
 	public Integer getCount(String id){
 		return produits.get(id);
+	
 	}
+	
 
 	public Integer getLib(String id){
 		return produits.get(id);

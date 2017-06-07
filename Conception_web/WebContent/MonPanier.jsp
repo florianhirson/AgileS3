@@ -49,6 +49,7 @@
 
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 
+<<<<<<< HEAD
 	<% if(session.getAttribute("panier")!=null) {%>
 		<table class="table table-striped">
 			<%= session.getAttribute("panier").toString() %>
@@ -56,4 +57,15 @@
 	<% }else{ %>
 		<%response.sendRedirect("./Login.jsp");%>
 	<% }%>
+=======
+	<% if((Panier mypan = session.getAttribute("panier"))!=null) {%>
+		<table class="table table-striped">
+			<%= mypan.toString() %>
+
+	<% }else{ %>
+		<%response.sendRedirect("./Login.jsp"); %>
+	<% } %>
+	
+	</div>
+>>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
 </body>

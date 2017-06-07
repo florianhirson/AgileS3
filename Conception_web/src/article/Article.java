@@ -130,7 +130,7 @@ public class Article {
 		}
 		
 		public void addArticle(String libelle,Double price,String descr,
-				String image,String entreprise,int stock){
+				String image,String entreprise,int stock,String cat){
 			
 			Connection con=null;
 			int idart=0;
@@ -144,7 +144,7 @@ public class Article {
 				con = DriverManager.getConnection(url,nom,mdp);
 
 				String query = "INSERT INTO article";
-				query+="(libelle,description,prix,image) VALUES(?,?,?,?,?);";
+				query+="(libelle,description,prix,image,stock,category) VALUES (?,?,?,?,?,?);";
 				
 				PreparedStatement ps = con.prepareStatement(query);
 				ps.setString(1, libelle);
@@ -152,6 +152,7 @@ public class Article {
 				ps.setDouble(3, price);
 				ps.setString(4, image);
 				ps.setInt(5, stock);
+				ps.setString(6, cat);
 				ps.executeUpdate();
 
 				
@@ -160,7 +161,7 @@ public class Article {
 				
 					
 				ps = con.prepareStatement("INSERT INTO infoart VALUES (?,?);");
-				ps.setInt(0, idart);
+				ps.setInt(1, idart);
 				ps.setString(2,entreprise);
 				ps.executeUpdate();
 				

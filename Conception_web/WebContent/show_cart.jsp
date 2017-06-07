@@ -18,4 +18,8 @@
 		</tr>
 	</table>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 95835fd21fc5dbf0648f228ea2c8127c1a2cc2d9

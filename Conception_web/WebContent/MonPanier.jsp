@@ -12,7 +12,11 @@
 </head>
 
 <body style="background-color: #f7f7f7;">
-
+	
+	<%if (request.getParameter("clear")!=null){%>
+	<%session.getAttribute(panier).purgePanier();%>	
+	}
+	
 	<%if (session.getAttribute("login") == null || session.getAttribute("panier") == null){
 			response.sendRedirect("Login.jsp");}%>
 
@@ -56,4 +60,5 @@
 		</table>
 	</div>
 	<% }%>
+	<a class="btn btn-default" href="./MonPanier.jsp?clear=yes" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Vider mon panier</a>
 </body>

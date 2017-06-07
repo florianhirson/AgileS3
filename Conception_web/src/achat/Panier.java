@@ -68,6 +68,20 @@ public class Panier {
 		return contentPan;
 	}
 
+	public void rmPannier(String id){
+		if(produits.get(id)==null)
+			;
+		else
+		produits.remove(id);
+	}
+	
+	public void purgePanier(){
+		for(String key:produits.keySet()){
+			produits.remove(key);
+		}
+		
+	}
+	
 	public void addPanier(String id,int count){
 		if(produits.get(id)==null)
 			produits.put(id,count);
@@ -157,5 +171,10 @@ public class Panier {
 		return ret;
 	}
 
-	
+	/**
+	 * if(unparam!=null&&){
+	 * 		mypan.rmPanier(unparam.getvalue());
+	 * 
+	 * }
+	 */
 }

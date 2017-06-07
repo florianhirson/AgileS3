@@ -68,22 +68,10 @@
 		<% Article articles = Article.getInstance(); %>
 		<% for(Integer i: articles.getAllLibelle().keySet()){%>
 		<% 		if(request.getParameter("search")==null || articles.getLibelle(i).contains(request.getParameter("search"))){ %>
-<<<<<<< HEAD
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(i)%>" alt="<%=articles.getLibelle(i)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
 				<h3 style="margin-bottom:1%"><a href=Article.jsp?id=<%=i%>><%=articles.getLibelle(i)%><small style="margin-left:5%;"><%=articles.getPrix(i)%>&euro;</small></a></h3>
-=======
-		<div style="margin: 1%; border-radius: 10px;">
-			<img src="<%=articles.getImage(i)%>"
-				alt="<%=articles.getLibelle(i)%>"
-				style="width: 10%; height: 10%; display: inline-block;">
-			<div style="display: inline-block;">
-				<h3 style="margin-bottom: 1%">
-					<a href=#><%=articles.getLibelle(i)%><small
-						style="margin-left: 5%;"><%=articles.getPrix(i)%>&euro;</small></a>
-				</h3>
->>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
 				<p><%=articles.getDescription(i)%></p>
 			</div>
 			<a class="btn btn-default"

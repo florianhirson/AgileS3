@@ -53,13 +53,9 @@
 		<table class="table table-striped">
 			<%= mypan.toString() %>
 
-	<% if(session.getAttribute("panier")!=null) {%>
-		<table class="table">
-			<%= session.getAttribute("panier").toString() %>
-
-		</table>
 	<% }else{ %>
 		<%response.sendRedirect("./Login.jsp"); %>
 	<% } %>
+	
 	</div>
 </body>

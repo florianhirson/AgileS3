@@ -38,7 +38,7 @@
 			<td><%=art.getPrice()%></td>
 		</tr>
 		<%
-			}
+				}
 			} else { %>
 				<h3> ERREUR : <small> aucuns produits disponibles </small> </h3>
 			<% }

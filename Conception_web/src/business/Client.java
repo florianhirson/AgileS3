@@ -5,8 +5,10 @@ public class Client extends Person {
 	private String credit_card;
 	private Cart cart;
 
-	public Client(String first_name, String last_name, String mail, String phone, String password) {
-		super(first_name, last_name, mail, phone, password, false);
+
+	public Client(String first_name, String last_name, String mail, String password, String default_adress,
+			String phone){
+		super(first_name, last_name, mail, password, default_adress, phone, false);
 	}
 
 	public String getCreditCard() {

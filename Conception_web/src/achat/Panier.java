@@ -17,6 +17,7 @@ public class Panier {
 	private Map<String,Integer> produits ;
 	private Map<String,String> lib;
 	private Map<String,Double> price; 
+	private Map<String,String> apercu;
 	private int nbArticle=0;
 	private int contentPan=0;
 	private Me myAccount;
@@ -26,6 +27,7 @@ public class Panier {
 		produits=new HashMap<>();
 		lib=new HashMap<>();
 		price= new HashMap<>();
+		apercu=new HashMap<>();
 		Connection con = null;
 
 		try{
@@ -45,6 +47,7 @@ public class Panier {
 			while(rs.next()){
 				lib.put(rs.getString("idart"),rs.getString("libelle"));
 				price.put(rs.getString("idart"),rs.getDouble("prix"));
+				apercu.put(rs.getString("idart"), rs.getString("image"));
 				nbArticle++;
 			}
 			
@@ -141,15 +144,13 @@ public class Panier {
 	public String toString(){//c'est le toHTML()
 
 		String ret="";
-		ret+="<tr><th>Libelle</th><th>Quantite</th>";
+		ret+="<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
 		for(String id : produits.keySet()){
-			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td></tr>";
-
-	
-						
+			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td><td><img href=\""+apercu.get(id)+"\" style=\"width: 10%; height: 10%; display: inline-block;\" alt=\""+lib.get(id)+"\" /></td></tr>";
+		
 		}
 
-		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" euros TTC</td></tr>";
+		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" </td><td>euros TTC</td></tr>";
 		return ret;
 	}
 

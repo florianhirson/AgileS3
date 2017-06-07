@@ -75,14 +75,14 @@
 						    } else { 
 						    	out.println("<div class='container'>");
 							    	out.println("<div class='page-header'>");
-										out.println("<h1>Authentification</h1>");
+							
 									out.println("</div>");
 							    	
 									out.println("<div class='row'>");
 										out.println("<div class='col-xs-12'>");
-											out.println("<div class='alert alert-danger' role='alert'>Login ou mot de passe incorrect.</div>");
+										//	out.println("<div class='alert alert-danger' role='alert'>Login ou mot de passe incorrect.</div>");
 										    con.close();
-										    out.println("<a href='../login.html'><button type='button' class='btn btn-default btn-lg'>Retour</button></a>");
+								
 									    out.println("</div>");
 								    out.println("</div>");
 							    out.println("</div>");

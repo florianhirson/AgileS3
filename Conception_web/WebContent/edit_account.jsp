@@ -29,8 +29,11 @@
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
 			Commandes</a> <a class="btn btn-default" href="#" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>
-		<a class="btn btn-default" href="#" role="button"
-			style="width: 18%; margin-left: 1%; background-color: #dfe3ee">Connexion</a>
+		<%if(session.getAttribute("login")==null){ %>
+		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
+		<%}else{%>
+		<a class="btn btn-default" href="./LogOut.jsp" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
+		<%}%>
 	</div>
 
 	<%
@@ -42,7 +45,7 @@
 			
 			User user = User.getInstance();
 			
-			System.out.println("Changements : " + new_mail + new_password + new_default_address + new_phone)
+			System.out.println("Changements : " + new_mail + new_password + new_default_address + new_phone);
 		}
 	%>
 

@@ -10,7 +10,7 @@
 	<body style="background-color:#f7f7f7;">
 	
        <header style="background-color:#3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
-     <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;"><a href=./acceuil.jsp>HENDEK</a></H1>
+     <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;"><a style="color=white" href=./accueil.jsp>HENDEK</a></H1>
       </header>
 	  <h2 class="text-center"><%="Bonjour "+session.getAttribute("login")%></h2>
 	<div style="margin-left: 3%; margin-right: 3%;">

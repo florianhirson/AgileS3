@@ -62,6 +62,7 @@ public class Panier {
 
 	public void addPanier(String id,int count){
 		produits.put(id,count);
+		nbArticle++;
 
 	}
 

@@ -68,6 +68,13 @@ public class Panier {
 		return contentPan;
 	}
 
+	public void rmPannier(String id){
+		if(produits.get(id)==null)
+			;
+		else
+		produits.remove(id);
+	}
+	
 	public void addPanier(String id,int count){
 		if(produits.get(id)==null)
 			produits.put(id,count);

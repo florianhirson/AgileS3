@@ -89,11 +89,16 @@
 					alt="<%=articles.getLibelle(r1)%>"
 					style="width: 10%; height: 10%; display: inline-block;">
 				<div style="display: inline-block;">
+<<<<<<< HEAD
+				<h3 style="margin-bottom:1%"><a href=Article.jsp?id=<%=r1%>><%=articles.getLibelle(r1)%><small style="margin-left:5%;"><%=articles.getPrix(r1)%>&euro;</small></a></h3>
+				<p><%=articles.getDescription(r1)%></p>
+=======
 					<h3 style="margin-bottom: 1%">
 						<a href=#><%=articles.getLibelle(r1)%><small
 							style="margin-left: 5%;"><%=articles.getPrix(r1)%>&euro;</small></a>
 					</h3>
 					<p><%=articles.getDescription(r1)%></p>
+>>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
 				</div>
 				<a class="btn btn-default"
 					href="./AjouterPanier.jsp?page=accueil.jsp&id=<%=r1%>"
@@ -101,17 +106,27 @@
 					style="width: 10%; background-color: #dfe3ee; position: Absolute; right: 5%;">Ajouter
 					au panier</a>
 			</div>
+<<<<<<< HEAD
+			
+			
+=======
 
+>>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(r2)%>"
 					alt="<%=articles.getLibelle(r2)%>"
 					style="width: 10%; height: 10%; display: inline-block;">
 				<div style="display: inline-block;">
+<<<<<<< HEAD
+				<h3 style="margin-bottom:1%"><a href=Article.jsp?id=<%=r2%>><%=articles.getLibelle(r2)%><small style="margin-left:5%;"><%=articles.getPrix(r2)%>&euro;</small></a></h3>
+				<p><%=articles.getDescription(r2)%></p>
+=======
 					<h3 style="margin-bottom: 1%">
 						<a href=#><%=articles.getLibelle(r2)%><small
 							style="margin-left: 5%;"><%=articles.getPrix(r2)%>&euro;</small></a>
 					</h3>
 					<p><%=articles.getDescription(r2)%></p>
+>>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
 				</div>
 				<a class="btn btn-default"
 					href="./AjouterPanier.jsp?page=accueil.jsp&id=<%=r2%>"
@@ -119,7 +134,12 @@
 					style="width: 10%; background-color: #dfe3ee; position: Absolute; right: 5%;">Ajouter
 					au panier</a>
 			</div>
+<<<<<<< HEAD
+			
+			
+=======
 
+>>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
 		</div>
 
 	</div>

@@ -1,6 +1,6 @@
 ﻿DROP FUNCTION IF EXISTS fact_gen(varchar,date);
 DROP FUNCTION IF EXISTS fact_gen_other(varchar,date,text);
-
+DROP TABLE IF EXISTS review;
 DROP TABLE IF EXISTS facture;
 DROP TABLE IF EXISTS lignefact;
 
@@ -78,7 +78,7 @@ CREATE TABLE article(
 
 INSERT INTO article(libelle,prix,stock) 
 VALUES ('bouteille vide',50.09,80000),
-('biscuit',7.00,70000);
+('biscûit',7.00,70000);
 
 INSERT INTO article(libelle,prix,stock,category)
 VALUES('Livre pendu',40.00,50,'Culture'),
@@ -137,6 +137,26 @@ CREATE TABLE facture(
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 	
+);
+
+CREATE TABLE review(
+
+	idreview serial,
+	login text,
+	idart integer,
+	note integer,
+	description text,
+	CONSTRAINT pk_review PRIMARY KEY(idreview),
+	CONSTRAINT fk_user FOREIGN KEY (login)
+		REFERENCES utilisateur(login)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT fk_article FOREIGN KEY (idart)
+		REFERENCES article(idart)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT check_note CHECK(note>=0 AND note<=5)
+
 );
 
 CREATE OR REPLACE FUNCTION fact_gen_other( p_login varchar(16), p_dat date, p_address text)

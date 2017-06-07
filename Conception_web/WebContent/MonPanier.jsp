@@ -35,6 +35,7 @@
 			Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)
 		</a>
 		<%}%>
+<<<<<<< HEAD
 		<a class="btn btn-default" href="./edit_account.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
 			Compte</a> <a class="btn btn-default" href="#" role="button"
@@ -44,16 +45,36 @@
 		<%if(session.getAttribute("login")==null){ %>
 		<a class="btn btn-default" href="" role="button"
 			style="width: 18%; margin-left: 1%; background-color: #dfe3ee">Connexion</a>
+=======
+		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
+				
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
+			<%if(session.getAttribute("login")==null){ %>
+		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
+>>>>>>> c3734507e35de5da7596f9db80e37ed83c20a613
 		<%}else{%>
 		<a class="btn btn-default" href="./LogOut.jsp" role="button"
 			style="width: 18%; margin-left: 1%; background-color: #dfe3ee; float: right;">Deconnexion</a>
 		<%}%>
 	</div>
+<<<<<<< HEAD
 
 	<div
 		style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 
 
 
+=======
+	  
+	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
+	<% if((Panier mypan = session.getAttribute("panier"))!=null) {%>
+		<table class="table">
+			<%= mypan.toString() %>
+		</table>
+	<% }else{ %>
+		<%response.sendRedirect("./Login.jsp"); %>
+	<% } %>
+>>>>>>> c3734507e35de5da7596f9db80e37ed83c20a613
 	</div>
 </body>

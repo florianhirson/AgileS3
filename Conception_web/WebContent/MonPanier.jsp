@@ -35,7 +35,7 @@
 	  
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 	<% if((Panier mypan = session.getAttribute("panier"))!=null) {%>
-		<table class="table">
+		<table class="table table-striped">
 			<%= mypan.toString() %>
 		</table>
 	<% }else{ %>

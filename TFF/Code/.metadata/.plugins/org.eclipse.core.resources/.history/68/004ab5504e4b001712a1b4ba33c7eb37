@@ -42,18 +42,18 @@ public class Panier {
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()){
-				lib.put(rs.getString("idart"),rs.getString("libelle"));
+				lib.put(rs.getString("idart"),rs.getString("produit"));
 				price.put(rs.getString("idart"),rs.getDouble("prix"));
 				nbArticle++;
 			}
 			
 		}catch (Exception e) {
-			System.out.println("[ERROR]pan "+e.getMessage()+"");
+			System.out.println("[ERROR]"+e.getMessage()+"");
 		}finally{	  
 			try{
 				con.close();
 			}catch(Exception e){
-				System.out.println("[ERROR]closep"+e.getMessage()+"");
+				System.out.println("[ERROR]"+e.getMessage()+"");
 			}
 		}
 

@@ -67,6 +67,7 @@ CREATE TABLE article(
 	idart serial,
 	libelle text NOT NULL,
 	description text DEFAULT '?',
+	stock int DEFAULT -1,
 	prix numeric(10,2) NOT NULL,
 	image text DEFAULT 'http://www.logementtunisie.com/images/upload/inconnu.jpg',
 	CONSTRAINT pk_art PRIMARY KEY(idart),
@@ -74,7 +75,7 @@ CREATE TABLE article(
 	CONSTRAINT check_prix CHECK(prix > 0.00)
 );
 
-INSERT INTO article(libelle,prix) VALUES ('bouteille vide',50.09),('biscuit',7.00);
+INSERT INTO article(libelle,prix,stock) VALUES ('bouteille vide',50.09,80000),('biscuit',7.00,70000);
 
 CREATE TABLE infoart(
 	idart integer,

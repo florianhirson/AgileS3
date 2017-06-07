@@ -87,8 +87,7 @@ public class Article {
 				ret+="Article "+key+" :\n";
 				ret+=lib.get(key)+"\nprix : "+prix.get(key)+" €\n";
 				ret+="Description : "+desc.get(key)+"\nVendu par : "+vendeur.get(key);
-				ret+="\nAperçu : "+img.get(key)+"\n ";
-				ret+="En stock : "+stock.get(key);
+				ret+="\nAperçu : "+img.get(key)+" ";
 				ret+="\n------------------------------------------\n";
 			}
 			

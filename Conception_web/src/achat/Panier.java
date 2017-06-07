@@ -1,4 +1,4 @@
-package hendek.achat;
+package achat;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-import hendek.article.Article;
-import hendek.utilisateur.Me;
-import hendek.utilisateur.User;
+import article.Article;
+import utilisateur.Me;
+import utilisateur.User;
 
 public class Panier {
 

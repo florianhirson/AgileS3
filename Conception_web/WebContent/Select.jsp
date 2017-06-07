@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<%@ page import="java.lang.*, java.lang.Integer, java.util.*, hendek.achat.*, hendek.article.Article, hendek.utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
+<%@ page import="java.lang.*, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -42,7 +42,7 @@
 				<img src="<%=articles.getImage(i)%>" alt="<%=articles.getLibelle(i)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
 				<h3 style="margin-bottom:1%"><a href=#><%=articles.getLibelle(i)%><small style="margin-left:5%;"><%=articles.getPrix(i)%>&euro;</small></a></h3>
-				<p><%=articles.getDescription(i)%><p>
+				<p><%=articles.getDescription(i)%></p>
 				</div>
 			</div>
 		<% } %>

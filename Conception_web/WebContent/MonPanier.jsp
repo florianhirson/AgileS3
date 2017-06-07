@@ -18,6 +18,12 @@
 	<%session.setAttribute("panier", empty); %>
 	<% }%>
 	
+	<%if (request.getParameter("rm")!=null){%>
+	<% Panier newPanier = (Panier)session.getAttribute("panier"); %>
+	<% newPanier.rmPannier(request.getParameter("rm")); %>
+	<% session.setAttribute("panier", newPanier); %>
+	<% }%>
+	
 	<%if (session.getAttribute("login") == null || session.getAttribute("panier") == null){
 			response.sendRedirect("Login.jsp");}%>
 

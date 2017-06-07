@@ -20,9 +20,11 @@
 		<%}else{%>
 		<a class="btn btn-default" href="./MonPanier.jsp" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)</a>
 		<%}%>
+		
 		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
+		
 		<%if(session.getAttribute("login")==null){ %>
 		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
 		<%}else{%>
@@ -44,15 +46,19 @@
 		<div style="background-color:#ffffff; margin: 1%; border-radius: 10px; padding: 1%">
 			<h2>Susceptible de vous interesser :</h2>
 			
-		<% Article articles = Article.getInstance(); %>	
-		<% int r1 = ThreadLocalRandom.current().nextInt(1, articles.getAllLibelle().keySet().size()) +1;%>
+		<% Article articles = (Article)application.getAttribute("articles"); %>
+		<% SortedSet<Integer> set = new TreeSet<Integer>(articles.getAllLibelle().keySet()); %>
+		
+		<% int r1 = ThreadLocalRandom.current().nextInt(set.first(), set.first()+articles.getAllLibelle().keySet().size()) +1;%>
 		<% while (articles.getLibelle(r1)==null){ %>
-		<% 		r1 = ThreadLocalRandom.current().nextInt(1, articles.getAllLibelle().keySet().size()) +1;%>
+		<% 		r1 = ThreadLocalRandom.current().nextInt(set.first(), set.first()+articles.getAllLibelle().keySet().size()) +1;%>
 		<% } %>
 		<% int r2 = r1; %>
+		
 		<% while (r2==r1 || articles.getLibelle(r2)==null){ %>
-		<% 		r2 = ThreadLocalRandom.current().nextInt(1, articles.getAllLibelle().keySet().size()) +1;%>
+		<% 		r2 = ThreadLocalRandom.current().nextInt(set.first(), set.first()+articles.getAllLibelle().keySet().size()) +1;%>
 		<% } %>
+			
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(r1)%>" alt="<%=articles.getLibelle(r1)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
@@ -62,6 +68,7 @@
 				<a class="btn btn-default" href="./AjouterPanier.jsp?page=accueil.jsp&id=<%=r1%>" role="button" style="width: 10%;background-color:#dfe3ee; position: Absolute; right: 5%;">Ajouter au panier</a>
 			</div>
 			
+			div2
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(r2)%>" alt="<%=articles.getLibelle(r2)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
@@ -70,6 +77,8 @@
 				</div>
 				<a class="btn btn-default" href="./AjouterPanier.jsp?page=accueil.jsp&id=<%=r2%>" role="button" style="width: 10%;background-color:#dfe3ee; position: Absolute; right: 5%;">Ajouter au panier</a>
 			</div>
+			
+			fin
 		</div>
 		
 	</div>

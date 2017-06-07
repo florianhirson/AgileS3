@@ -53,6 +53,8 @@
 						    Class.forName("org.postgresql.Driver");
 						    
 						    // connexion a la base
+						    Article articles = Article.getInstance();	
+						    application.setAttribute("articles", articles);
 						    con = DriverManager.getConnection("jdbc:postgresql://psqlserv/n2p1","barbetf","moi");
 						    String login = request.getParameter("login");
 						    // execution de la requete

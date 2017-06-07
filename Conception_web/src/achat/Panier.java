@@ -146,7 +146,7 @@ public class Panier {
 		String ret="";
 		ret+="<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
 		for(String id : produits.keySet()){
-			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td><td><img src=\""+apercu.get(id)+"\" class=\"img-responsive img-circle\" alt=\""+lib.get(id)+"\" /></td></tr>\n";
+			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td><td><img src=\""+apercu.get(id)+"\" class=\"img-responsive img-circle \" style=\"width:25%, height:25%\" alt=\""+lib.get(id)+"\" /></td></tr>\n";
 		
 		}
 

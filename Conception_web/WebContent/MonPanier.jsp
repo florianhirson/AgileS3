@@ -51,7 +51,7 @@
 	
 	<% if(session.getAttribute("panier")!=null){ %>
 	<% Panier mypan = (Panier)session.getAttribute("panier");%>
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<%= mypan.toString() %>
 		</table>
 	</div>

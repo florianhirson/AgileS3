@@ -1,25 +1,26 @@
 package business;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
-	private int order_id;
-	private int client_id;
-	private String address;
+	private final int ID;
+	private int person;
 	private String recipient;
+	private String address;
 	private int status;
 	private Date date;
 	private Map<Integer, Integer> references_quantity = new HashMap<Integer, Integer>();
 
 	// Passer une commande
 
-	public Order(int client_id, Map<Integer, Integer> references_quantity) {
-		this.client_id = client_id;
+	public Order(int person, Map<Integer, Integer> references_quantity) {
+		this.ID = -1;
+		this.person = person;
 		this.references_quantity = references_quantity;
 		this.status = 0;
-		this.date = new Date();
+		this.date = new Date(new java.util.Date().getTime());
 	}
 
 	public void setAddress(String address) {
@@ -32,23 +33,23 @@ public class Order {
 
 	// Afficher une commande depuis la BDD
 
-	public Order(int order_id, int client_id, String address, String recipient, int status, Date date,
+	public Order(int id, int person, String recipient, String address, int status, Date date,
 			Map<Integer, Integer> references_quantity) {
-		this.order_id = order_id;
-		this.client_id = client_id;
-		this.address = address;
+		this.ID = id;
+		this.person = person;
 		this.recipient = recipient;
+		this.address = address;
 		this.status = status;
 		this.date = date;
 		this.references_quantity = references_quantity;
 	}
 
-	public int getOrder_id() {
-		return order_id;
+	public int getID() {
+		return ID;
 	}
 
-	public int getClient_id() {
-		return client_id;
+	public int getPerson() {
+		return person;
 	}
 
 	public int getStatus() {
@@ -83,7 +84,7 @@ public class Order {
 		return recipient;
 	}
 
-	public Map<Integer, Integer> getReferences_quantity() {
+	public Map<Integer, Integer> getReferencesQuantity() {
 		return references_quantity;
 	}
 
@@ -93,7 +94,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		String temp = "Commande : " + getOrder_id() + "\nClient : " + getClient_id() + "\nStatus : "
+		String temp = "Commande : " + getOrder_id() + "\nClient : " + getPerson() + "\nStatus : "
 				+ getStatusToString() + "\nAddresse : " + getAddress() + "\nDestinataire : " + getRecipient()
 				+ "\nContenu de la commande :";
 		for (Integer reference : references_quantity.keySet()) {
@@ -104,17 +105,7 @@ public class Order {
 	}
 
 	public String toHTML() {
-		String temp = "<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
-		for (Integer reference : references_quantity.keySet()) {
-			Article article = Bridge.getArticle(reference);
-			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getReference() + "</td><td><img src=\""
-					+ article.getImage_url()
-					+ "\" class=\"img-responsive img-thumbnail\" style=\"width:10%; height:auto ; display:inline-block ; float:right \" alt=\""
-					+ article.getName() + "\" /></td></tr>\n";
-
-		}
-		temp += "<tr><td>Remises :</td><td>" + this.getTotalDiscount() + " </td><td>euros TTC</td></tr>\n";
-		temp += "<tr><td>Montant a payé :</td><td>" + this.getTotalPrice() + " </td><td>euros TTC</td></tr>\n";
+		String temp = "NOT WRITEN YET...";
 		return temp;
 	}
 }

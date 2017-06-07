@@ -1,16 +1,7 @@
 package business;
 
 public class Article {
-	int reference;
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
+	private final int REFERENCE;
 	private String name;
 	private String description;
 	private String image_url;
@@ -20,11 +11,20 @@ public class Article {
 	private double discount;
 	private int quantity;
 
-	public Article(String name, String description, String image_url, String brand, String category, double price,
-			double discount) {
-		this.reference = (int) (Math.random() * 1000000); // Remplacer par
-															// getNewReference()
-															// dans Bridge...
+	public Article(String name, String description, String image_url, String brand, String category, double price, double discount, int quantity) {
+		this.REFERENCE = -1;
+		this.name = name;
+		this.description = description;
+		this.image_url = image_url;
+		this.brand = brand;
+		this.category = category;
+		this.price = price;
+		this.discount = discount;
+		this.quantity = quantity;
+	}
+	
+	public Article(int reference, String name, String description, String image_url, String brand, String category, double price, double discount, int quantity) {
+		this.REFERENCE = reference;
 		this.name = name;
 		this.description = description;
 		this.image_url = image_url;
@@ -78,7 +78,7 @@ public class Article {
 	}
 
 	public int getReference() {
-		return reference;
+		return REFERENCE;
 	}
 
 	public String getName() {
@@ -88,18 +88,31 @@ public class Article {
 	public String getBrand() {
 		return brand;
 	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	@Override
 	public String toString() {
-		String temp = "reference: " + this.reference;
-		temp += "\nname: " + this.name;
-		temp += "\ndescription: " + this.description;
-		temp += "\nimage_url: " + this.image_url;
-		temp += "\nbrand" + this.brand;
-		temp += "\ncategory: " + this.category;
-		temp += "\nprice: " + this.price;
-		temp += "\ndiscount: " + this.discount;
+		String temp = "Reference : " + this.REFERENCE;
+		temp += "\nNom : " + this.name;
+		temp += "\nDescription : " + this.description;
+		temp += "\nURL de l'image : " + this.image_url;
+		temp += "\nMarque : " + this.brand;
+		temp += "\nCategorie : " + this.category;
+		temp += "\nPrix : " + this.price;
+		temp += "\nRemise : " + this.discount;
 		System.out.println(temp);
+		return temp;
+	}
+
+	public String toHTML() {
+		String temp = "NOT WRITEN YET...";
 		return temp;
 	}
 }

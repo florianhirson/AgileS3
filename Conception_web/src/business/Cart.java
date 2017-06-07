@@ -90,7 +90,7 @@ public class Cart {
 		String temp = "<tr><th>Libelle</th><th>Quantite</th><th>Aperçu</th>";
 		for (Integer reference : references_quantity.keySet()) {
 			Article article = Bridge.getArticle(reference);
-			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getReference() + "</td><td><img src=\""
+			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getREFERENCE() + "</td><td><img src=\""
 					+ article.getImage_url()
 					+ "\" class=\"img-responsive img-thumbnail\" style=\"width:10%; height:auto ; display:inline-block ; float:right \" alt=\""
 					+ article.getName() + "\" /></td></tr>\n";

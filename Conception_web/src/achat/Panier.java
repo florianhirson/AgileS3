@@ -141,7 +141,7 @@ public class Panier {
 	public String toString(){//c'est le toHTML()
 
 		String ret="";
-
+		ret+="<tr><th>Libelle</th><th>Quantite</th>";
 		for(String id : produits.keySet()){
 			ret+= "<tr><td>"+lib.get(id)+"</td><td>"+produits.get(id)+"</td></tr>";
 
@@ -149,7 +149,7 @@ public class Panier {
 						
 		}
 
-		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" €</td></tr>";
+		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" euros TTC</td></tr>";
 		return ret;
 	}
 

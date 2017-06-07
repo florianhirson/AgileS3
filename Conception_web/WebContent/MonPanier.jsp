@@ -17,7 +17,11 @@
       </header>
 	  
 	<div style="margin-left: 3%; margin-right: 3%;">
-	    <a class="btn btn-default" href="./MonPanier.jsp" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
+	    <%if(session.getAttribute("panier")==null){ %>
+	    <a class="btn btn-default" href="./MonPanier.jsp" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier (Vide)</a>
+		<%}else{%>
+		<a class="btn btn-default" href="./MonPanier.jsp" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)</a>
+		<%}%>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>

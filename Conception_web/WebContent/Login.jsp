@@ -1,6 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
+<%@ page import="java.lang.*, java.util.concurrent.ThreadLocalRandom, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -62,6 +64,7 @@
 						    
 						    if(rs.next()) {
 								 session = request.getSession(true);
+								 session.setAttribute("panier", new Panier(request.getParameter("login"), request.getParameter("mdp")));
 								// les autres pages devront tester la presence de login pour savoir si on a bien ete authentifie
 								
 								session.setAttribute("login", login);

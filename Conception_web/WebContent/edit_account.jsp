@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
-<%@page import="java.sql.*"%>
-<%@page import="java.util.*"%>
-<%@page import="utilisateur.*"%>
+<%@ page import="java.lang.*, java.util.concurrent.ThreadLocalRandom, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
+
 
 <!DOCTYPE html>
 <html>

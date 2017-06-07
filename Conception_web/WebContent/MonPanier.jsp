@@ -24,7 +24,7 @@
 			<%if(session.getAttribute("login")==null){ %>
 		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
 		<%}else{%>
-		<a class="btn btn-default" href="./LogOut.jsp" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Deconnexion</a>
+		<a class="btn btn-default" href="./LogOut.jsp" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee; float: right;">Deconnexion</a>
 		<%}%>
 	</div>
 	  

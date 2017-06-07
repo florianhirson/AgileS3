@@ -19,7 +19,7 @@ public class Me {
 	private Integer droit;//8
 	private String tok;//9
 	
-	protected Me(String login,String password){
+	public Me(String login,String password){
 		this.login=login;
 		this.mdp=password;
 		Connection con=null;
@@ -34,7 +34,7 @@ public class Me {
 			Statement stmt = con.createStatement();
 			stmt = con.createStatement();
 
-			String query = "select * from utilisateur where login="+login+"AND mdp="+password;
+			String query = "select * from utilisateur where login='"+login+"' AND mdp='"+password+"';";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if(rs.next()){

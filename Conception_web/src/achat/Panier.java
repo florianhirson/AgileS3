@@ -42,7 +42,7 @@ public class Panier {
 			ResultSet rs = stmt.executeQuery(query);
 			
 			while(rs.next()){
-				lib.put(rs.getString("idart"),rs.getString("produit"));
+				lib.put(rs.getString("idart"),rs.getString("libelle"));
 				price.put(rs.getString("idart"),rs.getDouble("prix"));
 				nbArticle++;
 			}

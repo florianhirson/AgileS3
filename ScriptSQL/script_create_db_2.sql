@@ -1,86 +1,115 @@
-DROP TABLE IF EXISTS facture;
-DROP TABLE IF EXISTS personne;
-DROP TABLE IF EXISTS article;
-DROP TABLE IF EXISTS droit;
-DROP TABLE IF EXISTS status;
+DROP TABLE IF EXISTS person CASCADE;
+DROP TABLE IF EXISTS unchecked CASCADE;
+DROP TABLE IF EXISTS status CASCADE;
+DROP TABLE IF EXISTS xorder CASCADE;
+DROP TABLE IF EXISTS brand CASCADE;
+DROP TABLE IF EXISTS category CASCADE;
+DROP TABLE IF EXISTS article CASCADE;
+DROP TABLE IF EXISTS review CASCADE;
+DROP TABLE IF EXISTS xline CASCADE;
 
-DROP TABLE IF EXISTS person;
-DROP TABLE IF EXISTS article;
-DROP TABLE IF EXISTS status;
-DROP TABLE IF EXISTS content;
-
-CREATE TABLE persons(
-id_person serial,
+CREATE TABLE person(
+id serial,
 is_admin boolean NOT NULL DEFAULT FALSE,
-last_name varchar(32) NOT NULL,
-first_name varchar(32) NOT NULL,
-mail text NOT NULL,
-password varchar(32) NOT NULL,
+last_name varchar(20) NOT NULL,
+first_name varchar(20) NOT NULL,
+mail varchar(100) NOT NULL,
+password varchar(20) NOT NULL,
 default_adress text,
 phone varchar(10),
-CONSTRAINT pk_person PRIMARY KEY(id_person),
+CONSTRAINT pk_person PRIMARY KEY(id),
 CONSTRAINT unique_mail UNIQUE (mail),
 CONSTRAINT check_mail CHECK(mail LIKE '%_@_%.__%')
 );
 
-CREATE TABLE article(
-reference integer NOT NULL,
-name text NOT NULL,
-description text NOT NULL,
-image_url text,
-brand text NOT NULL,
-price numeric(10,2) NOT NULL,
-discount numeric(3,2) NOT NULL DEFAULT 0.0,
-CONSTRAINT pk_article PRIMARY KEY(reference),
-CONSTRAINT check_imgge_url CHECK(image_url LIKE 'http://%_.__%'),
-CONSTRAINT check_discount CHECK (discount >= 0.0 OR discount <=1.0)
+CREATE TABLE unchecked(
+id serial,
+is_admin boolean NOT NULL DEFAULT FALSE,
+last_name varchar(20) NOT NULL,
+first_name varchar(20) NOT NULL,
+mail varchar(100) NOT NULL,
+password varchar(20) NOT NULL,
+default_adress text,
+phone varchar(10),
+code text NOT NULL DEFAULT MD5(RANDOM()::varchar(10)),
+CONSTRAINT pk_unchecked PRIMARY KEY(id)
 );
 
 CREATE TABLE status(
-id_status integer,
-title text NOT NULL,
-CONSTRAINT pk_status PRIMARY KEY (id_status)
+id integer,
+title varchar(100) NOT NULL,
+CONSTRAINT pk_status PRIMARY KEY (id)
 );
 
 INSERT INTO status VALUES(-3,'Annule'), (-2,'Erreur de livraison'), (-1,'Erreur de stock'), (0,'En attente'), (1,'En cours de preparation'), (2,'Expidie'), (3,'Livre');
 
 CREATE TABLE xorder(
-id_xorder serial,
-id_client integer NOT NULL,
-adress text NOT NULL,
-receiver text NOT NULL,
+id serial,
+person integer NOT NULL,
+address text NOT NULL,
+recipient text NOT NULL,
 status integer DEFAULT 0,
-
-CONSTRAINT pk_xorder PRIMARY KEY(id_xorder),
-
-CONSTRAINT fk_person FOREIGN KEY (id_client)
-REFERENCES person(id_person)
+CONSTRAINT pk_xorder PRIMARY KEY(id),
+CONSTRAINT fk_person FOREIGN KEY (person)
+REFERENCES person(id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
+CONSTRAINT fk_status FOREIGN KEY(status)
+REFERENCES status(id)
+);
 
-CONSTRAINT fk_article FOREIGN KEY (reference)
+CREATE TABLE brand(
+name varchar(100) NOT NULL,
+CONSTRAINT pk_brand PRIMARY KEY (name)
+);
+
+CREATE TABLE category(
+name varchar(100) NOT NULL,
+CONSTRAINT pk_category PRIMARY KEY (name)
+);
+
+CREATE TABLE article(
+reference serial,
+name text NOT NULL,
+description text NOT NULL,
+image_url text,
+brand varchar(100) NOT NULL,
+category varchar(100) NOT NULL,
+price numeric(8,2) NOT NULL,
+discount numeric(3,2) NOT NULL DEFAULT 0.0,
+CONSTRAINT pk_article PRIMARY KEY(reference),
+CONSTRAINT check_image_url CHECK(image_url LIKE 'http://%_.__%'),
+CONSTRAINT check_price CHECK (price >= 0.0),
+CONSTRAINT check_discount CHECK (discount >= 0.0 AND discount <= 1.0)
+);
+
+CREATE TABLE review(
+id serial,
+reference integer NOT NULL,
+person integer NOT NULL,
+mark integer NOT NULL,
+review text NOT NULL,
+CONSTRAINT pk_review PRIMARY KEY (id),
+CONSTRAINT check_mark CHECK (mark >= 0 AND mark <= 1.0),
+CONSTRAINT fk_reference FOREIGN KEY (reference)
 REFERENCES article(reference)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
-
-CONSTRAINT fk_status FOREIGN KEY(status)
-REFERENCES status(id_status)
+CONSTRAINT fk_person FOREIGN KEY (person)
+REFERENCES person(id)
 ON UPDATE CASCADE
 ON DELETE CASCADE
 );
 
-CREATE TABLE content(
-id_xorder integer,
+CREATE TABLE xline(
+xorder integer,
 reference integer,
 quantity integer NOT NULL,
-
-CONSTRAINT pk_content PRIMARY KEY (id_xorder, reference),
-
-CONSTRAINT fk_id_xorder FOREIGN KEY (id_xorder)
-REFERENCES xorder(id_xorder)
+CONSTRAINT pk_xline PRIMARY KEY (xorder, reference),
+CONSTRAINT fk_xorder FOREIGN KEY (xorder)
+REFERENCES xorder(id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
-
 CONSTRAINT fk_reference FOREIGN KEY (reference)
 REFERENCES article(reference)
 ON UPDATE CASCADE

@@ -9,6 +9,9 @@
 
 	<body style="background-color:#f7f7f7;">
 	
+			<%if (session.getAttribute("login") == null)
+			response.sendRedirect("Login.jsp");%>
+	
        <header style="background-color:#3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
     <H1 style="color:white; font-size: 600%; font-weight:bold; margin-left:1%; display: inline-block;">HENDEK</H1>
       </header>

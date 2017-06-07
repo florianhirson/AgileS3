@@ -69,7 +69,7 @@ public class Panier {
 	}
 
 	public void addPanier(String id,int count){
-		produits.put(id,count);
+		produits.put(id,produits.get(id)+count);
 		contentPan++;
 
 

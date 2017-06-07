@@ -13,7 +13,7 @@
 
 <body style="background-color: #f7f7f7;">
 
-	<%if (session.getAttribute("login") == null){
+	<%if (session.getAttribute("login") == null || session.getAttribute("panier") == null){
 			response.sendRedirect("Login.jsp");}%>
 
 	<header
@@ -48,24 +48,12 @@
 	</div>
 
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
-
-<<<<<<< HEAD
-	<% if(session.getAttribute("panier")!=null) {%>
-		<table class="table table-striped">
-			<%= session.getAttribute("panier").toString() %>
-		</table>
-	<% }else{ %>
-		<%response.sendRedirect("./Login.jsp");%>
-	<% }%>
-=======
-	<% if((Panier mypan = session.getAttribute("panier"))!=null) {%>
+	
+	<% if(session.getAttribute("panier")!=null){ %>
+	<% Panier mypan = (Panier)session.getAttribute("panier");%>
 		<table class="table table-striped">
 			<%= mypan.toString() %>
-
-	<% }else{ %>
-		<%response.sendRedirect("./Login.jsp"); %>
-	<% } %>
-	
+		</table>
 	</div>
->>>>>>> 1e5a91e1f6f00eff0e3d2226c34994a63956f4f6
+	<% }%>
 </body>

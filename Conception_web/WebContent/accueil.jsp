@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ page import="java.lang.*, java.util.concurrent.ThreadLocalRandom, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <title>Hendek</title>
@@ -14,7 +15,7 @@
       </header>
 	  <h2 class="text-center"><%="Bonjour "+session.getAttribute("login")%></h2>
 	<div style="margin-left: 3%; margin-right: 3%;">
-	    <a class="btn btn-default" href="#" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
+	    <a class="btn btn-default" href="./MonPanier.jsp" role="button" style="width: 18%; margin-right:1%; background-color:#dfe3ee">Mon Panier</a>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
 		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
@@ -39,24 +40,32 @@
 		<div style="background-color:#ffffff; margin: 1%; border-radius: 10px; padding: 1%">
 			<h2>Susceptible de vous interesser :</h2>
 			
+		<% Article articles = Article.getInstance(); %>	
+		<% int r1 = ThreadLocalRandom.current().nextInt(1, articles.getAllLibelle().keySet().size()) +1;%>
+		<% while (articles.getLibelle(r1)==null){ %>
+		<% 		r1 = ThreadLocalRandom.current().nextInt(1, articles.getAllLibelle().keySet().size()) +1;%>
+		<% } %>
+		<% int r2 = r1; %>
+		<% while (r2==r1 || articles.getLibelle(r2)==null){ %>
+		<% 		r2 = ThreadLocalRandom.current().nextInt(1, articles.getAllLibelle().keySet().size()) +1;%>
+		<% } %>
 			<div style="margin: 1%; border-radius: 10px;">
-				<img src="https://www.leroymerlin.fr/multimedia/d21400296059/produits/rateau-a-gazon-leborgne-l-150-cm.jpg" alt="Rateau" style="width:10%;height:10%;display: inline-block;">
+				<img src="<%=articles.getImage(r1)%>" alt="<%=articles.getLibelle(r1)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
-					<h3 style="margin-bottom:1%"><a href=#>Super Rateau<small style="margin-left:5%;">19,99&euro;</small></a></h3>
-					<p> Un super rateau pour super rateler votre super jardin de ouf guedin <p>
-					<p> Vraiment pas tres cher du tout et avec pleins de dents dessus <p>
+				<h3 style="margin-bottom:1%"><a href=#><%=articles.getLibelle(r1)%><small style="margin-left:5%;"><%=articles.getPrix(r1)%>&euro;</small></a></h3>
+				<p><%=articles.getDescription(r1)%></p>
 				</div>
+				<a class="btn btn-default" href="./AjouterPanier.jsp?page=accueil.jsp&id=<%=r1%>" role="button" style="width: 10%;background-color:#dfe3ee; position: Absolute; right: 5%;">Ajouter au panier</a>
 			</div>
 			
 			<div style="margin: 1%; border-radius: 10px;">
-				<img src="https://statics.monoprix.fr/course/g_1774679_pure-vodka.jpg" alt="Belvedere" style="width:10%;height:10%;display: inline-block;">
+				<img src="<%=articles.getImage(r2)%>" alt="<%=articles.getLibelle(r2)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
-					<h3 style="margin-bottom:1%"><a href=#>Belv&eacute;d&egrave;re - Pure Vodka<small style="margin-left:5%;">41,60&euro;</small></a></h3>
-					<p> Elabor&eacute;e dans la plus pure tradition polonaise et exclusivement &agrave; partir de seigle d'or de dankowskie <p>
-					<p> Son go&ucirc;t d&eacute;licieux convient &agrave; tout type de consommation : pure, sur glace, ou en cocktails <p>
+				<h3 style="margin-bottom:1%"><a href=#><%=articles.getLibelle(r2)%><small style="margin-left:5%;"><%=articles.getPrix(r2)%>&euro;</small></a></h3>
+				<p><%=articles.getDescription(r2)%></p>
 				</div>
+				<a class="btn btn-default" href="./AjouterPanier.jsp?page=accueil.jsp&id=<%=r2%>" role="button" style="width: 10%;background-color:#dfe3ee; position: Absolute; right: 5%;">Ajouter au panier</a>
 			</div>
-			
 		</div>
 		
 	</div>

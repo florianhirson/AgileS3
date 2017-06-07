@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
-<%@page import="java.sql.*"%>
-<%@page import="java.util.*"%>
-<%@page import="utilisateur.*"%>
+<%@ page import="java.lang.*, java.util.concurrent.ThreadLocalRandom, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +21,7 @@
       </header>
 
 	<div style="margin-left: 3%; margin-right: 3%;">
-		<a class="btn btn-default" href="#" role="button"
+		<a class="btn btn-default" href="./MonPanier.jsp" role="button"
 			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
 			Panier</a> <a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
 		 <a class="btn btn-default" href="#" role="button"

@@ -49,6 +49,7 @@ person integer NOT NULL,
 address text NOT NULL,
 recipient text NOT NULL,
 status integer DEFAULT 0,
+xdate date NOT NULL,
 CONSTRAINT pk_xorder PRIMARY KEY(id),
 CONSTRAINT fk_person FOREIGN KEY (person)
 REFERENCES person(id)

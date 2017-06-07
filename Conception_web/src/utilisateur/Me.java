@@ -98,6 +98,10 @@ public class Me {
 		return login;
 	}
 	
+	public String getPassword(){
+		return mdp;
+	}
+	
 	public String toString(){
 		String ret="";
 		ret+="Login : "+login+"\n";

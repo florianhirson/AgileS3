@@ -84,6 +84,7 @@
 						    
 						    if(rs.next()) {
 								 session = request.getSession(true);
+								 session.setAttribute("user", new Me(request.getParameter("login"), request.getParameter("mdp")));
 								 session.setAttribute("panier", new Panier(request.getParameter("login"), request.getParameter("mdp")));
 								// les autres pages devront tester la presence de login pour savoir si on a bien ete authentifie
 								

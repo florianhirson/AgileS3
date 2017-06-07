@@ -14,7 +14,8 @@
 <body style="background-color: #f7f7f7;">
 	
 	<%if (request.getParameter("clear")!=null){%>
-	<%((Panier)session.getAttribute("panier")).purgePanier();%>	
+	<%Panier empty = new Panier( ((Me)session.getAttribute("user")).getLogin(), ((Me)session.getAttribute("user")).getPassword() );%>
+	<%session.setAttribute("panier", empty); %>
 	<% }%>
 	
 	<%if (session.getAttribute("login") == null || session.getAttribute("panier") == null){

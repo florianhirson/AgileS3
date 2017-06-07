@@ -170,11 +170,4 @@ public class Panier {
 		ret+="<tr><td>Votre facture est de :</td><td>"+this.calculPrix()+" </td><td>euros TTC</td></tr>\n";
 		return ret;
 	}
-
-	/**
-	 * if(unparam!=null&&){
-	 * 		mypan.rmPanier(unparam.getvalue());
-	 * 
-	 * }
-	 */
 }

@@ -1,4 +1,3 @@
-
 tuto vpn : http://fil.univ-lille1.fr/documentation-vpn
 
 /
@@ -25,7 +24,7 @@ git config --global user.email "alexandre.richard@etudiant.univ-lille1.fr"
 
 Create a new repository 
 
-git clone https://git-iut.univ-lille1.fr/bonevai/ProjeMode2016-O2.git  
+git clone https://git-iut.univ-lille1.fr/barbetf/AgileS3.git 
 
 cd ProjeMode2016-O2 touch README.md 
 

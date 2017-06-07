@@ -29,8 +29,9 @@ public class Bridge {
 		}	finally {
 			try {
 				connection.close();
-			} catch (Exception ex) {
 				throw new Exception("Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
 		}
 	}
@@ -48,8 +49,36 @@ public class Bridge {
 		}	finally {
 			try {
 				connection.close();
-			} catch (Exception ex) {
 				throw new Exception("Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
+	@SuppressWarnings("unused")
+	private static void setDataBase(String url, String username, String password) {
+		Connection connection = null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			connection = DriverManager.getConnection(url, username, password);
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM person WHERE id=1;");
+			if (rs.next()) {
+				if (rs.getString("last_name").equals("admin")) {
+					db_url = url;
+					db_username = username;
+					db_password = password;					
+					System.out.println("BDD change avec succes !");
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}	finally {
+			try {
+				connection.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
 		}
 	}
@@ -188,6 +217,19 @@ public class Bridge {
 					executeUpdate(query);
 				}
 			}
+		} catch (	Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		} 
+	}
+
+	/**
+	 * @param mail Mail du client a ajouter
+	 * @param code Code de validation
+	 */
+	public static void addAdmin(Admin admin) {
+		try {
+			String query = "INSERT INTO person(is_admin, first_name, last_name, mail, password) VALUES (TRUE, " + admin.getFirstName() + ", "+ admin.getLastName() + ", "+ admin.getMail() + ", "+ admin.getPassword() + ");";
+			executeUpdate(query);
 		} catch (	Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		} 

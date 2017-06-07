@@ -46,7 +46,7 @@ CREATE TABLE utilisateur(
 );
 
 INSERT INTO utilisateur(login,mdp,address,mail,tel,droit)VALUES('admin','hendek','?','florian.barbet@fbarbet.fr','?',2),('Faunus','123456','?','flow.fb60@gmail.com','?',1);
-
+INSERT INTO utilisateur(login,nom,prenom,mail,tel,droit,mdp,address)VALUES('xaxa','Xavier','LePauvre','xaxa@ladeche.fr','06060606',1,'1234','sous un pont');
 CREATE TABLE status(
 	idstatus integer,
 	libelle text NOT NULL,
@@ -76,8 +76,13 @@ CREATE TABLE article(
 	CONSTRAINT check_prix CHECK(prix > 0.00)
 );
 
-INSERT INTO article(libelle,prix,stock) VALUES ('bouteille vide',50.09,80000),('biscuit',7.00,70000);
-INSERT INTO article(libelle,prix,stock)VALUES('Livre pendu',40,50),('Manuel de survie face au poubelle',80,500);
+INSERT INTO article(libelle,prix,stock) 
+VALUES ('bouteille vide',50.09,80000),
+('biscuit',7.00,70000);
+
+INSERT INTO article(libelle,prix,stock,category)
+VALUES('Livre pendu',40.00,50,'Culture'),
+('Manuel',80.00,500,'Culture');
 
 CREATE TABLE infoart(
 	idart integer,

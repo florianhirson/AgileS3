@@ -1,4 +1,4 @@
-package hendek.article;
+package article;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

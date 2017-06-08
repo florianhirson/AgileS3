@@ -145,9 +145,7 @@ public class Me {
 		return mdp;
 	}
 	
-	public String getAddress(){
-		return address;
-	}
+	
 	
 	public String getMail(){
 		return mail;

@@ -39,6 +39,10 @@
 			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
 			Panier (<%=(((Panier) session.getAttribute("panier")).getNbContent())%>)
 		</a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b2a34963a66206727516b098f5878aa683a2e5be
 		<%}%>
 		<% if(((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 ){ %>
 		<a class="btn btn-default" href="./admin.jsp" role="button"

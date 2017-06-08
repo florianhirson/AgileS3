@@ -80,12 +80,11 @@
 						response.sendRedirect("accueil.jsp");
 					} else {
 						Integer id = Integer.valueOf(request.getParameter("id"));
+						String category = Article.getInstance().getCat(id);
 						
 				%>
 				<%=article.getLibelle(id)%></h1>
-			<h4>
-				Ref :
-				<%=id%></h4>
+			<h4>Reference : <%=id%> - Categorie : <a href="Search.jsp?search=<%=category%>&searchbycategory=true"><%=category%></a></h4>
 
 		</div>
 		<div class="row">

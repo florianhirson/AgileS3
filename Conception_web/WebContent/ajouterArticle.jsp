@@ -17,27 +17,51 @@
 		style="color: white; font-size: 600%; font-weight: bold; margin-left: 1%; display: inline-block;">
 		<a style="color: white" href=./accueil.jsp>HENDEK</a>
 	</H1>
-	
+
 </header>
 
 <style>
-	.form-group{
-		margin-bottom: 20px;
-	}
+.form-group {
+	margin-bottom: 20px;
+}
 </style>
-	
+
 <body style="background-color: #f7f7f7;">
-	<% if(!  (((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 )){
+	<%
+		if (!(((Me) session.getAttribute("user")) != null && ((Me) session.getAttribute("user")).getDroit() == 2)) {
 			response.sendRedirect("./accueil.jsp");
 			return;
 		}
-		
+
 		Article art = Article.getInstance();
 		boolean edit = request.getParameter("edit") != null;
+		boolean resultEdit = request.getParameter("resultEdit") != null;
 		int artId = -1;
-		if(edit) artId = Integer.parseInt(request.getParameter("id"));
+		if (edit)
+			artId = Integer.parseInt(request.getParameter("id"));
+		else if(resultEdit){
+			
+			//art.setCat(resultEdit, modif)
+		}else if(request.getParameter("nomArticle") != null){
+			art.addArticle(request.getParameter("nomArticle"),
+					Double.parseDouble(request.getParameter("prixArticle")),
+					request.getParameter("descriptionArticle"),
+					request.getParameter("imageArticle"),
+					request.getParameter("vendeurArticle"),
+					Integer.parseInt(request.getParameter("stockArticle")),
+					request.getParameter("catArticle")
+					);
+			out.print("<h3 style=\"color: green;\">L'article a bien été ajouté !</h3>");
+		}
+			
 	%>
-	
+	<div style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
+	<div class="container">
+	<div class="page-header">
+		<h1 style="text-align: center;"><% if(edit){out.print("Editer");}else{out.print("Ajouter");} %> un article</h1>
+	</div>
+	<div class="row">
+	<div class="col-xs-6 col-xs-offset-3">
 	<form>
 	<div class="form-group row" style="max-width: 500px;">
 		<label class="col-form-label col-sm-2" for="nomArticle">Nom </label>
@@ -76,13 +100,16 @@
 		</div>
 	</div>
 		<div class="form-group row" style="max-width: 500px;">
-		<label class="col-form-label col-sm-2" for="prixArticle">Description </label>
+		<label class="col-form-label col-sm-2" for="descriptionArticle">Description </label>
 		<div class="col-sm-10">
-			<textarea id="articleDescription"><% if(edit) out.print(art.getDescription(artId)); %></textarea>
+			<textarea id="descritptionArticle"><% if(edit) out.print(art.getDescription(artId)); %></textarea>
 		</div>
 	</div>
+	<% if(edit) out.print("<input type=\"hidden\" name=\"resultEdit\" value=\""+artId+"\"/>");%>
 	<input type="submit" value="<% if(edit){out.print("Editer");}else{out.print("Ajouter");} %>"/>
 	</form>
+	</div></div></div></div>
+
 
 </body>
 </html>

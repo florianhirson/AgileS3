@@ -79,7 +79,7 @@
 					sortedBy = "prix";
 					break;
 				case "Recution":
-					sortedBy = null;
+					sortedBy = "discount";
 					break;
 				}
 			}
@@ -93,7 +93,7 @@
 			Compte</a>
 		<% } %>  <a class="btn btn-default" href="./MesCommandes.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
-			Commandes</a> <a class="btn btn-default" href="#" role="button"
+			Commandes</a> <a class="btn btn-default" href="./Promotions.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>
 		<%
 			if (session.getAttribute("login") == null) {

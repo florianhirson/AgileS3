@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <%@ page
-	import="java.lang.*, java.lang.Integer, java.util.*, achat.*, business.*, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
+	import="java.text.*, java.lang.*, java.lang.Integer, java.util.*, achat.*, business.*, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
@@ -45,14 +45,14 @@
 		%>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Compte</a> <a class="btn btn-default" href="#" role="button"
+			Compte</a> <a class="btn btn-default" href="./MesCommandes.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
-			Commandes</a> <a class="btn btn-default" href="#" role="button"
+			Commandes</a> <a class="btn btn-default" href="./Promotions.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>
 		<%
 			if (session.getAttribute("login") == null) {
 		%>
-		<a class="btn btn-default" href="" role="button"
+		<a class="btn btn-default" href="./Promotions.jsp" role="button"
 			style="width: 18%; margin-left: 1%; background-color: #dfe3ee">Connexion</a>
 		<%
 			} else {
@@ -96,8 +96,8 @@
 				style="width: 10%; height: 10%; display: inline-block;">
 			<div style="display: inline-block;">
 				<h3 style="margin-bottom: 1%">
-					<a href=Article.jsp?id=<%=article.getReference()%>><%=article.getName()%><small
-						style="margin-left: 5%;"><strike><%=article.getPrice()%>&euro;</strike>&nbsp;&nbsp;&nbsp;<%=article.getDiscountedPrice()%>&euro;</small></a>
+					<a href=Article.jsp?id=<%=article.getReference()%>><%=article.getName()%></a><small
+						style="margin-left: 5%;"><strike><%=article.getPrice()%>&euro;</strike>&nbsp;&nbsp;&nbsp;<%=(new DecimalFormat("#.00").format(article.getDiscountedPrice())).toString()%>&euro;</small>
 				</h3>
 				<p><%=article.getDescription()%></p>
 			</div>

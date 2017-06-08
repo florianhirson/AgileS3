@@ -64,6 +64,7 @@ public class Panier {
 
 	}
 	
+	
 	public int getNbContent(){
 		return contentPan;
 	}

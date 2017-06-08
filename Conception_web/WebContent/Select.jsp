@@ -16,10 +16,8 @@
 	<% int pageArt=0; %>
 	<%if(request.getParameter("pageArt")==null){%>
 		<%pageArt = 0; %>
-		if
 	<%} else {%>
 		<%pageArt = Integer.valueOf(request.getParameter("pageArt"));%>
-		else
 	<%}%>
 	
 	<%if (session.getAttribute("login") == null)

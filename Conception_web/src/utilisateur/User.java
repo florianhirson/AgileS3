@@ -43,8 +43,8 @@ public class User {
 			for(String key:this.mdp.keySet()){
 			
 			query= "UPDATE article SET ";
-			query+="mdp="+this.mdp.get(key)+",nom="+this.nom.get(key)+",prenom="+prenom.get(key)+",address="+address.get(key);
-			query+=",mail="+mail.get(key)+",tel="+tel.get(key)+",droit="+droit.get(key)+" WHERE login="+key+";";
+			query+="mdp='"+this.mdp.get(key)+"',nom='"+this.nom.get(key)+"',prenom='"+prenom.get(key)+"',address='"+address.get(key);
+			query+="',mail='"+mail.get(key)+"',tel='"+tel.get(key)+"',droit='"+droit.get(key)+"' WHERE login='"+key+"';";
 			
 			stmt.executeUpdate(query);
 			}
@@ -164,7 +164,7 @@ public class User {
 			con = DriverManager.getConnection(url,nom,mdp);
 			Statement stmt = con.createStatement();
 			stmt = con.createStatement();
-			String query = "DELETE FROM utilisateur WHERE login="+log+";";
+			String query = "DELETE FROM utilisateur WHERE login='"+log+"';";
 			stmt.executeUpdate(query);
 			singleton=new User();
 			

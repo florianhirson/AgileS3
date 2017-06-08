@@ -30,6 +30,8 @@ public class Bridge {
 			connection.close();
 			throw new Exception(
 					"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+		} finally {
+			connection.close();
 		}
 	}
 
@@ -46,6 +48,8 @@ public class Bridge {
 			connection.close();
 			throw new Exception(
 					"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+		} finally {
+			connection.close();
 		}
 	}
 

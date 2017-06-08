@@ -8,6 +8,7 @@
  java.sql.PreparedStatement,
  java.sql.ResultSet,
  javax.mail.*,
+ 
  javax.mail.internet.*,
  java.sql.DriverManager,
  java.sql.Connection,
@@ -55,22 +56,9 @@
 String table = "lignefact";
 	
 	String login=request.getParameter("login");
-	
-	String mdp=request.getParameter("mdp");
-	
-	String checkmdp=request.getParameter("checkmdp");
-	
-	String nom=request.getParameter("nom");
-	
-	String prenom=request.getParameter("prenom");
-	
-	String mail=request.getParameter("mail");
-	
-	String tel=request.getParameter("tel");
-	
-	String description=request.getParameter("address");
 
-
+	ArrayList<String> produit = new ArrayList<>();
+	ArrayList<String> count = new ArrayList<>();
 
 	Connection con = null;
 
@@ -84,22 +72,54 @@ String table = "lignefact";
 				String mdpasse = "moi";
 				con = DriverManager.getConnection(url,user,mdpasse);
 				String query="INSERT INTO";
-				query+=table+"() VALUES ";
-
-				PreparedStatement ps = con.prepareStatement(query+"(?,?,?,?,?,?,?);");
-
-				ps.executeUpdate();
+				query+=table+"(login,idart,qte) VALUES ";
+				int idartLast=0;
+				for(String key : session.getAttribute("panier").getProduits().keySet){
+					PreparedStatement ps = con.prepareStatement(query+"(?,?,?);");
+					
+					ps.setString(1,session.getAttribute("user").getLogin());
+					ps.setInt(2,Integer.parsInt(key));
+					ps.setString(3,session.getAttribute("panier").getCount(key));
+					ps.executeUpdate();
+					produit.add(session.getAttribute("panier").getLib(key));
+					count.add(session.getAttribute("panier").getCount(key));
+					
+					idartLast=key;
+				}
 				
+				Date dat=null;
+				query="SELECT dat FROM lignefact WHERE login='"+session.getAttribute("user").getLogin()+"' AND idart='"+idartLast+"';";
+				
+				Statement stmt = con.createStatement();
+				stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				if(rs.next())
+				dat = rs.getDate("dat");
+				
+				
+				if(session.getAttribute("address")==null){
+					query="INSERT INTO facture (login,dat,address) VALUES (?,?,?)";
+					ps.setString(1,session.getAttribute("user").getLogin());
+					ps.setDate(2,dat);
+					ps.setString(3,session.getAttribute("user").getAddress());
+				}else{
+					query="INSERT INTO facture (login,dat,address) VALUES (?,?,?)";
+					ps.setString(1,session.getAttribute("user").getLogin());
+					ps.setDate(2,dat);
+					ps.setString(3,session.getAttribute("address"));
+				}
+				ps.executeUpdate();
+						
 				new Mail().selectCheck(login,link);
 
 				String content="<h1>HENDEK prend en charge votre livraison</h1>\n";
 				content+="<p>Bonjour "+prenom+" "+nom+",<p>";
 				content+="\n<p>Nous prenons bien en charge votre livraison<p>";
-				
-				
-				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">localhost:8080/Conception_web/verify.jsp?"+lien+"</a>";
 				content+="\n<p>verifier les informations :</p>\n<ul>";
-
+				for(int i=0; i < produit.size();i++){
+					content+="\n <p>"+produit.get(i)+" - "+count.get(i)+"</p>\n";
+				}
+				
 
 				content+="<h2>Appelez les HENDEKs</h2>";
 				%> av Mail.send<%

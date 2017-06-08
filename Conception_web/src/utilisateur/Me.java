@@ -145,6 +145,10 @@ public class Me {
 		return mdp;
 	}
 	
+	public String getAddress(){
+		return address;
+	}
+	
 	public String toString(){
 		String ret="";
 		ret+="Login : "+login+"\n";

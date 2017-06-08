@@ -13,7 +13,7 @@
 
 <body style="background-color: #f7f7f7;">
 	<% if(!  (((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 )){ %>
-	<% %>
+	<% response.sendRedirect("./accueil.jsp");%>
 	<%}%>
 
 <header

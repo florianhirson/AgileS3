@@ -8,7 +8,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<title>Hendek - Recherche</title>
+<title>Hendek - Promotions</title>
 </head>
 
 <body style="background-color: #f7f7f7;">
@@ -42,47 +42,6 @@
 		</a>
 		<%
 			}
-
-			String keyword = request.getParameter("search");
-			String keywordHTML = "";
-			if (keyword != null)
-				keywordHTML = "value=\"" + keyword + "\"";
-
-			boolean searchByName = (request.getParameter("searchbyname") != null);
-			String searchByNameHTML = "checked";
-			if (searchByName == false)
-				searchByNameHTML = "unchecked";
-
-			boolean searchByBrand = (request.getParameter("searchbybrand") != null);
-			String searchByBrandHTML = "checked";
-			if (searchByBrand == false)
-				searchByBrandHTML = "unchecked";
-
-			boolean searchByCategory = (request.getParameter("searchbycategory") != null);
-			String searchByCategoryHTML = "checked";
-			if (searchByCategory == false)
-				searchByCategoryHTML = "unchecked";
-			
-			String sortedBy = request.getParameter("sortedby");
-			String sortedByHTML = "Nom";
-			if (sortedBy != null) {
-				sortedByHTML = "value=\"" + keyword + "\"";
-			
-				switch (sortedBy) {
-				case "Nom":
-					sortedBy = "libelle";
-					break;
-				case "Categorie":
-					sortedBy = "category";
-					break;
-				case "Prix":
-					sortedBy = "prix";
-					break;
-				case "Recution":
-					sortedBy = null;
-					break;
-				}
-			}
 		%>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
@@ -114,47 +73,23 @@
 				<div class="form-group">
 					<label for="search">Rechercher :</label> <input style=""
 						type="text" class="form-control" id="search" name="search"
-						placeholder="ex : Cocktails au white spirit" <%=keywordHTML%>>
-					<input type="checkbox" name="searchbyname" value="true"
-						<%=searchByNameHTML%>>Par nom&nbsp;&nbsp;&nbsp;
-						<input
-						type="checkbox" name="searchbybrand" value="true"
-						<%=searchByBrandHTML%> disabled>Par marque&nbsp;&nbsp;&nbsp;<input
-						type="checkbox" name="searchbycategory" value="true"
-						<%=searchByCategoryHTML%>>Par categorie
-						<br>
-						<label for="sortedby">Trie par :</label> <select name="sortedby"
-						onChange="combo(this, <%=sortedByHTML%>)">
-						<option>Nom</option>
-						<option>Categorie</option>
-						<option>Prix</option>
-						<option>Reduction</option>
-					</select><br>
-					<input type="submit" value="Rechercher" class="btn btn-primary">
+						placeholder="ex : Cocktails au white spirit">
 				</div>
 			</form>
 		</div>
-
-
 		<%
-			if (keyword == null) {
-		%>
-		<h2>Pas d'arguments de recherche...</h2>
-		<%
-			} else {
-				List<business.Article> articles = Bridge.searchArticles(keyword, searchByName, searchByBrand,
-						searchByCategory, sortedBy);
+			List<business.Article> articles = Bridge.getAllArticlesFILTERED(" WHERE discount > 0.0");
 
-				if (articles == null) {
+			if (articles == null) {
 		%>
 		<h2">Erreur !</h2>
 		<%
 			} else if (articles.size() == 0) {
 		%>
-		<h2">Aucun resultat trouve...</h2>
+		<h2">Aucun article en promotion...</h2>
 		<%
 			} else {
-					for (Article article : articles) {
+				for (Article article : articles) {
 		%>
 		<div style="margin: 1%; border-radius: 10px;">
 			<img src="<%=article.getImageURL()%>" alt="<%=article.getName()%>"
@@ -174,7 +109,6 @@
 		</div>
 		<%
 			}
-				}
 			}
 		%>
 	</div>

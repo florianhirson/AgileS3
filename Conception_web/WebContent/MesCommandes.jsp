@@ -69,6 +69,10 @@
 	
 	<div style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 	
-		<h3> Pas de commandes en cours </h3>
-		</div>
+		<%if( ((Me)session.getAttribute("user")).myOrder()!=null){%>
+		<%if( ((Me)session.getAttribute("user")).myOrder().isEmpty()){%>
+		<h3> Pas de commandes en cours </h3> 
+		<%} else {%>
+		<%}} %>
+	</div>
 </body>

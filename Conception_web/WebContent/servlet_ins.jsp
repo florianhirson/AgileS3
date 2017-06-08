@@ -13,8 +13,12 @@
  java.sql.Connection,
  java.util.Calendar,
  java.sql.Date,
+<<<<<<< HEAD
  java.sql.Types,
  org.apache.commons.validator.routines.EmailValidator" %>
+=======
+ java.sql.Types" %>
+>>>>>>> 71978e36158aa166dc21f206a8935f55c1294a95
 
 <!DOCTYPE html>
 
@@ -49,9 +53,13 @@
 
 <body style="background-color: #f7f7f7;">
 
+<<<<<<< HEAD
  <%
   
 	session.invalidate();
+=======
+ <% session.invalidate();
+>>>>>>> 71978e36158aa166dc21f206a8935f55c1294a95
 	session=request.getSession(true);
 	ArrayList<String> link = new ArrayList<String>();
 	String lien="";
@@ -77,7 +85,7 @@ String table = "utilisateur";
 
 	Connection con = null;
 
-
+	%> avant if <%
 	if(!mdp.equals(checkmdp) || (mdp.length()<5||mdp.length()>20)){
 		System.out.println("Inscription "+mdp+" check : "+checkmdp+ " = "+mdp.equals(checkmdp));
 		if(mdp.length()<5||mdp.length()>20)
@@ -85,6 +93,7 @@ String table = "utilisateur";
 		else
 			session.setAttribute("erroro","o");
 		response.sendRedirect("Inscription.jsp");
+<<<<<<< HEAD
 		
 	}else if(Mail.selectCheck(login,link)){
 		session.setAttribute("errore","e");
@@ -92,10 +101,15 @@ String table = "utilisateur";
 		
 	}else if(Mail.selectCheck( mail, link)){
 
-		session.setAttribute("errorm","m");
+=======
+	}else if(new Mail().selectCheck(login,link)){
+		%> errore e 1 <%
+		session.setAttribute("errore","e");
 		response.sendRedirect("Inscription.jsp");
-	}else if(!checkeremail.isValid(mail)){
-		session.setAttribute("errorfm","fm");
+	}else if(new Mail().selectCheck( mail, link)){
+		%> catch m 2<%
+>>>>>>> 71978e36158aa166dc21f206a8935f55c1294a95
+		session.setAttribute("errorm","m");
 		response.sendRedirect("Inscription.jsp");
 	}else{ 
 		if(login.length()<4 || nom.length()<3 || prenom.length()<3){
@@ -113,9 +127,8 @@ String table = "utilisateur";
 			response.sendRedirect("Inscription.jsp");
 		}else{
 			try{
-				
+				%> try <% 
 				Class.forName("org.postgresql.Driver");
-
 				String url = "jdbc:postgresql://psqlserv/n2p1";
 				String user = "barbetf";
 				String mdpasse = "moi";
@@ -135,9 +148,13 @@ String table = "utilisateur";
 				
 				ps.executeUpdate();
 				
-				Mail.selectCheck(login,link);
+				new Mail().selectCheck(login,link);
 
+<<<<<<< HEAD
 				String content="<h1>Hendek vous souhaite la bienvenue</h1>\n";
+=======
+				String content="<h1>HENDEK vous souhaite la bienvenue</h1>\n";
+>>>>>>> 71978e36158aa166dc21f206a8935f55c1294a95
 				content+="<p>Bonjour "+prenom+" "+nom+",<p>";
 				content+="\n<p>nous avons remarqué votre venu sur notre site, il ne reste plus qu'une etape pour l'activation de votre compte<p>";
 				content+="\n<p> il faut appeler les HENDEK !<p>";
@@ -154,6 +171,7 @@ String table = "utilisateur";
 				content+="\n<li> adresse : "+description+"</li>\n</ul>";
 
 				content+="<h2>Appelez les HENDEKs</h2>";
+<<<<<<< HEAD
 				
 				
 				Mail.sendMail(content,mail);
@@ -164,16 +182,25 @@ String table = "utilisateur";
 
 				
 
-			}catch (Exception e) {
+=======
+				%> av Mail.send<%
 				
-				System.out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());
+				new Mail().sendMail(content,mail);
+				session.setAttribute("success","o");
+				response.sendRedirect("Login.jsp");
+				
+>>>>>>> 71978e36158aa166dc21f206a8935f55c1294a95
+			}catch (Exception e) {
+				%> catch 1<%
+				out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());
+				
 
 			}
 			finally {	  
 				try{
 					con.close();	  
 				}catch (Exception e) {
-					
+					%> catch 2 <%
 					System.out.println("=====> ERROR(Mailer.service(2)) : "+e.getMessage());
 				}
 			}

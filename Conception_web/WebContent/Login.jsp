@@ -118,6 +118,8 @@
 						%>
 						<!-- <a href="servlet/New" class="btn btn-default btn-block">Créer un compte !</a> -->
 					</form>
+					
+					<a class="btn btn-default" href="./Inscription.jsp" role="button" style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Inscription</a>
 				</div>
 			</div>
 		</div>

@@ -26,26 +26,26 @@ public class Mail {
 	 * @param content
 	 * @param to
 	 */
-	public static  void sendMail(String content, String to){
+	public void sendMail(String content, String to){
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.fbarbet.fr");
-		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class",
+		props.put("mail.smtps.host", "smtps.univ-lille1.fr");
+		props.put("mail.smtps.socketFactory.port", "587");
+		props.put("mail.smtps.socketFactory.class",
 				"javax.net.ssl.SSLSocketFactory");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.port", "465");
+		props.put("mail.smtps.auth", "true");
+		props.put("mail.smtps.port", "587");
 
 		Session session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("bot_agile@fbarbet.fr","projetagile");
+				return new PasswordAuthentication("florian.barbet@univ-lille1.fr","Florian2*");
 			}
 		});
 
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("bot_agile@fbarbet.fr"));
+			message.setFrom(new InternetAddress("florian.barbet@univ-lille1.fr"));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(to));
 			message.setSubject("Activation de votre compte HENDEK");
@@ -67,7 +67,7 @@ public class Mail {
 	 * @param link notre lien d'envoie
 	 * @return
 	 */
-	public static boolean selectCheck(String login,ArrayList<String> link){
+	public boolean selectCheck(String login,ArrayList<String> link){
 		String requete = "SELECT ";
 		Connection con = null;
 		boolean resultat=false;

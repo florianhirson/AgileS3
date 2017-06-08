@@ -111,19 +111,19 @@
 		<h2>Pas d'arguments de recherche...</h2>
 		<%
 			} else {
-				List<business.Article> articles = Bridge.searchArticles(keyword, searchByName, searchByBrand, searchByCategory);
-				
+				List<business.Article> articles = Bridge.searchArticles(keyword, searchByName, searchByBrand,
+						searchByCategory);
+
 				if (articles == null) {
-					%>
+		%>
 		<h2">Erreur !</h2>
 		<%
-						}
-				else if (articles.size() == 0) {
+			} else if (articles.size() == 0) {
 		%>
 		<h2">Aucun resultat trouve...</h2>
 		<%
 			} else {
-				for (Article article : articles) {
+					for (Article article : articles) {
 		%>
 		<div style="margin: 1%; border-radius: 10px;">
 			<img src="<%=article.getImageURL()%>" alt="<%=article.getName()%>"
@@ -143,6 +143,7 @@
 		</div>
 		<%
 			}
+				}
 			}
 		%>
 	</div>

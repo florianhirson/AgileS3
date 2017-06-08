@@ -12,7 +12,8 @@ import java.util.Map;
 
 public class Bridge {
 	private static String db_url = "jdbc:postgresql://psqlserv/n2p1";
-	private static String db_username = "dujardir";
+	// private static String db_username = "dujardir";
+	private static String db_username = "barbetf";
 	private static String db_password = "moi";
 
 	private static ResultSet executeQuery(String query) throws Exception {
@@ -26,15 +27,9 @@ public class Bridge {
 			return rs;
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new Exception("Erreur : " + ex.getMessage());
-		} finally {
-			try {
-				connection.close();
-				throw new Exception(
-						"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
+			connection.close();
+			throw new Exception(
+					"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
 		}
 	}
 
@@ -48,15 +43,9 @@ public class Bridge {
 			statement.executeUpdate(query);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new Exception("Erreur : " + ex.getMessage());
-		} finally {
-			try {
-				connection.close();
-				throw new Exception(
-						"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
+			connection.close();
+			throw new Exception(
+					"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
 		}
 	}
 
@@ -334,21 +323,26 @@ public class Bridge {
 			return null;
 		}
 		String filter = " WHERE";
+		/*
+		 * if (searchByName) { filter += " name LIKE '%" + keyword + "%'"; } if
+		 * (searchByName && searchByBrand) { filter += " OR"; } if
+		 * (searchByBrand) { filter += " brand LIKE '%" + keyword + "%'"; } if
+		 * ((searchByName || searchByBrand) && searchByCategory) { filter +=
+		 * " OR"; } if (searchByCategory) { filter += " category LIKE '%" +
+		 * keyword + "%'"; }
+		 */
+
+		searchByBrand = false;
 		if (searchByName) {
-			filter += " name LIKE '%" + keyword + "%'";
+			filter += " libelle LIKE '%" + keyword + "%'";
 		}
-		if (searchByName && searchByBrand) {
-			filter += " OR";
-		}
-		if (searchByBrand) {
-			filter += " brand LIKE '%" + keyword + "%';";
-		}
-		if ((searchByName || searchByBrand) && searchByCategory) {
+		if (searchByName && searchByCategory) {
 			filter += " OR";
 		}
 		if (searchByCategory) {
-			filter += " category LIKE '%" + keyword + "%';";
+			filter += " category LIKE '%" + keyword + "%'";
 		}
+
 		return getAllArticlesFILTERED(filter);
 	}
 
@@ -383,9 +377,16 @@ public class Bridge {
 			query += ";";
 			ResultSet rs = executeQuery(query);
 			while (rs.next()) {
-				articles.add(new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"),
-						rs.getString("image_url"), rs.getString("brand"), rs.getString("category"),
-						rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity")));
+				/*
+				 * articles.add(new Article(rs.getInt("reference"),
+				 * rs.getString("name"), rs.getString("description"),
+				 * rs.getString("image_url"), rs.getString("brand"),
+				 * rs.getString("category"), rs.getDouble("price"),
+				 * rs.getDouble("discount"), rs.getInt("quantity")));
+				 */
+				articles.add(new Article(rs.getInt("idart"), rs.getString("libelle"), rs.getString("description"),
+						rs.getString("image"), "", rs.getString("category"), rs.getDouble("prix"), 0.0,
+						rs.getInt("stock")));
 			}
 		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");

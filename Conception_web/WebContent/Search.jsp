@@ -97,7 +97,7 @@
 					<input type="checkbox" name="searchbyname" value="true"
 						<%=searchByNameHTML%>>Par nom<br> <input
 						type="checkbox" name="searchbybrand" value="true"
-						<%=searchByBrandHTML%>>Par marque<br> <input
+						<%=searchByBrandHTML%> disabled>Par marque<br> <input
 						type="checkbox" name="searchbycategory" value="true"
 						<%=searchByCategoryHTML%>>Par categorie<br>
 				</div>

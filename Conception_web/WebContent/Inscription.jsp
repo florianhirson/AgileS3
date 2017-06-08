@@ -31,7 +31,42 @@
 
 <body style="background-color: #f7f7f7;">
 
- <section class="">
+<%if (session.getAttribute("login") == null || session.getAttribute("panier") == null){
+			response.sendRedirect("Login.jsp");}%>
+
+	<header
+		style="background-color: #3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
+		<H1
+			style="color: white; font-size: 600%; font-weight: bold; margin-left: 1%; display: inline-block;">
+			<a style="color: white" href=./accueil.jsp>HENDEK</a>
+		</H1>
+	</header>
+
+	<div style="margin-left: 3%; margin-right: 3%;">
+		<%if(session.getAttribute("panier")==null){ %>
+		<a class="btn btn-default" href="./MonPanier.jsp" role="button"
+			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
+			Panier (Vide)</a>
+		<%}else{%>
+		<a class="btn btn-default" href="./MonPanier.jsp" role="button"
+			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
+			Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)
+		</a>
+		<%}%>
+		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
+				
+		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
+			<%if(session.getAttribute("login")==null){ %>
+		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
+		<%}else{%>
+		<a class="btn btn-default" href="./LogOut.jsp" role="button"
+			style="width: 18%; margin-left: 1%; background-color: #dfe3ee; float: right;">Deconnexion</a>
+		<%}%>
+	</div>
+
+	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
+	
                 <% 
             System.out.println( "CHECK mdp : ~~~~~~~ "+session.getAttribute("login") +"\n");
             if(session.getAttribute("error")=="o"){ %>
@@ -59,48 +94,54 @@
                                <p class="error_message"> cette adresse email est invalide </p>
 			<% } %>
                                             <header>
-                                                <h1 class="color-clear">Inscription </h1>
+                                                <h1 class="color-clear">Inscription</h1>
                                             </header>
 
                                             <form method="get" action="servlet_ins.jsp">
-                                                <hr class="hr-petite" />
-                                                <div>
-                                                    <p> Login* : </p>
-                                                    <input type="text" maxlength="16" name="login" value="<c:out value="${login}"/>" />
+ 
+                                              	 <div class="form-group">
+                                                    <label for="login">Login*</label>
+                                                    <input type="text" maxlength="16" value="${login}" name="login"/>
                                                 </div>
-                                                <div class=" navbar-header">
-                                                    <p>Nom* : </p>
-                                                    <input type="text" maxlength="20" value="<c:out value="${nom}"/>" name="nom" />
+                                                
+												 <div class="form-group">
+                                                    <label for="nom">Nom</label>
+                                                    <input type="text" maxlength="20" value="${nom}" name="nom" />
                                                 </div>
-                                                <div class="collapse navbar-collapse" aria-expanded="true">
-                                                    <ul class="nav navbar-nav navbar-right">
-                                                        <li>
-                                                            <p>Prenom* : </p>
-                                                            <input type="text" maxlength="16" value="<c:out value="${prenom}"/>" name="prenom" />
-                                                        </li>
-                                                    </ul>
+                                                
+                                                <div class="form-group">
+                                                      <label for="prenom">Prénom</label>
+                                                      <input type="text" maxlength="16" value="${prenom}" name="prenom" />
                                                 </div>
-                                                <p> </p>
-                                                <p>Adresse* :</p><input type="text" size="10" maxlength="250" value="<c:out value="${address}"/>" class="Boitegrandetaille" name="address" />
-                                                <p> </p>
-                                                <p> Mail* : <input type="email" maxlength="50" value="<c:out value="${mail}"/>" class="form-control" name="mail" /></p>
-                                                <p> </p>
-
-                                                <div class="navbar-header">
-                                                    <p>tel. : </p>
-                                                    <input type="text" maxlength="10" value="<c:out value="${tel}"/>" name="tel" />
+                                                
+                                                <div class="form-group">
+                                                	<label for="address">Adresse*</label>
+                                                	<input type="text" size="10" maxlength="250" value="${address}" class="Boitegrandetaille" name="address" />
+                                                </div>
+                                                
+                                                 <div class="form-group">
+                                                	<label for="mail">E-Mail*</label> 
+                                                	<input type="email" maxlength="50" value="${mail}" class="form-control" name="mail" /></p>
                                                 </div>
 
-                                                <hr />
-                                                <p> Mot de passe* </p><input type="password" maxlength="16" value="<c:out value="${mdp}"/>" class="form-control" name="mdp" />
-                                                <p> Confirmer mot de passe* </p><input type="password" maxlength="16" value="<c:out value=""/>" class="form-control" name="checkmdp" />
-                                                <hr  />
+                                                <div class="form-group">
+                                                    <label for="tel">Téléphone</label> 
+                                                    <input type="text" maxlength="10" value="${tel}" name="tel" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                	<label for="mdp">Mot de passe</label> 
+                                               		<input type="password" maxlength="16"  class="form-control"  value="${mdp}" name="mdp"/>
+                                                	<label for="checkmdp">Téléphone</label> 
+                                                	<input type="password" maxlength="16" value="" class="form-control" name="checkmdp"/>
+                                                </div>
 
 
                                                 <input type=submit value="Valider" class="btn btn-primary btn-x1" />
                                             </form>
+                                            
                                             <p class="ecritpetit text-left">* : obligatoire </p>
 
-            </section>
+            </div>
 </body>
 </html>

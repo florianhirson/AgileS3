@@ -31,9 +31,6 @@
 
 <body style="background-color: #f7f7f7;">
 
-<%if (session.getAttribute("login") == null || session.getAttribute("panier") == null){
-			response.sendRedirect("Login.jsp");}%>
-
 	<header
 		style="background-color: #3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
 		<H1
@@ -101,22 +98,22 @@
  
                                               	 <div class="form-group">
                                                     <label for="login">Login*</label>
-                                                    <input type="text" maxlength="16" value="${login}" name="login"/>
+                                                    <input type="text" maxlength="16" class="form-control"  value="${login}" name="login"/>
                                                 </div>
                                                 
 												 <div class="form-group">
                                                     <label for="nom">Nom</label>
-                                                    <input type="text" maxlength="20" value="${nom}" name="nom" />
+                                                    <input type="text" maxlength="20" class="form-control" value="${nom}" name="nom" />
                                                 </div>
                                                 
                                                 <div class="form-group">
                                                       <label for="prenom">Prénom</label>
-                                                      <input type="text" maxlength="16" value="${prenom}" name="prenom" />
+                                                      <input type="text" maxlength="16" class="form-control"  value="${prenom}" name="prenom" />
                                                 </div>
                                                 
                                                 <div class="form-group">
                                                 	<label for="address">Adresse*</label>
-                                                	<input type="text" size="10" maxlength="250" value="${address}" class="Boitegrandetaille" name="address" />
+                                                	<input type="text" size="10" maxlength="250" value="${address}" class="form-control" name="address" />
                                                 </div>
                                                 
                                                  <div class="form-group">
@@ -126,13 +123,13 @@
 
                                                 <div class="form-group">
                                                     <label for="tel">Téléphone</label> 
-                                                    <input type="text" maxlength="10" value="${tel}" name="tel" />
+                                                    <input type="text" maxlength="10" value="${tel}" class="form-control" name="tel" />
                                                 </div>
 
                                                 <div class="form-group">
                                                 	<label for="mdp">Mot de passe</label> 
                                                		<input type="password" maxlength="16"  class="form-control"  value="${mdp}" name="mdp"/>
-                                                	<label for="checkmdp">Téléphone</label> 
+                                                	<label for="checkmdp">Confirmer mot de passe</label> 
                                                 	<input type="password" maxlength="16" value="" class="form-control" name="checkmdp"/>
                                                 </div>
 

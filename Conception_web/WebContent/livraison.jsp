@@ -49,8 +49,7 @@
 
 <body style="background-color: #f7f7f7;">
 
- <% session.invalidate();
-	session=request.getSession(true);
+ <% 
 	ArrayList<String> link = new ArrayList<String>();
 	String lien="";
 String table = "lignefact";
@@ -125,7 +124,7 @@ String table = "lignefact";
 				%> av Mail.send<%
 				
 				new Mail().sendMail(content,mail);
-				session.setAttribute("success","o");
+				
 				response.sendRedirect("Login.jsp");
 				
 			}catch (Exception e) {

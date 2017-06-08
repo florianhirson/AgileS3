@@ -100,7 +100,7 @@ public class Cart {
 		for (Integer reference : references_quantity.keySet()) {
 			Article article = Bridge.getArticle(reference);
 			temp += "<tr><td>" + article.getName() + "</td><td>" + article.getReference() + "</td><td><img src=\""
-					+ article.getImage_url()
+					+ article.getImageURL()
 					+ "\" class=\"img-responsive img-thumbnail\" style=\"width:10%; height:auto ; display:inline-block ; float:right \" alt=\""
 					+ article.getName() + "\" /></td></tr>\n";
 

@@ -130,7 +130,7 @@
 				style="width: 10%; height: 10%; display: inline-block;">
 			<div style="display: inline-block;">
 				<h3 style="margin-bottom: 1%">
-					<a href=Article.jsp?id= <%=article.getReference()%>><%=article.getName()%><small
+					<a href=Article.jsp?id=<%=article.getReference()%>><%=article.getName()%><small
 						style="margin-left: 5%;"><%=article.getPrice()%>&euro;</small></a>
 				</h3>
 				<p><%=article.getDescription()%></p>

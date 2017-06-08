@@ -40,8 +40,13 @@
 		if (edit)
 			artId = Integer.parseInt(request.getParameter("id"));
 		else if(resultEdit){
-			
-			//art.setCat(resultEdit, modif)
+			artId = Integer.parseInt(request.getParameter("resultEdit"));
+			art.setStock(artId, Integer.parseInt(request.getParameter("stockArticle")));
+			art.setImage(artId, request.getParameter("imageArticle"));
+			art.setPrix(artId, Double.parseDouble(request.getParameter("prixArticle")));
+			art.setLibelle(artId, request.getParameter("nomArticle"));
+			art.setDescription(artId, request.getParameter("descriptionArticle"));
+			art.setCat(artId, request.getParameter("catArticle"));
 		}else if(request.getParameter("nomArticle") != null){
 			art.addArticle(request.getParameter("nomArticle"),
 					Double.parseDouble(request.getParameter("prixArticle")),
@@ -90,7 +95,7 @@
 	<div class="form-group row" style="max-width: 500px;">
 		<label class="col-form-label col-sm-2" for="imageArticle">URL Image </label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="imageArticle" name="vendeurArticle" value="<% if(edit) out.print(art.getImage(artId)); %>"/>
+			<input type="text" class="form-control" id="imageArticle" name="imageArticle" value="<% if(edit) out.print(art.getImage(artId)); %>"/>
 		</div>
 	</div>
 	<div class="form-group row" style="max-width: 500px;">
@@ -102,7 +107,7 @@
 		<div class="form-group row" style="max-width: 500px;">
 		<label class="col-form-label col-sm-2" for="descriptionArticle">Description </label>
 		<div class="col-sm-10">
-			<textarea id="descritptionArticle"><% if(edit) out.print(art.getDescription(artId)); %></textarea>
+			<textarea name="descriptionArticle" id="descritptionArticle"><% if(edit) out.print(art.getDescription(artId)); %></textarea>
 		</div>
 	</div>
 	<% if(edit) out.print("<input type=\"hidden\" name=\"resultEdit\" value=\""+artId+"\"/>");%>

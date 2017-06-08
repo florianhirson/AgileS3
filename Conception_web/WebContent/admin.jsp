@@ -199,23 +199,63 @@
 	<%
 		int user = (request.getParameter("idUser") != null ? Integer.parseInt(request.getParameter("idUser")) : -1);
 		int article = (request.getParameter("idArticle") != null ? Integer.parseInt(request.getParameter("idArticle")) : -1);
-	%>Bienvenu sur le panneau de controle d'administrateur !</h3>
+		int ticket = -1;
+		boolean supprimerUser = (request.getParameter("supprimerUser") != null);
+		boolean supprimerArticle = (request.getParameter("supprimerArticle") != null);
+		if(user != -1 && article != -1) article = -1;
+		if(user != -1) out.println("Utilisateur");
+		else if(article != -1) out.println("Article");
+		else out.println("Bienvenu sur le panneau de controle d'administrateur !");
+	%></h3>
 	</div>
-	<div class="cat-content" style="display: none;" title="Utilisateur">
+	<div class="cat-content" <% if(user == -1){ %> style="display: none;" <% } %> title="Utilisateur">
 	
+	<form>
 	<label for="user">ID utilisateur : </label>
-	<input type="text" id="user"/>
+	<input type="text" id="user" name="idUser"/>
 	<input type="submit" value="Go"/>
+	</form>
 	
+	
+
 	</div>
-	<div class="cat-content" style="display:none;" title="Article">
-	
+	<div class="cat-content" <% if(article == -1){ %> style="display: none;" <% } %> title="Article">
+
+	<% 
+	Article art = null;
+	if(article != -1){ 
+	art = Article.getInstance(); 
+		if(art.getLibelle(article) != null && supprimerArticle){
+			out.print("<h3 style=\"color:green;\"> L'article "+art.getLibelle(article)+" a bien été suprrimé</h3>");
+			art.rmArticle(article);
+		}else if(art.getLibelle(article) == null && supprimerArticle){
+			out.print("<h3 style=\"color:red;\"> Impossible de supprimer cet article car il n'existe pas</h3>");
+		}
+	}
+	%>
+		
+	<form>
 	<label for="article">ID article : </label>
-	<input type="text" id="article"/>
+	<input type="text" id="article" name="idArticle"/>
 	<input type="submit" value="Go"/>
+	</form>
+	
+	<%
+		if(article != -1 && !supprimerArticle){
+			if(art.getLibelle(article) != null){
+	%>
+		<h3> <%= art.getLibelle(article) %></h3>
+		<form>
+		<input type="hidden" name="idArticle" value="<%= article %>"/>
+		<input type="submit" name="supprimerArticle" value="Supprimer"></input>
+		</form>
+			
+	<% }else{ %>
+		<h3 style="color:red;"> Aucun article trouvé avec cette réference !</h3>
+	<% }} %>
 	
 	</div>
-	<div class="cat-content" style="display:none;" title="Ticket">
+	<div class="cat-content" <% if(ticket == -1){ %> style="display: none;" <% } %> title="Ticket">
 	
 	Ticket !
 	
@@ -227,7 +267,7 @@
 <script>
 	var cat = document.getElementsByClassName("cat-content");
 	var title = document.getElementById("Titre");
-	var actual = 0;
+	var actual = <% if(user != -1) out.print(0); else if(article != -1) out.print(1); else out.println(2); %>;
 	function changeCat(categorie){
 		console.log(cat);
 		cat[actual].style.display="none";

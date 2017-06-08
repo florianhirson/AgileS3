@@ -148,10 +148,10 @@ String table = "utilisateur";
 				content+="<h2>Appelez les HENDEKs</h2>";
 				%> av Mail.send<%
 				
+				//new Mail().sendMail(content,mail);
 				session.setAttribute("success","o");
 				response.sendRedirect("Login.jsp");
-				new Mail().sendMail(content,mail);
-
+				
 			}catch (Exception e) {
 				%> catch 1<%
 				out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());

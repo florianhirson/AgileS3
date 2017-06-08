@@ -115,6 +115,10 @@ public class Me {
 		
 		return ret;
 	}
+	
+	public int getDroit(){
+		return this.droit;
+	}
 
 
 }

@@ -132,8 +132,10 @@
 				if(articles.getCat(key) == cat) {
 					if(r1 == null && key != id)
 						r1 = key;
-					if(r1 != key && r2 == null && key != id)
+					if(r1 != key && r2 == null && key != id) {
 						r2 = key;
+					}
+						
 				}	
 				
 			}

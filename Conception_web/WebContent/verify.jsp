@@ -1,20 +1,20 @@
 <%@ page
 	import="java.lang.*, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
-<%@ page import="import java.io.*,
-import javax.servlet.*,
-import javax.servlet.http.*,
-import javax.servlet.annotation.WebServlet,
-import java.util.Properties,
-import java.sql.PreparedStatement,
-import java.sql.ResultSet,
-import javax.mail.*,
-import javax.mail.internet.*,
-import java.sql.DriverManager,
-import java.sql.Connection,
-import java.util.Calendar,
-import java.sql.Date,
-import java.sql.Types,
-import org.apache.commons.validator.routines.EmailValidator," %>
+<%@ page import=" java.io.*,
+ javax.servlet.*,
+ javax.servlet.http.*,
+ javax.servlet.annotation.WebServlet,
+ java.util.Properties,
+ java.sql.PreparedStatement,
+ java.sql.ResultSet,
+ javax.mail.*,
+ javax.mail.internet.*,
+ java.sql.DriverManager,
+ java.sql.Connection,
+ java.util.Calendar,
+ java.sql.Date,
+ java.sql.Types,
+ org.apache.commons.validator.routines.EmailValidator," %>
 
 <!DOCTYPE html>
 

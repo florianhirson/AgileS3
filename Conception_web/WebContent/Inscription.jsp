@@ -38,30 +38,6 @@
 			<a style="color: white" href=./accueil.jsp>HENDEK</a>
 		</H1>
 	</header>
-
-	<div style="margin-left: 3%; margin-right: 3%;">
-		<%if(session.getAttribute("panier")==null){ %>
-		<a class="btn btn-default" href="./MonPanier.jsp" role="button"
-			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Panier (Vide)</a>
-		<%}else{%>
-		<a class="btn btn-default" href="./MonPanier.jsp" role="button"
-			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)
-		</a>
-		<%}%>
-		<a class="btn btn-default" href="./edit_account.jsp" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mon Compte</a>
-		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Mes Commandes</a>
-				
-		<a class="btn btn-default" href="#" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Promotions</a>
-			<%if(session.getAttribute("login")==null){ %>
-		<a class="btn btn-default" href="" role="button" style="width: 18%; margin-left:1%; background-color:#dfe3ee">Connexion</a>
-		<%}else{%>
-		<a class="btn btn-default" href="./LogOut.jsp" role="button"
-			style="width: 18%; margin-left: 1%; background-color: #dfe3ee; float: right;">Deconnexion</a>
-		<%}%>
-	</div>
-
 	<div style="background-color:#dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 	
                 <% 

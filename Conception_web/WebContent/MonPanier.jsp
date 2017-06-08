@@ -67,8 +67,10 @@
 		</table>
 	</div>
 	<%}%>
+	<div>
 	<a class="btn btn-primary" href="PasserCommande.jsp" role="button"style="width: 18%; margin-left:2%; margin-right:1%;">Passer la commande</a>
 	
 	<a class="btn btn-warning" href="./MonPanier.jsp?clear=yes" role="button" style="width: 18%; margin-left:1%; margin-right:1%;">Vider mon panier</a>
+	</div>
 </body>
 </html>

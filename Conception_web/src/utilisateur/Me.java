@@ -115,6 +115,8 @@ public class Me {
 		
 		return ret;
 	}
-
+	public String getAddress() {
+		return address;
+	}
 
 }

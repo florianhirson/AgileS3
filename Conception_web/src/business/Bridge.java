@@ -334,13 +334,13 @@ public class Bridge {
 
 		searchByBrand = false;
 		if (searchByName) {
-			filter += " libelle LIKE '%" + keyword + "%'";
+			filter += " LOWER(libelle) LIKE LOWER('%" + keyword + "%')";
 		}
 		if (searchByName && searchByCategory) {
 			filter += " OR";
 		}
 		if (searchByCategory) {
-			filter += " category LIKE '%" + keyword + "%'";
+			filter += " LOWER(category) LIKE LOWER('%" + keyword + "%')";
 		}
 
 		return getAllArticlesFILTERED(filter);

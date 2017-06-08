@@ -38,9 +38,14 @@
 			}
 		%>
 
+		<% if(((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 ){ %>
+		<a class="btn btn-default" href="./admin.jsp" role="button"
+			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Administration</a> 
+		<% } else { %>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Compte</a> <a class="btn btn-default" href="#" role="button"
+			Compte</a>
+		<% } %>  <a class="btn btn-default" href="./MesCommandes.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
 			Commandes</a> <a class="btn btn-default" href="#" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>
@@ -80,12 +85,11 @@
 						response.sendRedirect("accueil.jsp");
 					} else {
 						Integer id = Integer.valueOf(request.getParameter("id"));
+						String category = Article.getInstance().getCat(id);
 						
 				%>
 				<%=article.getLibelle(id)%></h1>
-			<h4>
-				Ref :
-				<%=id%></h4>
+			<h4>Reference : <%=id%> - Categorie : <a href="Search.jsp?search=<%=category%>&searchbycategory=true"><%=category%></a></h4>
 
 		</div>
 		<div class="row">

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 
 public class Me {
 	
@@ -23,6 +24,7 @@ public class Me {
 		this.login=login;
 		this.mdp=password;
 		Connection con=null;
+		
 		try{
 
 			Class.forName("org.postgresql.Driver");
@@ -94,12 +96,57 @@ public class Me {
 		}
 	}
 	
+	public HashMap<String,String> myOrder(){
+		
+		HashMap<String,String> macommande = new HashMap<>();
+		Connection con=null;
+		
+		try{
+
+			Class.forName("org.postgresql.Driver");
+				String url = "jdbc:postgresql://psqlserv/n2p1";
+				String nom = "barbetf";
+				String mdp = "moi";
+			con = DriverManager.getConnection(url,nom,mdp);
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+
+			String query = "select nofacture,address from facture where login='"+login+"';";
+			ResultSet rs = stmt.executeQuery(query);
+
+			if(rs.next()){
+				macommande.put(rs.getString("nofacture"), rs.getString("address"));
+			}
+
+
+
+		}catch (Exception e) {
+			System.out.println("[ERRORme]"+e.getMessage()+"");
+		}finally{	  
+			try{
+				con.close();
+			}catch(Exception e){
+				System.out.println("[ERRORclose]"+e.getMessage()+"");
+			}
+		}
+		return macommande;
+	}
+	
 	public String getLogin(){
 		return login;
 	}
 	
+	public int getDroit(){
+		return droit;
+	}
+	
 	public String getPassword(){
 		return mdp;
+	}
+	
+	public String getAddress(){
+		return address;
 	}
 	
 	public String toString(){

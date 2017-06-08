@@ -201,6 +201,7 @@
 		int article = (request.getParameter("idArticle") != null ? Integer.parseInt(request.getParameter("idArticle")) : -1);
 		int ticket = -1;
 		boolean supprimerUser = (request.getParameter("supprimerUser") != null);
+		int droitUser = (request.getParameter("droitUser") != null ? Integer.parseInt(request.getParameter("droitUser")) : -2);
 		boolean supprimerArticle = (request.getParameter("supprimerArticle") != null);
 		if(user != null && article != -1) article = -1;
 		if(user != null) out.println("Utilisateur");
@@ -213,12 +214,18 @@
 	<% 
 	User us = null;
 	if(user != null){ 
-	us = User.getInstance(); 
+		us = User.getInstance();
+		String[] droits = {"bloqué", "", "débloqué", "promu administrateur"};
 		if(us.getNom(user) != null && supprimerUser){
 			out.print("<h3 style=\"color:green;\"> L'utilisateur "+user+" a bien été suprrimé</h3>");
 			us.rmUser(user);
 		}else if(us.getNom(user) == null && supprimerUser){
 			out.print("<h3 style=\"color:red;\"> Impossible de supprimer cet utilisateur car il n'existe pas</h3>");
+		}else if(us.getNom(user) != null && droitUser != -2){
+			out.print("<h3 style=\"color: green;\"> L'utilisateur a bien été "+droits[droitUser+1]+"</h3>");
+			us.setDroit(user, droitUser);
+		}else if(us.getNom(user) == null && droitUser != -2){
+			out.print("<h3 style=\"color:green;\"> L'utilisateur n'a pas pu être "+droits[droitUser+1]+" car il n'existe pas</h3>");
 		}
 	}
 	%>
@@ -235,22 +242,21 @@
 	%>
 		<h3> <%= user %></h3>
 		Nom : <%= us.getNom(user) %><br/>
-		Prénom : <%= us.getPrenom(user) %></br>
-		Droit : <%= us.getDroit(user) %></br>
+		Prénom : <%= us.getPrenom(user) %><br/>
+		Droit : <%= us.getDroit(user) %><br/>
 		
 		<form>
 		<input type="hidden" name="idUser" value="<%= user %>"/>
 		<%
 			if(us.getDroit(user) == -1)
 				out.println("<button name=\"droitUser\" value=\"1\" type=\"submit\">Débloquer</button>");
-			else
+			else if(us.getDroit(user) < 2){
 				out.println("<button name=\"droitUser\" value=\"-1\" type=\"submit\">Bloquer</button>");
-			if(us.getDroit(user) == 1)
+				out.println("<input type=\"submit\" name=\"supprimerUser\" value=\"Supprimer\"/>");
+			}
+			if(us.getDroit(user) >= 0 && us.getDroit(user) < 2)
 				out.println("<button name=\"droitUser\" value=\"2\" type=\"submit\">Mettre admin</button>");
-			else
-				out.println("<button name=\"droitUser\" value=\"1\" type=\"submit\">Enlever droits admin</button>");
 		%>
-		<input type="submit" name="supprimerUser" value="Supprimer"/>
 		</form>
 			
 	<% }else{ %>

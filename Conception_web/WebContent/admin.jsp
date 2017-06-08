@@ -197,26 +197,65 @@
 				<div class="page-header">
 	<h3 id="Titre"><span class="glyphicon glyphicon-th-list"></span> 
 	<%
-		int user = (request.getParameter("idUser") != null ? Integer.parseInt(request.getParameter("idUser")) : -1);
+		String user = request.getParameter("idUser");
 		int article = (request.getParameter("idArticle") != null ? Integer.parseInt(request.getParameter("idArticle")) : -1);
 		int ticket = -1;
 		boolean supprimerUser = (request.getParameter("supprimerUser") != null);
 		boolean supprimerArticle = (request.getParameter("supprimerArticle") != null);
-		if(user != -1 && article != -1) article = -1;
-		if(user != -1) out.println("Utilisateur");
+		if(user != null && article != -1) article = -1;
+		if(user != null) out.println("Utilisateur");
 		else if(article != -1) out.println("Article");
 		else out.println("Bienvenu sur le panneau de controle d'administrateur !");
 	%></h3>
 	</div>
-	<div class="cat-content" <% if(user == -1){ %> style="display: none;" <% } %> title="Utilisateur">
+	<div class="cat-content" <% if(user == null){ %> style="display: none;" <% } %> title="Utilisateur">
+	
+	<% 
+	User us = null;
+	if(user != null){ 
+	us = User.getInstance(); 
+		if(us.getNom(user) != null && supprimerUser){
+			out.print("<h3 style=\"color:green;\"> L'utilisateur "+user+" a bien été suprrimé</h3>");
+			us.rmUser(user);
+		}else if(us.getNom(user) == null && supprimerUser){
+			out.print("<h3 style=\"color:red;\"> Impossible de supprimer cet utilisateur car il n'existe pas</h3>");
+		}
+	}
+	%>
 	
 	<form>
-	<label for="user">ID utilisateur : </label>
+	<label for="user">Login utilisateur : </label>
 	<input type="text" id="user" name="idUser"/>
 	<input type="submit" value="Go"/>
 	</form>
 	
-	
+	<%
+		if(user != null && !supprimerUser){
+			if(us.getNom(user) != null){
+	%>
+		<h3> <%= user %></h3>
+		Nom : <%= us.getNom(user) %><br/>
+		Prénom : <%= us.getPrenom(user) %></br>
+		Droit : <%= us.getDroit(user) %></br>
+		
+		<form>
+		<input type="hidden" name="idUser" value="<%= user %>"/>
+		<%
+			if(us.getDroit(user) == -1)
+				out.println("<button name=\"droitUser\" value=\"1\" type=\"submit\">Débloquer</button>");
+			else
+				out.println("<button name=\"droitUser\" value=\"-1\" type=\"submit\">Bloquer</button>");
+			if(us.getDroit(user) == 1)
+				out.println("<button name=\"droitUser\" value=\"2\" type=\"submit\">Mettre admin</button>");
+			else
+				out.println("<button name=\"droitUser\" value=\"1\" type=\"submit\">Enlever droits admin</button>");
+		%>
+		<input type="submit" name="supprimerUser" value="Supprimer"/>
+		</form>
+			
+	<% }else{ %>
+		<h3 style="color:red;"> Aucun utilisateur trouvé avec ce login !</h3>
+	<% }} %>
 
 	</div>
 	<div class="cat-content" <% if(article == -1){ %> style="display: none;" <% } %> title="Article">
@@ -267,7 +306,7 @@
 <script>
 	var cat = document.getElementsByClassName("cat-content");
 	var title = document.getElementById("Titre");
-	var actual = <% if(user != -1) out.print(0); else if(article != -1) out.print(1); else out.println(2); %>;
+	var actual = <% if(user != null) out.print(0); else if(article != -1) out.print(1); else out.println(2); %>;
 	function changeCat(categorie){
 		console.log(cat);
 		cat[actual].style.display="none";

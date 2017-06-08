@@ -1,3 +1,5 @@
+<%if (application.getAttribute("articles")==null || session.getAttribute("login") == null)
+			response.sendRedirect("Login.jsp");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +12,8 @@
 	crossorigin="anonymous">
 <title>Hendek</title>
 </head>
-<%if (application.getAttribute("articles")==null)
-			response.sendRedirect("Login.jsp");%>
 
-<%if (session.getAttribute("login") == null)
-			response.sendRedirect("Login.jsp");%>
+
 <body style="background-color: #f7f7f7;">
 
 	<header
@@ -72,7 +71,10 @@
 			<h2>Susceptible de vous interesser :</h2>
 
 			<% Article articles = (Article)application.getAttribute("articles"); %>
-			<% SortedSet<Integer> set = new TreeSet<Integer>(articles.getAllLibelle().keySet()); %>
+			<%if(articles != null) {
+				SortedSet<Integer> set = new TreeSet<Integer>(articles.getAllLibelle().keySet());
+			
+				 %>
 
 			<% int r1 = ThreadLocalRandom.current().nextInt(set.first(), set.first()+articles.getAllLibelle().keySet().size()) +1;%>
 			<% while (articles.getLibelle(r1)==null){ %>
@@ -113,6 +115,7 @@
 					style="width: 10%; background-color: #dfe3ee; position: Absolute; right: 5%;">Ajouter
 					au panier</a>
 			</div>
+			<%} %>
 		</div>
 
 	</div>

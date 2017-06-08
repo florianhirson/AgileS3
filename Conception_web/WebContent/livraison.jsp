@@ -54,7 +54,7 @@
 	String lien="";
 String table = "lignefact";
 	
-	String login=request.getParameter("login");
+	
 
 	ArrayList<String> produit = new ArrayList<>();
 	ArrayList<String> count = new ArrayList<>();

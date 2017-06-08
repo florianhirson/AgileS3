@@ -138,6 +138,10 @@ public class Me {
 		return login;
 	}
 	
+	public int getDroit(){
+		return droit;
+	}
+	
 	public String getPassword(){
 		return mdp;
 	}

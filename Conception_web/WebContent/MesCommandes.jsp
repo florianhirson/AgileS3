@@ -20,7 +20,7 @@
 		<%pageArt = Integer.valueOf(request.getParameter("pageArt"));%>
 	<%}%>
 	
-	<%if (session.getAttribute("login") == null)
+	<%if (session.getAttribute("login") == null || session.getAttribute("user") == null )
 			response.sendRedirect("Login.jsp");%>
 
 	<header
@@ -66,8 +66,13 @@
 			style="width: 18%; margin-left: 1%; background-color: #dfe3ee">Deconnexion</a>
 		<%}%>
 	</div>
-
+	
 	<div style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
-
+	
+		<%if( ((Me)session.getAttribute("user")).myOrder()!=null){%>
+		<%if( ((Me)session.getAttribute("user")).myOrder().isEmpty()){%>
+		<h3> Pas de commandes en cours </h3> 
+		<%} else {%>
+		<%}} %>
 	</div>
 </body>

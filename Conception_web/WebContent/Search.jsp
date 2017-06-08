@@ -118,11 +118,11 @@
 		<h2">Erreur !</h2>
 		<%
 						}
-				else if (articles == null || articles.size() == 0) {
+				else if (articles.size() == 0) {
 		%>
 		<h2">Aucun resultat trouve...</h2>
 		<%
-			}
+			} else {
 				for (Article article : articles) {
 		%>
 		<div style="margin: 1%; border-radius: 10px;">

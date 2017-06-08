@@ -16,6 +16,7 @@ public class Bridge {
 	private static String db_password = "moi";
 
 	private static ResultSet executeQuery(String query) throws Exception {
+		System.out.println(query);
 		Connection connection = null;
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -26,10 +27,11 @@ public class Bridge {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new Exception("Erreur : " + ex.getMessage());
-		}	finally {
+		} finally {
 			try {
 				connection.close();
-				throw new Exception("Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+				throw new Exception(
+						"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -37,6 +39,7 @@ public class Bridge {
 	}
 
 	private static void executeUpdate(String query) throws Exception {
+		System.out.println(query);
 		Connection connection = null;
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -46,10 +49,11 @@ public class Bridge {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new Exception("Erreur : " + ex.getMessage());
-		}	finally {
+		} finally {
 			try {
 				connection.close();
-				throw new Exception("Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
+				throw new Exception(
+						"Une erreur est survenu lors de l'execution d'une requette sur la BDD... (" + query + ")");
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -68,13 +72,13 @@ public class Bridge {
 				if (rs.getString("last_name").equals("admin")) {
 					db_url = url;
 					db_username = username;
-					db_password = password;					
+					db_password = password;
 					System.out.println("BDD change avec succes !");
 				}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-		}	finally {
+		} finally {
 			try {
 				connection.close();
 			} catch (Exception ex) {
@@ -83,11 +87,13 @@ public class Bridge {
 		}
 	}
 
-	// Person ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
+	// Person ########## ########## ########## ########## ########## ##########
+	// ########## ########## ########## ##########
 
 	/**
-	 * @return Client ou Admin correspondant a l'ID, null si non trouve. 
-	 * @param id ID
+	 * @return Client ou Admin correspondant a l'ID, null si non trouve.
+	 * @param id
+	 *            ID
 	 */
 	protected static Person getPerson(int id) {
 		try {
@@ -107,16 +113,19 @@ public class Bridge {
 							rs.getString("credit_card_number"), rs.getDate("credit_card_date"));
 				}
 			}
-		} catch (	Exception ex)	{
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 		return null;
 	}
 
 	/**
-	 * @return Client ou Admin correspondant au Mail si le Mot de passe est correct, null si non trouve ou Mot de passe incorrect. 
-	 * @param mail Mail
-	 * @param password Mot de passe
+	 * @return Client ou Admin correspondant au Mail si le Mot de passe est
+	 *         correct, null si non trouve ou Mot de passe incorrect.
+	 * @param mail
+	 *            Mail
+	 * @param password
+	 *            Mot de passe
 	 */
 	public static Person getPerson(String mail, String password) {
 		try {
@@ -138,20 +147,21 @@ public class Bridge {
 					}
 				}
 			}
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 		return null;
 	}
 
 	/**
-	 * @return ArrayList contenant toutes les Clients et Admins correspondant au filtre
-	 * @param filter Filtre ecrit en SQL
+	 * @return ArrayList contenant toutes les Clients et Admins correspondant au
+	 *         filtre
+	 * @param filter
+	 *            Filtre ecrit en SQL
 	 */
 	protected static List<Person> getAllPersonsFILTERED(String filter) {
 		ArrayList<Person> persons = new ArrayList<>();
 		try {
-
 
 			String query = "SELECT * FROM person";
 			if (filter != null) {
@@ -162,9 +172,15 @@ public class Bridge {
 
 			while (rs.next()) {
 				if (rs.getBoolean("is_admin")) {
-					persons.add(new Admin(new Person(rs.getInt("id"), rs.getString("first_name"),	rs.getString("last_name"), rs.getString("mail"), rs.getString("password"), rs.getString("default_adress"), rs.getString("phone"))));
+					persons.add(new Admin(new Person(rs.getInt("id"), rs.getString("first_name"),
+							rs.getString("last_name"), rs.getString("mail"), rs.getString("password"),
+							rs.getString("default_adress"), rs.getString("phone"))));
 				} else {
-					persons.add(new Client(new Person(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("mail"), rs.getString("password"), rs.getString("default_adress"), rs.getString("phone")), rs.getString("credit_card_number"), rs.getDate("credit_card_date")));
+					persons.add(new Client(
+							new Person(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"),
+									rs.getString("mail"), rs.getString("password"), rs.getString("default_adress"),
+									rs.getString("phone")),
+							rs.getString("credit_card_number"), rs.getDate("credit_card_date")));
 				}
 			}
 		} catch (Exception ex) {
@@ -174,15 +190,18 @@ public class Bridge {
 	}
 
 	/**
-	 * @param id ID de la Person a modifier
-	 * @param column Collone a modifier
-	 * @param new_value Nouvelle valeur
+	 * @param id
+	 *            ID de la Person a modifier
+	 * @param column
+	 *            Collone a modifier
+	 * @param new_value
+	 *            Nouvelle valeur
 	 */
 	public static void updatePerson(int id, String column, String new_value) {
 		try {
-			String query = "UPDATE person SET " + column + " = " + new_value + " WHERE id = " + id + ";" ;
+			String query = "UPDATE person SET " + column + " = " + new_value + " WHERE id = " + id + ";";
 			executeUpdate(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
@@ -193,16 +212,20 @@ public class Bridge {
 	public static void addClient(Client client) {
 		try {
 			int code = (int) Math.random() * 100000000;
-			String query = "INSERT INTO unchecked(first_name, last_name, mail, password, code) VALUES (" + client.getFirstName() + ", "+ client.getLastName() + ", "+ client.getMail() + ", "+ client.getPassword() + ", "+ code +  ", " + new Date(new java.util.Date().getTime()) + ");";
+			String query = "INSERT INTO unchecked(first_name, last_name, mail, password, code) VALUES ("
+					+ client.getFirstName() + ", " + client.getLastName() + ", " + client.getMail() + ", "
+					+ client.getPassword() + ", " + code + ", " + new Date(new java.util.Date().getTime()) + ");";
 			executeUpdate(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
 
 	/**
-	 * @param mail Mail du client a ajouter
-	 * @param code Code de validation
+	 * @param mail
+	 *            Mail du client a ajouter
+	 * @param code
+	 *            Code de validation
 	 */
 	public static void verifyClient(String mail, int code) {
 		try {
@@ -210,50 +233,57 @@ public class Bridge {
 			ResultSet rs = executeQuery(query);
 			if (rs.next()) {
 				if (rs.getString("code").equals(code)) {
-					query = "INSERT INTO person(first_name, last_name, mail, password) VALUES (" + rs.getString("first_name") + ", "+ rs.getString("last_name") + ", "+ rs.getString("mail") + ", "+ rs.getString("password") + ");";
-					executeUpdate(query);					
+					query = "INSERT INTO person(first_name, last_name, mail, password) VALUES ("
+							+ rs.getString("first_name") + ", " + rs.getString("last_name") + ", "
+							+ rs.getString("mail") + ", " + rs.getString("password") + ");";
+					executeUpdate(query);
 
 					query = "DELETE FROM unchecked WHERE mail=" + mail + ";";
 					executeUpdate(query);
 				}
 			}
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
-	 * @param mail Mail du client a ajouter
-	 * @param code Code de validation
+	 * @param mail
+	 *            Mail du client a ajouter
+	 * @param code
+	 *            Code de validation
 	 */
 	public static void addAdmin(Admin admin) {
 		try {
-			String query = "INSERT INTO person(is_admin, first_name, last_name, mail, password) VALUES (TRUE, " + admin.getFirstName() + ", "+ admin.getLastName() + ", "+ admin.getMail() + ", "+ admin.getPassword() + ");";
+			String query = "INSERT INTO person(is_admin, first_name, last_name, mail, password) VALUES (TRUE, "
+					+ admin.getFirstName() + ", " + admin.getLastName() + ", " + admin.getMail() + ", "
+					+ admin.getPassword() + ");";
 			executeUpdate(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
-	 * @param id ID à supprimer
+	 * @param id
+	 *            ID ï¿½ supprimer
 	 */
 	protected static void removePerson(int id) {
 		try {
 			String query = "DELETE FROM person WHERE id=" + id + ";";
 			executeUpdate(query);
-		} catch (	Exception ex)	{
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
 
-
-	// Article ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
-
+	// Article ########## ########## ########## ########## ########## ##########
+	// ########## ########## ########## ##########
 
 	/**
-	 * @return Article correspondant a la Reference, null si non trouve. 
-	 * @param reference Reference
+	 * @return Article correspondant a la Reference, null si non trouve.
+	 * @param reference
+	 *            Reference
 	 */
 	public static Article getArticle(int reference) {
 		try {
@@ -261,7 +291,9 @@ public class Bridge {
 			ResultSet rs = executeQuery(query);
 
 			if (rs.next()) {
-				return new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"), rs.getString("image_url"), rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity"));
+				return new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"),
+						rs.getString("image_url"), rs.getString("brand"), rs.getString("category"),
+						rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity"));
 			}
 		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
@@ -279,7 +311,7 @@ public class Bridge {
 					return true;
 				}
 			}
-		} catch (	Exception ex)	{
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 		return false;
@@ -287,32 +319,36 @@ public class Bridge {
 
 	/**
 	 * @return ArrayList contenant tout les Articles retournes par la recherche
-	 * @param keyword Mot cle entre par l'utilisateur 
-	 * @param searchByName Retourne les articles ou le nom correspond
-	 * @param searchByBrand Retourne les articles  ou la marque correspond
-	 * @param searchByCategory Retourne les articles  ou la categorie correspond
+	 * @param keyword
+	 *            Mot cle entre par l'utilisateur
+	 * @param searchByName
+	 *            Retourne les articles ou le nom correspond
+	 * @param searchByBrand
+	 *            Retourne les articles ou la marque correspond
+	 * @param searchByCategory
+	 *            Retourne les articles ou la categorie correspond
 	 */
-	protected static List<Article> searchArticles(String keyword, boolean searchByName, boolean searchByBrand, boolean searchByCategory) {
+	public static List<Article> searchArticles(String keyword, boolean searchByName, boolean searchByBrand,
+			boolean searchByCategory) {
 		if (searchByName == false && searchByBrand == false && searchByCategory == false) {
 			return null;
 		}
 		String filter = " WHERE";
 		if (searchByName) {
-			filter += " name LIKE %" + keyword + "%";
+			filter += " name LIKE '%" + keyword + "%'";
 		}
 		if (searchByName && searchByBrand) {
-			filter += " AND";
+			filter += " OR";
 		}
 		if (searchByBrand) {
-			filter += " brand LIKE %" + keyword + "%;";
+			filter += " brand LIKE '%" + keyword + "%';";
 		}
 		if ((searchByName || searchByBrand) && searchByCategory) {
-			filter += " AND";
+			filter += " OR";
 		}
-		if (searchByBrand) {
-			filter += " category LIKE %" + keyword + "%;";
+		if (searchByCategory) {
+			filter += " category LIKE '%" + keyword + "%';";
 		}
-		filter += ";";
 		return getAllArticlesFILTERED(filter);
 	}
 
@@ -325,7 +361,8 @@ public class Bridge {
 
 	/**
 	 * @return ArrayList contenant tout les Articles tries
-	 * @param column Collone
+	 * @param column
+	 *            Collone
 	 */
 	public static List<Article> getAllArticlesSortedBy(String column) {
 		return getAllArticlesFILTERED(" SORTED BY " + column);
@@ -333,7 +370,8 @@ public class Bridge {
 
 	/**
 	 * @return ArrayList contenant tout les Articles correspondant au filtre
-	 * @param filter Filtre ecrit en SQL
+	 * @param filter
+	 *            Filtre ecrit en SQL
 	 */
 	protected static List<Article> getAllArticlesFILTERED(String filter) {
 		ArrayList<Article> articles = new ArrayList<>();
@@ -344,13 +382,14 @@ public class Bridge {
 			}
 			query += ";";
 			ResultSet rs = executeQuery(query);
-
 			while (rs.next()) {
-				articles.add(new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"), rs.getString("image_url"), rs.getString("brand"), rs.getString("category"), rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity")));
+				articles.add(new Article(rs.getInt("reference"), rs.getString("name"), rs.getString("description"),
+						rs.getString("image_url"), rs.getString("brand"), rs.getString("category"),
+						rs.getDouble("price"), rs.getDouble("discount"), rs.getInt("quantity")));
 			}
 		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 		return articles;
 	}
 
@@ -365,30 +404,38 @@ public class Bridge {
 			query = "INSERT INTO category(name) VALUES (" + article.getCategory() + ");";
 			executeUpdate(query);
 
-			query = "INSERT INTO article(name, description, image_url, brand, category, price, discount, quantity) VALUES (" + article.getName() + ", " + article.getDescription() + ", " + article.getImage_url() + article.getBrand() + ", " + article.getCategory() + ", " + article.getPrice() + article.getDiscount() + ", " + article.getQuantity() + ");";
+			query = "INSERT INTO article(name, description, image_url, brand, category, price, discount, quantity) VALUES ("
+					+ article.getName() + ", " + article.getDescription() + ", " + article.getImageURL()
+					+ article.getBrand() + ", " + article.getCategory() + ", " + article.getPrice()
+					+ article.getDiscount() + ", " + article.getQuantity() + ");";
 			executeUpdate(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
-	 * @param reference Reference de l'Article a modifier
-	 * @param column Collone a modifier
-	 * @param new_value Nouvelle valeur
+	 * @param reference
+	 *            Reference de l'Article a modifier
+	 * @param column
+	 *            Collone a modifier
+	 * @param new_value
+	 *            Nouvelle valeur
 	 */
 	public static void updateArticle(int reference, String column, String new_value) {
 		try {
-			String query = "UPDATE article SET " + column + " = " + new_value + " WHERE reference = " + reference + ";" ;
+			String query = "UPDATE article SET " + column + " = " + new_value + " WHERE reference = " + reference + ";";
 			executeQuery(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
-	 * @param reference Reference de l'Article a modifier
-	 * @param difference Quantite a ajouter ou retirer
+	 * @param reference
+	 *            Reference de l'Article a modifier
+	 * @param difference
+	 *            Quantite a ajouter ou retirer
 	 */
 	public static void updateArticleQuantity(int reference, int difference) {
 		try {
@@ -398,25 +445,25 @@ public class Bridge {
 			if (rs.next()) {
 				updateArticle(reference, "quantity", Integer.valueOf(rs.getInt("quantity") + difference).toString());
 			}
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}
 
-
-	// Brand and Category ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
-
+	// Brand and Category ########## ########## ########## ########## ##########
+	// ########## ########## ########## ########## ##########
 
 	/**
-	 * @param name Nom de la marque
+	 * @param name
+	 *            Nom de la marque
 	 */
 	public static void addBrand(String name) {
 		try {
 			String query = "INSERT INTO brand(name) VALUES (" + name + ");";
 			executeUpdate(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
@@ -438,15 +485,16 @@ public class Bridge {
 	}
 
 	/**
-	 * @param name Nom de la categorie
+	 * @param name
+	 *            Nom de la categorie
 	 */
 	public static void addCategory(String name) {
 		try {
 			String query = "INSERT INTO category(name) VALUES (" + name + ");";
 			executeUpdate(query);
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
@@ -463,13 +511,12 @@ public class Bridge {
 			}
 		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 		return categories;
 	}
 
-
-	// Order ########## ########## ########## ########## ########## ########## ########## ########## ########## ########## 
-
+	// Order ########## ########## ########## ########## ########## ##########
+	// ########## ########## ########## ##########
 
 	/**
 	 * @return Order correspondant a l'ID, null si non trouve
@@ -487,22 +534,26 @@ public class Bridge {
 			query = "SELECT * FROM order WHERE id=" + id + ";";
 			rs = executeQuery(query);
 			if (rs.next()) {
-				return new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("recipient"), rs.getString("address"), rs.getInt("status"), rs.getDate("xdate"), references_quantity);
+				return new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("recipient"),
+						rs.getString("address"), rs.getInt("status"), rs.getDate("xdate"), references_quantity);
 			}
 
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 		return null;
 	}
 
 	/**
-	 * @param Order Commande a ajouter
+	 * @param Order
+	 *            Commande a ajouter
 	 */
 	public static void addOrder(Order order) {
 		try {
-			String query = "INSERT INTO xorder(person, recipient, address, status, xdate) VALUES (" + order.getPerson() + ", " + order.getRecipient() + ", " + order.getAddress() + ", " + order.getStatus()  + ", " + order.getDate() + ");";
-			executeUpdate(query);				
+			String query = "INSERT INTO xorder(person, recipient, address, status, xdate) VALUES (" + order.getPerson()
+					+ ", " + order.getRecipient() + ", " + order.getAddress() + ", " + order.getStatus() + ", "
+					+ order.getDate() + ");";
+			executeUpdate(query);
 
 			query = "SELECT * FROM xorder WHERE id=(SELECT MAX(id) FROM xorder;);";
 			ResultSet rs = executeQuery(query);
@@ -513,27 +564,31 @@ public class Bridge {
 				id = rs.getInt("id");
 			}
 
-			for (int reference : order.getReferencesQuantity().keySet()){
-				int quantity = order.getReferencesQuantity().get(reference) ;
-				query = "INSERT INTO xline(id, reference, quantity) VALUES (" + id + ", " + reference + ", " + quantity + ");";
-				executeUpdate(query);				
+			for (int reference : order.getReferencesQuantity().keySet()) {
+				int quantity = order.getReferencesQuantity().get(reference);
+				query = "INSERT INTO xline(id, reference, quantity) VALUES (" + id + ", " + reference + ", " + quantity
+						+ ");";
+				executeUpdate(query);
 				updateArticleQuantity(reference, quantity * -1);
 			}
-		} catch (	Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
-		} 
+		}
 	}
 
 	/**
-	 * @param id ID de l'Order a modifier
-	 * @param column Collone a modifier
-	 * @param new_value Nouvelle valeur
+	 * @param id
+	 *            ID de l'Order a modifier
+	 * @param column
+	 *            Collone a modifier
+	 * @param new_value
+	 *            Nouvelle valeur
 	 */
 	public static void updateOrder(int id, String column, String new_value) {
 		try {
-			String query = "UPDATE xorder SET " + column + " = " + new_value + " WHERE id = " + id + ";" ;
-			executeQuery(query);	
-		} catch (	Exception ex) {
+			String query = "UPDATE xorder SET " + column + " = " + new_value + " WHERE id = " + id + ";";
+			executeQuery(query);
+		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 	}

@@ -54,7 +54,8 @@
 	String lien="";
 String table = "lignefact";
 	
-	
+	if(session.getAttribute("user")==null || session.getAttribute("panier")==null)
+		response.sendRedirect("Login.jsp");
 
 	ArrayList<String> produit = new ArrayList<>();
 	ArrayList<String> count = new ArrayList<>();
@@ -70,24 +71,26 @@ String table = "lignefact";
 				String user = "barbetf";
 				String mdpasse = "moi";
 				con = DriverManager.getConnection(url,user,mdpasse);
-				String query="INSERT INTO";
+				String query="INSERT INTO ";
 				query+=table+"(login,idart,qte) VALUES ";
 				int idartLast=0;
-				for(String key : session.getAttribute("panier").getProduits().keySet){
-					PreparedStatement ps = con.prepareStatement(query+"(?,?,?);");
+				PreparedStatement ps = con.prepareStatement(query+"(?,?,?);");
+				for(String key : ((Panier)session.getAttribute("panier")).getProduits().keySet()){
 					
-					ps.setString(1,session.getAttribute("user").getLogin());
-					ps.setInt(2,Integer.parsInt(key));
-					ps.setString(3,session.getAttribute("panier").getCount(key));
+					
+					ps.setString(1,((Me)session.getAttribute("user")).getLogin());
+					ps.setInt(2,Integer.parseInt(key));
+					ps.setInt(3,((Panier)session.getAttribute("panier")).getCount(key));
 					ps.executeUpdate();
-					produit.add(session.getAttribute("panier").getLib(key));
-					count.add(session.getAttribute("panier").getCount(key));
 					
-					idartLast=key;
+					produit.add(((Panier)session.getAttribute("panier")).getLib(key));
+					count.add(((Panier)session.getAttribute("panier")).getCount(key).toString());
+					
+					idartLast=Integer.valueOf(key);
 				}
-				
+				%> apres for <%
 				Date dat=null;
-				query="SELECT dat FROM lignefact WHERE login='"+session.getAttribute("user").getLogin()+"' AND idart='"+idartLast+"';";
+				query="SELECT dat FROM lignefact WHERE login='"+((Me)session.getAttribute("user")).getLogin()+"' AND idart='"+idartLast+"';";
 				
 				Statement stmt = con.createStatement();
 				stmt = con.createStatement();
@@ -95,24 +98,26 @@ String table = "lignefact";
 				if(rs.next())
 				dat = rs.getDate("dat");
 				
-				
+				%> apres rs next -> ps<%
 				if(session.getAttribute("address")==null){
 					query="INSERT INTO facture (login,dat,address) VALUES (?,?,?)";
-					ps.setString(1,session.getAttribute("user").getLogin());
+					ps = con.prepareStatement(query);
+					ps.setString(1,((Me)session.getAttribute("user")).getLogin());
 					ps.setDate(2,dat);
-					ps.setString(3,session.getAttribute("user").getAddress());
+					ps.setString(3,((Me)session.getAttribute("user")).getAddress());
 				}else{
 					query="INSERT INTO facture (login,dat,address) VALUES (?,?,?)";
-					ps.setString(1,session.getAttribute("user").getLogin());
+					ps = con.prepareStatement(query);
+					ps.setString(1,((Me)session.getAttribute("user")).getLogin());
 					ps.setDate(2,dat);
-					ps.setString(3,session.getAttribute("address"));
+					ps.setString(3,(String)session.getAttribute("address"));
 				}
+				%> av update<%
 				ps.executeUpdate();
-						
-				new Mail().selectCheck(login,link);
-
+				%> apres update<%
+				
 				String content="<h1>HENDEK prend en charge votre livraison</h1>\n";
-				content+="<p>Bonjour "+prenom+" "+nom+",<p>";
+				content+="<p>Bonjour "+((Me)session.getAttribute("user")).getLogin()+",<p>";
 				content+="\n<p>Nous prenons bien en charge votre livraison<p>";
 				content+="\n<p>verifier les informations :</p>\n<ul>";
 				for(int i=0; i < produit.size();i++){
@@ -121,15 +126,15 @@ String table = "lignefact";
 				
 
 				content+="<h2>Appelez les HENDEKs</h2>";
-				%> av Mail.send<%
+				%> av Mail.send 
 				
-				new Mail().sendMail(content,mail);
-				
-				response.sendRedirect("Login.jsp");
+				<% new Mail().sendMail(content,((Me)session.getAttribute("user")).getMail());
+			
+				response.sendRedirect("MonPanier.jsp?clear=true");
 				
 			}catch (Exception e) {
 				%> catch 1<%
-				out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());
+				out.println("=====>"+ e.getCause()+ e.getMessage());
 				
 
 			}

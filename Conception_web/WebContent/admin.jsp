@@ -137,6 +137,7 @@
     margin-top: 8px;
   }  
 }
+
 </style>
 
 <div style="margin-left: 3%; margin-right: 3%;">
@@ -191,8 +192,8 @@
           </a>
         </li>
         <li><a href="javascript:" onclick="changeCat(0)"><span class="glyphicon glyphicon-user"></span> Utilisateur</a></li>
-        <li><a href="javascript:" onclick="changeCat(1)"><span class="glyphicon glyphicon-cog"></span> Article</a></li>
-        <li><a href="javascript:" onclick="changeCat(2)"><span class="glyphicon glyphicon-calendar"></span> Tickets<span style="margin-left: 10px;" class="badge">42</span></a></li>
+        <li><a href="javascript:" onclick="changeCat(1)"><span class="glyphicon glyphicon-barcode"></span> Article</a></li>
+        <li><a href="javascript:" onclick="changeCat(2)"><span class="glyphicon glyphicon-inbox"></span> Tickets<span style="margin-left: 10px;" class="badge">42</span></a></li>
       </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -286,21 +287,25 @@
 	}
 	%>
 		
-	<form>
-	<label for="article">ID article : </label>
+	<form style="display: inline;">
+	<label for="article">Ref article : </label>
 	<input type="text" id="article" name="idArticle"/>
 	<input type="submit" value="Go"/>
 	</form>
+	
+	ou <button onclick="window.location='ajouterArticle.jsp'">Ajouter un article</button>
 	
 	<%
 		if(article != -1 && !supprimerArticle){
 			if(art.getLibelle(article) != null){
 	%>
 		<h3> <%= art.getLibelle(article) %></h3>
-		<form>
+		<form style="display: inline;">
 		<input type="hidden" name="idArticle" value="<%= article %>"/>
 		<input type="submit" name="supprimerArticle" value="Supprimer"></input>
 		</form>
+		
+		<button onclick="window.location='ajouterArticle.jsp?edit=1&id=<%= article %>'">Editer</button>
 			
 	<% }else{ %>
 		<h3 style="color:red;"> Aucun article trouvé avec cette réference !</h3>

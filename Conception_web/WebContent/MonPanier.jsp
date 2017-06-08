@@ -70,3 +70,4 @@
 	
 	<a class="btn btn-default" href="./MonPanier.jsp?clear=yes" role="button" style="width: 18%; margin-left:1%; margin-right:1%; background-color:#dfe3ee">Vider mon panier</a>
 </body>
+</html>

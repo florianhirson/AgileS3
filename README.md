@@ -1,3 +1,23 @@
+
+
+Configuration à appliquer
+
+Serveur de courrier sortant SMTP : smtps.univ-lille1.fr
+
+Cocher Utiliser un nom et un mot de passe utilisateur ou Mon serveur requiert une authentification
+
+Connexion sécurisée SSL
+
+Nom du compte ou Nom d'utilisateur / mot de passe :  votre identifiant USTL
+
+Port : 587
+
+Utiliser une connexion sécurisé TLS (Thunderbird, ...) ou Ce serveur nécessite une connexion sécurisé (SSL) (Outlook, ...)
+
+source : http://cri.univ-lille1.fr/Services-proposes/messagerie/configuration/SMTP/
+
+/
+
 tuto vpn : http://fil.univ-lille1.fr/documentation-vpn
 
 /

@@ -79,6 +79,10 @@ public class Article {
 		}
 	}
 
+	public double getDiscountedPrice() {
+		return price * (1 - discount);
+	}
+
 	public int getReference() {
 		return REFERENCE;
 	}

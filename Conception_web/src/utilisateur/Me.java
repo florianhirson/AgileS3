@@ -145,8 +145,10 @@ public class Me {
 		return mdp;
 	}
 	
-	public String getAddress(){
-		return address;
+	
+	
+	public String getMail(){
+		return mail;
 	}
 	
 	public String toString(){
@@ -161,9 +163,6 @@ public class Me {
 		ret+="date inscription : "+dateins+"\n";
 		
 		return ret;
-	}
-	public String getAddress() {
-		return address;
 	}
 
 }

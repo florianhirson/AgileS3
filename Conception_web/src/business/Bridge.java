@@ -322,7 +322,7 @@ public class Bridge {
 	 *            Retourne les articles ou la categorie correspond
 	 */
 	public static List<Article> searchArticles(String keyword, boolean searchByName, boolean searchByBrand,
-			boolean searchByCategory) {
+			boolean searchByCategory, String sortedBy) {
 		if (searchByName == false && searchByBrand == false && searchByCategory == false) {
 			return null;
 		}
@@ -347,6 +347,10 @@ public class Bridge {
 			filter += " LOWER(category) LIKE LOWER('%" + keyword + "%')";
 		}
 
+		if (sortedBy != null) {
+			filter += " ORDER BY " + sortedBy;
+		}
+
 		return getAllArticlesFILTERED(filter);
 	}
 
@@ -363,7 +367,7 @@ public class Bridge {
 	 *            Collone
 	 */
 	public static List<Article> getAllArticlesSortedBy(String column) {
-		return getAllArticlesFILTERED(" SORTED BY " + column);
+		return getAllArticlesFILTERED(" ORDER BY " + column);
 	}
 
 	/**
@@ -371,7 +375,7 @@ public class Bridge {
 	 * @param filter
 	 *            Filtre ecrit en SQL
 	 */
-	protected static List<Article> getAllArticlesFILTERED(String filter) {
+	public static List<Article> getAllArticlesFILTERED(String filter) {
 		ArrayList<Article> articles = new ArrayList<>();
 		try {
 			String query = "SELECT * FROM article";
@@ -389,8 +393,8 @@ public class Bridge {
 				 * rs.getDouble("discount"), rs.getInt("quantity")));
 				 */
 				articles.add(new Article(rs.getInt("idart"), rs.getString("libelle"), rs.getString("description"),
-						rs.getString("image"), "", rs.getString("category"), rs.getDouble("prix"), 0.0,
-						rs.getInt("stock")));
+						rs.getString("image"), "", rs.getString("category"), rs.getDouble("prix"),
+						rs.getDouble("discount"), rs.getInt("stock")));
 			}
 		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
@@ -547,6 +551,44 @@ public class Bridge {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
 		}
 		return null;
+	}
+
+	/**
+	 * @return Liste des Orders
+	 */
+	public static ArrayList<Order> getAllOrders() {
+		ArrayList<Order> orders = new ArrayList<Order>();
+
+		try {
+			String query = "SELECT id FROM order;";
+			ResultSet rs = executeQuery(query);
+
+			ArrayList<Integer> ids = new ArrayList<Integer>();
+
+			while (rs.next()) {
+				ids.add(rs.getInt("id"));
+			}
+
+			for (int id : ids) {
+				Map<Integer, Integer> references_quantity = new HashMap<Integer, Integer>();
+				query = "SELECT * FROM xline WHERE id=" + id + ";";
+				rs = executeQuery(query);
+
+				while (rs.next()) {
+					references_quantity.put(rs.getInt("reference"), rs.getInt("quantity"));
+				}
+
+				query = "SELECT * FROM order WHERE id=" + id + ";";
+				rs = executeQuery(query);
+				if (rs.next()) {
+					orders.add(new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("recipient"),
+							rs.getString("address"), rs.getInt("status"), rs.getDate("xdate"), references_quantity));
+				}
+			}
+		} catch (Exception ex) {
+			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
+		}
+		return orders;
 	}
 
 	/**

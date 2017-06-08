@@ -238,9 +238,6 @@ public class Article {
 				}
 		}
 		
-		
-		
-		
 		public int getStock(int id){
 			for(Integer key:stock.keySet())
 				if(key==id)

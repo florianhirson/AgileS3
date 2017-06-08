@@ -72,8 +72,10 @@ public class Panier {
 		if(produits.get(id)==null)
 			;
 		else{
+
 			contentPan=contentPan-produits.get(id);
 			produits.remove(id);
+
 		}
 	}
 	

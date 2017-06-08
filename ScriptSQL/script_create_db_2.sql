@@ -32,7 +32,7 @@ last_name varchar(20) NOT NULL,
 password varchar(20) NOT NULL,
 code text NOT NULL,
 xdate date NOT NULL,
-CONSTRAINT pk_unchecked PRIMARY KEY(id)
+CONSTRAINT pk_unchecked PRIMARY KEY(mail)
 );
 
 CREATE TABLE status(
@@ -78,8 +78,9 @@ brand varchar(100) NOT NULL,
 category varchar(100) NOT NULL,
 price numeric(8,2) NOT NULL,
 discount numeric(3,2) NOT NULL DEFAULT 0.0,
+quantity integer NOT NULL,
 CONSTRAINT pk_article PRIMARY KEY(reference),
-CONSTRAINT check_image_url CHECK(image_url LIKE 'http://%_.__%'),
+CONSTRAINT check_image_url CHECK(image_url LIKE ('http%://%_.__%')),
 CONSTRAINT check_price CHECK (price >= 0.0),
 CONSTRAINT check_discount CHECK (discount >= 0.0 AND discount <= 1.0)
 );

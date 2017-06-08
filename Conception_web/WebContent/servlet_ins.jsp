@@ -139,7 +139,7 @@ String table = "utilisateur";
 				lien+=link.get(2)+"="+link.get(3)+"&";
 				lien+=link.get(4)+"="+link.get(5);
 
-				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">Activer mon compte </a>";
+				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">localhost:8080/Conception_web/verify.jsp?"+lien+"</a>";
 				content+="\n<p>verifier les informations :</p>\n<ul>";
 				content+="\n<li> login : "+login+"</li>";
 				content+="\n<li> tel : "+tel+"</li>";

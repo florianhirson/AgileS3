@@ -129,11 +129,14 @@
 			
 			<%Integer r1 = null, r2 = null;
 			for(Integer key: articles.getAllLibelle().keySet()) {
-				if(articles.getCat(key) == cat) {
-					if(r1 == null)
+				if(articles.getCat(key).equals(cat)) {
+					if(r1 == null && key != id)
 						r1 = key;
-					if(r1 != key && r2 == null)
+					if(r1 != key && r1 != null && r2 == null && key != id) {
 						r2 = key;
+						break;
+					}
+						
 				}	
 				
 			}

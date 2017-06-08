@@ -1,20 +1,19 @@
 <%@ page
 	import="java.lang.*, java.lang.Integer, java.util.*, achat.*, article.Article, utilisateur.*, java.util.ArrayList, java.sql.Connection, java.sql.DriverManager, java.sql.ResultSet, java.sql.SQLException, java.sql.Statement"%>
-<%@ page import="import java.io.*,
-import javax.servlet.*,
-import javax.servlet.http.*,
-import javax.servlet.annotation.WebServlet,
-import java.util.Properties,
-import java.sql.PreparedStatement,
-import java.sql.ResultSet,
-import javax.mail.*,
-import javax.mail.internet.*,
-import java.sql.DriverManager,
-import java.sql.Connection,
-import java.util.Calendar,
-import java.sql.Date,
-import java.sql.Types,
-import org.apache.commons.validator.routines.EmailValidator," %>
+<%@ page import="java.io.*,
+ javax.servlet.*,
+ javax.servlet.http.*,
+ javax.servlet.annotation.WebServlet,
+ java.util.Properties,
+ java.sql.PreparedStatement,
+ java.sql.ResultSet,
+ javax.mail.*,
+ javax.mail.internet.*,
+ java.sql.DriverManager,
+ java.sql.Connection,
+ java.util.Calendar,
+ java.sql.Date,
+ java.sql.Types" %>
 
 <!DOCTYPE html>
 
@@ -49,9 +48,7 @@ import org.apache.commons.validator.routines.EmailValidator," %>
 
 <body style="background-color: #f7f7f7;">
 
- <%
-  EmailValidator checkeremail = EmailValidator.getInstance();
-	session.invalidate();
+ <% session.invalidate();
 	session=request.getSession(true);
 	ArrayList<String> link = new ArrayList<String>();
 	String lien="";
@@ -77,7 +74,7 @@ String table = "utilisateur";
 
 	Connection con = null;
 
-
+	%> avant if <%
 	if(!mdp.equals(checkmdp) || (mdp.length()<5||mdp.length()>20)){
 		System.out.println("Inscription "+mdp+" check : "+checkmdp+ " = "+mdp.equals(checkmdp));
 		if(mdp.length()<5||mdp.length()>20)
@@ -85,18 +82,16 @@ String table = "utilisateur";
 		else
 			session.setAttribute("erroro","o");
 		response.sendRedirect("Inscription.jsp");
-	}else if(this.selectCheck(voir,login,link)){
+	}else if(new Mail().selectCheck(login,link)){
+		%> errore e 1 <%
 		session.setAttribute("errore","e");
 		response.sendRedirect("Inscription.jsp");
-	}else if(this.selectCheck(voir, mail, link)){
-
+	}else if(new Mail().selectCheck( mail, link)){
+		%> catch m 2<%
 		session.setAttribute("errorm","m");
 		response.sendRedirect("Inscription.jsp");
-	}else if(!checkeremail.isValid(mail)){
-		session.setAttribute("errorfm","fm");
-		response.sendRedirect("Inscription.jsp");
 	}else{ 
-		if(login.length()<4 || nom.length()<3 || naiss.length()<2|| prenom.length()<3){
+		if(login.length()<4 || nom.length()<3 || prenom.length()<3){
 			session.setAttribute("errornull","nullr");
 
 			if(login.length()<4){
@@ -105,18 +100,14 @@ String table = "utilisateur";
 			if(nom.length()<3){
 				session.setAttribute("isnulln","nom");
 			}
-			if(naiss.length()<2){
-				session.setAttribute("isnullna","naissance");
-			}
 			if(prenom.length()<3){
 				session.setAttribute("isnullp","prenom");
 			}
 			response.sendRedirect("Inscription.jsp");
 		}else{
 			try{
-				
+				%> try <% 
 				Class.forName("org.postgresql.Driver");
-
 				String url = "jdbc:postgresql://psqlserv/n2p1";
 				String user = "barbetf";
 				String mdpasse = "moi";
@@ -136,7 +127,7 @@ String table = "utilisateur";
 				
 				ps.executeUpdate();
 				
-				Mail.selectCheck(voir,login,link);
+				new Mail().selectCheck(login,link);
 
 				String content="<h1>Doorsup vous souhaite la bienvenue</h1>\n";
 				content+="<p>Bonjour "+prenom+" "+nom+",<p>";
@@ -155,22 +146,23 @@ String table = "utilisateur";
 				content+="\n<li> adresse : "+description+"</li>\n</ul>";
 
 				content+="<h2>Appelez les HENDEKs</h2>";
-
-				Mail.sendMail(content,mail);
-
+				%> av Mail.send<%
+				
 				session.setAttribute("success","o");
 				response.sendRedirect("Login.jsp");
+				new Mail().sendMail(content,mail);
 
 			}catch (Exception e) {
+				%> catch 1<%
+				out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());
 				
-				System.out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());
 
 			}
 			finally {	  
 				try{
 					con.close();	  
 				}catch (Exception e) {
-					
+					%> catch 2 <%
 					System.out.println("=====> ERROR(Mailer.service(2)) : "+e.getMessage());
 				}
 			}

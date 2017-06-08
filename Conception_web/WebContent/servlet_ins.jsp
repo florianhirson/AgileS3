@@ -14,7 +14,7 @@
  java.util.Calendar,
  java.sql.Date,
  java.sql.Types,
- org.apache.commons.validator.routines.EmailValidator," %>
+ org.apache.commons.validator.routines.EmailValidator" %>
 
 <!DOCTYPE html>
 
@@ -50,7 +50,7 @@
 <body style="background-color: #f7f7f7;">
 
  <%
-  EmailValidator checkeremail = EmailValidator.getInstance();
+  
 	session.invalidate();
 	session=request.getSession(true);
 	ArrayList<String> link = new ArrayList<String>();
@@ -85,9 +85,11 @@ String table = "utilisateur";
 		else
 			session.setAttribute("erroro","o");
 		response.sendRedirect("Inscription.jsp");
+		
 	}else if(Mail.selectCheck(login,link)){
 		session.setAttribute("errore","e");
 		response.sendRedirect("Inscription.jsp");
+		
 	}else if(Mail.selectCheck( mail, link)){
 
 		session.setAttribute("errorm","m");
@@ -135,9 +137,9 @@ String table = "utilisateur";
 				
 				Mail.selectCheck(login,link);
 
-				String content="<h1>Doorsup vous souhaite la bienvenue</h1>\n";
+				String content="<h1>Hendek vous souhaite la bienvenue</h1>\n";
 				content+="<p>Bonjour "+prenom+" "+nom+",<p>";
-				content+="\n<p>nous avons remarquÃ© votre venu sur notre site, il ne reste plus qu'une etape pour l'activation de votre compte<p>";
+				content+="\n<p>nous avons remarqué votre venu sur notre site, il ne reste plus qu'une etape pour l'activation de votre compte<p>";
 				content+="\n<p> il faut appeler les HENDEK !<p>";
 				content+="\n<p> Veuillez confirmer votre inscription en cliquant sur le lien suivant :<p>";
 
@@ -145,18 +147,22 @@ String table = "utilisateur";
 				lien+=link.get(2)+"="+link.get(3)+"&";
 				lien+=link.get(4)+"="+link.get(5);
 
-				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">Activer mon compte </a>";
+				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">localhost:8080/Conception_web/verify.jsp?"+lien+" </a>";
 				content+="\n<p>verifier les informations :</p>\n<ul>";
 				content+="\n<li> login : "+login+"</li>";
 				content+="\n<li> tel : "+tel+"</li>";
 				content+="\n<li> adresse : "+description+"</li>\n</ul>";
 
 				content+="<h2>Appelez les HENDEKs</h2>";
-
+				
+				
 				Mail.sendMail(content,mail);
 
 				session.setAttribute("success","o");
 				response.sendRedirect("Login.jsp");
+				
+
+				
 
 			}catch (Exception e) {
 				

@@ -66,7 +66,7 @@
 		response.sendRedirect("../Login.jsp");
 	}else if(!droit.equals("0")){
 
-		content+="\n<p class=\"error_message\">Ce lien à déjà été utilisé.</p>";
+		content+="\n<p class=\"error_message\">Ce lien a� deja� ete utilise.</p>";
 		content+="\n<p class=\"error_message\">Si vous avez un problème veuillez Appeler les HENDEK </p>";
 
 	}else{ 
@@ -94,8 +94,8 @@
 				ps2.setString(2, code);
 				ps2.executeUpdate();
 				
-				content+="<p class=\"successfull_message\">Votre enregistrement s'est bien terminé.</p>\n";
-				content+="<p class=\"successfull_message\">Si vous avez un problème veuillez appeler les hendek </p>\n";
+				content+="<p class=\"successfull_message\">Votre enregistrement s'est bien terminee.</p>\n";
+				content+="<p class=\"successfull_message\">Si vous avez un probleme veuillez appeler les hendek </p>\n";
 				
 				session.setAttribute("user",new Me(rs.getString("login"),rs.getString("mdp")));
 				session.setAttribute("panier",new Panier(rs.getString("login"),rs.getString("mdp")));
@@ -105,19 +105,18 @@
 				session.setMaxInactiveInterval(600);
 
 			}else{
-				content+="<p class=\"error_message\">Ce lien à déjà été utilisé.</p>\n";
+				content+="<p class=\"error_message\">Ce lien a� deja� ete utilisee.</p>\n";
 			}
 
 		}
 		catch (Exception e) {
-			content+="<p>Oups ! il semblerai que vous avez appelé les Hendeks </p>";
 			System.out.println("=====> ERROR(Verify(1)) : "+e.getMessage());
 		}
 		finally {	  
 			try{
 				con.close();	  
 			}catch (Exception e) {
-				content+="<p>Oups ! il semblerai que vous avez appelé les Hendeks </p>";
+				content+="<p>Oups ! il semblerai que vous avez appel� les Hendeks </p>";
 				System.out.println("=====> ERROR(Verify(2)) : "+e.getMessage());
 			}
 		}

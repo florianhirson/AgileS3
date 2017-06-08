@@ -24,6 +24,43 @@ public class User {
 
 	private static User singleton = null;
 
+	
+	public void miseAJour(){
+		Connection con=null;
+		try{
+
+		    Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi";
+			con = DriverManager.getConnection(url,nom,mdp);
+
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+			String query ;
+			
+			
+			for(String key:this.mdp.keySet()){
+			
+			query= "UPDATE article SET ";
+			query+="mdp="+this.mdp.get(key)+",nom="+this.nom.get(key)+",prenom="+prenom.get(key)+",address="+address.get(key);
+			query+=",mail="+mail.get(key)+",tel="+tel.get(key)+",droit="+droit.get(key)+" WHERE login="+key+";";
+			
+			stmt.executeUpdate(query);
+			}
+			
+			singleton=new User();
+		}catch (Exception e) {
+			System.out.println("[ERROR]"+e.getMessage()+"");
+		}finally{	  
+			try{
+				con.close();
+			}catch(Exception e){
+				System.out.println("[ERROR]"+e.getMessage()+"");
+			}
+		}
+	}
+	
 	public static User getInstance(){
 		if(singleton==null){
 			singleton=new User();
@@ -31,6 +68,8 @@ public class User {
 		return singleton;
 	}
 
+	
+	
 	private User(){
 		mdp=new HashMap<>();nom=new HashMap<>();
 		prenom=new HashMap<>();address=new HashMap<>();
@@ -110,6 +149,38 @@ public class User {
 
 		return ret;
 	}
+	
+	public void rmUser(String log){
+		
+		Connection con=null;
+		
+		
+		try{
+
+		    Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://psqlserv/n2p1";
+			String nom = "barbetf";
+			String mdp = "moi";
+			con = DriverManager.getConnection(url,nom,mdp);
+			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
+			String query = "DELETE FROM utilisateur WHERE login="+log+";";
+			stmt.executeUpdate(query);
+			singleton=new User();
+			
+		}catch (Exception e) {
+			System.out.println("[ERRORdel]"+e.getMessage()+"");
+		}finally{	  
+			try{
+				con.close();
+			}catch(Exception e){
+				System.out.println("[ERRORclose2]"+e.getMessage()+"");
+			}
+		}
+		
+	}
+	
+	
 
 	public Me signIn(String pseudo,String password){
 		Me ret=null;
@@ -174,6 +245,15 @@ public class User {
 		return null;
 	}
 
+	public void setNom(String login,String modif){
+		for(String key:nom.keySet())
+			if(key.equals(login)){
+				nom.replace(key, nom.get(key), modif);
+				miseAJour();
+			}
+		
+	}
+	
 	public String getNom(String login){
 		for(String key:nom.keySet())
 			if(key.equals(login))
@@ -181,6 +261,16 @@ public class User {
 		return null;
 	}
 
+	public void setPrenom(String login,String modif){
+		for(String key:prenom.keySet())
+			if(key.equals(login)){
+				prenom.replace(key, prenom.get(key), modif);
+				miseAJour();
+			}
+		
+	}
+	
+	
 	public String getPrenom(String login){
 		for(String key:prenom.keySet())
 			if(key.equals(login))
@@ -188,11 +278,28 @@ public class User {
 		return null;
 	}
 
+	public void setAddress(String login,String modif){
+		for(String key:address.keySet())
+			if(key.equals(login)){
+				address.replace(key, address.get(key), modif);
+				miseAJour();
+			}
+	}
+	
+	
 	public String getAddress(String login){
 		for(String key:address.keySet())
 			if(key.equals(login))
 				return address.get(key);
 		return null;
+	}
+	
+	public void setMail(String login,String modif){
+		for(String key:mail.keySet())
+			if(key.equals(login)){
+				mail.replace(key, mail.get(key), modif);
+				miseAJour();
+			}
 	}
 
 	public String getMail(String login){
@@ -200,6 +307,14 @@ public class User {
 			if(key.equals(login))
 				return mail.get(key);
 		return null;
+	}
+	
+	public void setMDP(String login,String modif){
+		for(String key:mdp.keySet())
+			if(key.equals(login)){
+				mdp.replace(key, mdp.get(key), modif);
+				miseAJour();
+			}
 	}
 	
 	public String getMDP(String login){
@@ -216,11 +331,27 @@ public class User {
 		return null;
 	}
 
+	public void setTel(String login,String modif){
+		for(String key:tel.keySet())
+			if(key.equals(login)){
+				tel.replace(key, tel.get(key), modif);
+				miseAJour();
+			}
+	}
+	
 	public String getTel(String login){
 		for(String key:tel.keySet())
 			if(key.equals(login))
 				return tel.get(key);
 		return null;
+	}
+	
+	public void setDroit(String login,int modif){
+		for(String key:droit.keySet())
+			if(key.equals(login)){
+				droit.replace(key, droit.get(key), modif);
+				miseAJour();
+			}
 	}
 
 	public int getDroit(String login){

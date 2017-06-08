@@ -129,7 +129,7 @@ String table = "utilisateur";
 				
 				new Mail().selectCheck(login,link);
 
-				String content="<h1>Doorsup vous souhaite la bienvenue</h1>\n";
+				String content="<h1>HENDEK vous souhaite la bienvenue</h1>\n";
 				content+="<p>Bonjour "+prenom+" "+nom+",<p>";
 				content+="\n<p>nous avons remarqué votre venu sur notre site, il ne reste plus qu'une etape pour l'activation de votre compte<p>";
 				content+="\n<p> il faut appeler les HENDEK !<p>";
@@ -139,7 +139,7 @@ String table = "utilisateur";
 				lien+=link.get(2)+"="+link.get(3)+"&";
 				lien+=link.get(4)+"="+link.get(5);
 
-				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">Activer mon compte </a>";
+				content+="\n<a href=\"localhost:8080/Conception_web/verify.jsp?"+lien+"\">localhost:8080/Conception_web/verify.jsp?"+lien+"</a>";
 				content+="\n<p>verifier les informations :</p>\n<ul>";
 				content+="\n<li> login : "+login+"</li>";
 				content+="\n<li> tel : "+tel+"</li>";
@@ -148,10 +148,10 @@ String table = "utilisateur";
 				content+="<h2>Appelez les HENDEKs</h2>";
 				%> av Mail.send<%
 				
+				new Mail().sendMail(content,mail);
 				session.setAttribute("success","o");
 				response.sendRedirect("Login.jsp");
-				new Mail().sendMail(content,mail);
-
+				
 			}catch (Exception e) {
 				%> catch 1<%
 				out.println("=====> ERROR(Mailer.service(1)) : "+e.getMessage());

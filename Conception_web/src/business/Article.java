@@ -11,7 +11,8 @@ public class Article {
 	private double discount;
 	private int quantity;
 
-	public Article(String name, String description, String image_url, String brand, String category, double price, double discount, int quantity) {
+	public Article(String name, String description, String image_url, String brand, String category, double price,
+			double discount, int quantity) {
 		this.REFERENCE = -1;
 		this.name = name;
 		this.description = description;
@@ -22,8 +23,9 @@ public class Article {
 		this.discount = discount;
 		this.quantity = quantity;
 	}
-	
-	public Article(int reference, String name, String description, String image_url, String brand, String category, double price, double discount, int quantity) {
+
+	public Article(int reference, String name, String description, String image_url, String brand, String category,
+			double price, double discount, int quantity) {
 		this.REFERENCE = reference;
 		this.name = name;
 		this.description = description;
@@ -43,11 +45,11 @@ public class Article {
 		this.description = description;
 	}
 
-	public String getImage_url() {
+	public String getImageURL() {
 		return image_url;
 	}
 
-	public void setImage_url(String image_url) {
+	public void setImageURL(String image_url) {
 		this.image_url = image_url;
 	}
 
@@ -88,7 +90,7 @@ public class Article {
 	public String getBrand() {
 		return brand;
 	}
-	
+
 	public int getQuantity() {
 		return quantity;
 	}

@@ -103,8 +103,8 @@ public class Panier {
 	}
 	
 
-	public Integer getLib(String id){
-		return produits.get(id);
+	public String getLib(String id){
+		return lib.get(id);
 	}
 	
 	public double calculPrix(){
@@ -124,6 +124,10 @@ public class Panier {
 
 	public int getNbArticle(){
 		return nbArticle;
+	}
+	
+	public Map<String, Integer> getProduits(){
+		return produits;
 	}
 
 

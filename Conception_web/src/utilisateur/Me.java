@@ -147,6 +147,10 @@ public class Me {
 	
 	
 	
+	public String getMail(){
+		return mail;
+	}
+	
 	public String toString(){
 		String ret="";
 		ret+="Login : "+login+"\n";
@@ -159,9 +163,6 @@ public class Me {
 		ret+="date inscription : "+dateins+"\n";
 		
 		return ret;
-	}
-	public String getAddress() {
-		return address;
 	}
 
 }

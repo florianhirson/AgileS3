@@ -39,7 +39,10 @@
 			style="width: 18%; margin-right: 1%; background-color: #dfe3ee">Mon
 			Panier (<%=(((Panier) session.getAttribute("panier")).getNbContent())%>)
 		</a>
+<<<<<<< HEAD
+=======
 
+>>>>>>> b2a34963a66206727516b098f5878aa683a2e5be
 		<%}%>
 		<% if(((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 ){ %>
 		<a class="btn btn-default" href="./admin.jsp" role="button"
@@ -157,7 +160,7 @@
 		</table>
 	</div>
 	<%}%>
-	<a href="Argent.jsp?id=<%=session.getAttribute("user")%>&
+	<a href="livraison.jsp"
 		style="display: inline-block; margin-left: 2%; margin-right: 1%;"
 		class="btn btn-danger btn-lg btn-block" role="button">Payer</a>
 

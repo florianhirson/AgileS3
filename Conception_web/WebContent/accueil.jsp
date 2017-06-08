@@ -35,10 +35,16 @@
 			Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)
 		</a>
 		<%}%>
-
+		
+		<% if(((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 ){ %>
+		<a class="btn btn-default" href="./admin.jsp" role="button"
+			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Administration</a> 
+		<% } else { %>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
-			Compte</a> <a class="btn btn-default" href="#" role="button"
+			Compte</a>
+		<% } %> 
+			<a class="btn btn-default" href="./MesCommandes.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
 			Commandes</a> <a class="btn btn-default" href="#" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>

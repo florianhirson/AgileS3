@@ -12,7 +12,9 @@
 </head>
 
 <body style="background-color: #f7f7f7;">
-
+	<% if(!  (((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 )){ %>
+	<% response.sendRedirect("./accueil.jsp");%>
+	<%}%>
 
 <header
 	style="background-color: #3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">
@@ -135,6 +137,7 @@
     margin-top: 8px;
   }  
 }
+
 </style>
 
 <div style="margin-left: 3%; margin-right: 3%;">
@@ -148,9 +151,14 @@
 		Panier (<%=(((Panier)session.getAttribute("panier")).getNbContent())%>)
 	</a>
 	<%}%>
-	<a class="btn btn-default" href="./edit_account.jsp" role="button"
-		style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
-		Compte</a> <a class="btn btn-default" href="#" role="button"
+	<% if(((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 ){ %>
+		<a class="btn btn-default" href="./admin.jsp" role="button"
+			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Administration</a> 
+		<% } else { %>
+		<a class="btn btn-default" href="./edit_account.jsp" role="button"
+			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
+			Compte</a>
+		<% } %>  <a class="btn btn-default" href="./MesCommandes.jsp" role="button"
 		style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
 		Commandes</a> <a class="btn btn-default" href="#" role="button"
 		style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>
@@ -183,9 +191,9 @@
           <h4>Panneau de contrôle</h4>
           </a>
         </li>
-        <li><a href="javascript:" onclick="changeCat(0)"><span class="glyphicon glyphicon-lock"></span> Utilisateur</a></li>
-        <li><a href="javascript:" onclick="changeCat(1)"><span class="glyphicon glyphicon-cog"></span> Article</a></li>
-        <li><a href="javascript:" onclick="changeCat(2)"><span class="glyphicon glyphicon-calendar"></span> Tickets<span style="margin-left: 10px;" class="badge">42</span></a></li>
+        <li><a href="javascript:" onclick="changeCat(0)"><span class="glyphicon glyphicon-user"></span> Utilisateur</a></li>
+        <li><a href="javascript:" onclick="changeCat(1)"><span class="glyphicon glyphicon-barcode"></span> Article</a></li>
+        <li><a href="javascript:" onclick="changeCat(2)"><span class="glyphicon glyphicon-inbox"></span> Tickets<span style="margin-left: 10px;" class="badge">42</span></a></li>
       </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -201,6 +209,7 @@
 		int article = (request.getParameter("idArticle") != null ? Integer.parseInt(request.getParameter("idArticle")) : -1);
 		int ticket = -1;
 		boolean supprimerUser = (request.getParameter("supprimerUser") != null);
+		int droitUser = (request.getParameter("droitUser") != null ? Integer.parseInt(request.getParameter("droitUser")) : -2);
 		boolean supprimerArticle = (request.getParameter("supprimerArticle") != null);
 		if(user != null && article != -1) article = -1;
 		if(user != null) out.println("Utilisateur");
@@ -213,12 +222,18 @@
 	<% 
 	User us = null;
 	if(user != null){ 
-	us = User.getInstance(); 
+		us = User.getInstance();
+		String[] droits = {"bloqué", "", "débloqué", "promu administrateur"};
 		if(us.getNom(user) != null && supprimerUser){
 			out.print("<h3 style=\"color:green;\"> L'utilisateur "+user+" a bien été suprrimé</h3>");
 			us.rmUser(user);
 		}else if(us.getNom(user) == null && supprimerUser){
 			out.print("<h3 style=\"color:red;\"> Impossible de supprimer cet utilisateur car il n'existe pas</h3>");
+		}else if(us.getNom(user) != null && droitUser != -2){
+			out.print("<h3 style=\"color: green;\"> L'utilisateur a bien été "+droits[droitUser+1]+"</h3>");
+			us.setDroit(user, droitUser);
+		}else if(us.getNom(user) == null && droitUser != -2){
+			out.print("<h3 style=\"color:green;\"> L'utilisateur n'a pas pu être "+droits[droitUser+1]+" car il n'existe pas</h3>");
 		}
 	}
 	%>
@@ -235,22 +250,21 @@
 	%>
 		<h3> <%= user %></h3>
 		Nom : <%= us.getNom(user) %><br/>
-		Prénom : <%= us.getPrenom(user) %></br>
-		Droit : <%= us.getDroit(user) %></br>
+		Prénom : <%= us.getPrenom(user) %><br/>
+		Droit : <%= us.getDroit(user) %><br/>
 		
 		<form>
 		<input type="hidden" name="idUser" value="<%= user %>"/>
 		<%
 			if(us.getDroit(user) == -1)
 				out.println("<button name=\"droitUser\" value=\"1\" type=\"submit\">Débloquer</button>");
-			else
+			else if(us.getDroit(user) < 2){
 				out.println("<button name=\"droitUser\" value=\"-1\" type=\"submit\">Bloquer</button>");
-			if(us.getDroit(user) == 1)
+				out.println("<input type=\"submit\" name=\"supprimerUser\" value=\"Supprimer\"/>");
+			}
+			if(us.getDroit(user) >= 0 && us.getDroit(user) < 2)
 				out.println("<button name=\"droitUser\" value=\"2\" type=\"submit\">Mettre admin</button>");
-			else
-				out.println("<button name=\"droitUser\" value=\"1\" type=\"submit\">Enlever droits admin</button>");
 		%>
-		<input type="submit" name="supprimerUser" value="Supprimer"/>
 		</form>
 			
 	<% }else{ %>
@@ -273,21 +287,25 @@
 	}
 	%>
 		
-	<form>
-	<label for="article">ID article : </label>
+	<form style="display: inline;">
+	<label for="article">Ref article : </label>
 	<input type="text" id="article" name="idArticle"/>
 	<input type="submit" value="Go"/>
 	</form>
+	
+	ou <button onclick="window.location='ajouterArticle.jsp'">Ajouter un article</button>
 	
 	<%
 		if(article != -1 && !supprimerArticle){
 			if(art.getLibelle(article) != null){
 	%>
 		<h3> <%= art.getLibelle(article) %></h3>
-		<form>
+		<form style="display: inline;">
 		<input type="hidden" name="idArticle" value="<%= article %>"/>
 		<input type="submit" name="supprimerArticle" value="Supprimer"></input>
 		</form>
+		
+		<button onclick="window.location='ajouterArticle.jsp?edit=1&id=<%= article %>'">Editer</button>
 			
 	<% }else{ %>
 		<h3 style="color:red;"> Aucun article trouvé avec cette réference !</h3>

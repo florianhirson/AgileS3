@@ -72,9 +72,10 @@ public class Panier {
 		if(produits.get(id)==null)
 			;
 		else{
-			contentPan-=produits.get(id);
+
+			contentPan=contentPan-produits.get(id);
 			produits.remove(id);
-		
+
 		}
 	}
 	
@@ -82,6 +83,7 @@ public class Panier {
 		for(String key:produits.keySet()){
 			produits.remove(key);
 		}
+		contentPan=0;
 		
 	}
 	

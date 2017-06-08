@@ -20,7 +20,7 @@
 		<%pageArt = Integer.valueOf(request.getParameter("pageArt"));%>
 	<%}%>
 	
-	<%if (session.getAttribute("login") == null)
+	<%if (session.getAttribute("login") == null || session.getAttribute("user") == null )
 			response.sendRedirect("Login.jsp");%>
 
 	<header
@@ -66,56 +66,9 @@
 			style="width: 18%; margin-left: 1%; background-color: #dfe3ee">Deconnexion</a>
 		<%}%>
 	</div>
-
-	<div
-		style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
-
-		<div
-			style="background-color: #ffffff; margin: 1%; border-radius: 10px; padding: 1%;">
-			<form action="./Select.jsp? method="GET">
-				<div class="form-group">
-					<label for="Search">Rechercher :</label> <input style=""
-						type="text" class="form-control" id="search" name="search"
-						placeholder="ex : Cocktails au white spirit">
-				</div>
-			</form>
-		
-		
-		<a class="btn btn-primary" href="./Search.jsp" role="button"
-			style="margin-left: 40%; margin-right: 40%; width: 20%;">Recherche Avancée</a>
-			
+	
+	<div style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
+	
+		<h3> Pas de commandes en cours </h3>
 		</div>
-
-
-		<% Article articles = Article.getInstance(); %>
-		<% int cpt = -1; %>
-		<% for(Integer i: articles.getAllLibelle().keySet()){%>
-		<% 		if((request.getParameter("search")==null || articles.getLibelle(i).contains(request.getParameter("search")))){ %>
-		<% 		cpt++; %>
-		<% 		if(cpt>=pageArt*5 && cpt<((pageArt+1)*5)){ %>
-			<div style="margin: 1%; border-radius: 10px;">
-				<img src="<%=articles.getImage(i)%>" alt="<%=articles.getLibelle(i)%>" style="width:10%;height:10%;display: inline-block;">
-				<div style="display: inline-block;">
-				<h3 style="margin-bottom:1%"><a href=Article.jsp?id=<%=i%>><%=articles.getLibelle(i)%><small style="margin-left:5%;"><%=articles.getPrix(i)%>&euro;</small></a></h3>
-				<p><%=articles.getDescription(i)%></p>
-			</div>
-			<a class="btn btn-default"
-				href="./AjouterPanier.jsp?page=Select.jsp&id=<%=i%>" role="button"
-				style="width: 10%; background-color: #dfe3ee; position: Absolute; right: 5%;">Ajouter
-				au panier</a>
-		</div>
-		<% }}} %>
-		
-		<%if(pageArt>0){%>
-		<a class="btn btn-default" href="./Select.jsp?pageArt=<%=pageArt-1%>" role="button" style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Précédent</a>
-		<%}%>
-		
-		page <%= pageArt+1 %>
-		
-		<%if(((pageArt+1)*5)<articles.getAllLibelle().keySet().size()){%>
-		<a class="btn btn-default" href="./Select.jsp?pageArt=<%=pageArt+1%>" role="button" style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Suivant</a>
-		<%} %>
-	</div>
-
-	</div>
 </body>

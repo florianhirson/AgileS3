@@ -188,7 +188,7 @@
           <h4>Panneau de contrôle</h4>
           </a>
         </li>
-        <li><a href="javascript:" onclick="changeCat(0)"><span class="glyphicon glyphicon-lock"></span> Utilisateur</a></li>
+        <li><a href="javascript:" onclick="changeCat(0)"><span class="glyphicon glyphicon-user"></span> Utilisateur</a></li>
         <li><a href="javascript:" onclick="changeCat(1)"><span class="glyphicon glyphicon-cog"></span> Article</a></li>
         <li><a href="javascript:" onclick="changeCat(2)"><span class="glyphicon glyphicon-calendar"></span> Tickets<span style="margin-left: 10px;" class="badge">42</span></a></li>
       </ul>

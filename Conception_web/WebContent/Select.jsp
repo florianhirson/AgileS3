@@ -78,8 +78,11 @@
 
 
 		<% Article articles = Article.getInstance(); %>
+		<% int cpt = -1; %>
 		<% for(Integer i: articles.getAllLibelle().keySet()){%>
-		<% 		if((request.getParameter("search")==null || articles.getLibelle(i).contains(request.getParameter("search"))) && (i>pageArt*5) && (i<(pageArt+1)*5)){ %>
+		<% 		if((request.getParameter("search")==null || articles.getLibelle(i).contains(request.getParameter("search")))){ %>
+		<% 		cpt++; %>
+		<% 		if(cpt>=pageArt*5 && cpt<((pageArt+1)*5)){ %>
 			<div style="margin: 1%; border-radius: 10px;">
 				<img src="<%=articles.getImage(i)%>" alt="<%=articles.getLibelle(i)%>" style="width:10%;height:10%;display: inline-block;">
 				<div style="display: inline-block;">
@@ -91,7 +94,7 @@
 				style="width: 10%; background-color: #dfe3ee; position: Absolute; right: 5%;">Ajouter
 				au panier</a>
 		</div>
-		<% }} %>
+		<% }}} %>
 		
 		<%if(pageArt>0){%>
 		<a class="btn btn-default" href="./Select.jsp?pageArt=<%=pageArt-1%>" role="button" style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Précédent</a>

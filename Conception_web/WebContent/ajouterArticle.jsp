@@ -63,18 +63,25 @@
 			<input type="text" class="form-control" id="vendeurArticle" name="vendeurArticle" value="<% if(edit) out.print(art.getVendeur(artId)); %>"/>
 		</div>
 	</div>
-		<div class="form-group row" style="max-width: 500px;">
+	<div class="form-group row" style="max-width: 500px;">
 		<label class="col-form-label col-sm-2" for="imageArticle">URL Image </label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="imageArticle" name="vendeurArticle" value="<% if(edit) out.print(art.getImage(artId)); %>"/>
 		</div>
 	</div>
-		<div class="form-group row" style="max-width: 500px;">
+	<div class="form-group row" style="max-width: 500px;">
 		<label class="col-form-label col-sm-2" for="prixArticle">Prix </label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="prixArticle" name="prixArticle" value="<% if(edit) out.print(art.getPrix(artId)); %>"/>
 		</div>
 	</div>
+		<div class="form-group row" style="max-width: 500px;">
+		<label class="col-form-label col-sm-2" for="prixArticle">Description </label>
+		<div class="col-sm-10">
+			<textarea id="articleDescription"><% if(edit) out.print(art.getDescription(artId)); %></textarea>
+		</div>
+	</div>
+	<input type="submit" value="<% if(edit){out.print("Editer");}else{out.print("Ajouter");} %>"/>
 	</form>
 
 </body>

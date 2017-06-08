@@ -12,7 +12,9 @@
 </head>
 
 <body style="background-color: #f7f7f7;">
-
+	<% if(!  (((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 )){ %>
+	<% %>
+	<%}%>
 
 <header
 	style="background-color: #3b5998; margin-top: 2%; margin-bottom: 2%; padding: 1%;">

@@ -61,7 +61,7 @@
 		style="background-color: #dddddd; margin: 2%; border-radius: 10px; padding: 1%;">
 
 		<div
-			style="background-color: #ffffff; margin: 1%; border-radius: 10px; padding: 1%">
+			style="background-color: #ffffff; margin: 1%; border-radius: 10px; padding: 1%;">
 			<form action="./Select.jsp? method="GET">
 				<div class="form-group">
 					<label for="Search">Rechercher :</label> <input style=""
@@ -69,6 +69,11 @@
 						placeholder="ex : Cocktails au white spirit">
 				</div>
 			</form>
+		
+		
+		<a class="btn btn-primary" href="./Search.jsp" role="button"
+			style="margin-left: 40%; margin-right: 40%; width: 20%;">Recherche Avancée</a>
+			
 		</div>
 
 

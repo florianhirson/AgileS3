@@ -86,14 +86,16 @@
 		%>
 		<% if(((Me)session.getAttribute("user"))!=null && ((Me)session.getAttribute("user")).getDroit()==2 ){ %>
 		<a class="btn btn-default" href="./admin.jsp" role="button"
-			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Administration</a> 
+			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Administration</a>
 		<% } else { %>
 		<a class="btn btn-default" href="./edit_account.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mon
 			Compte</a>
-		<% } %>  <a class="btn btn-default" href="./MesCommandes.jsp" role="button"
+		<% } %>
+		<a class="btn btn-default" href="./MesCommandes.jsp" role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Mes
-			Commandes</a> <a class="btn btn-default" href="./Promotions.jsp" role="button"
+			Commandes</a> <a class="btn btn-default" href="./Promotions.jsp"
+			role="button"
 			style="width: 18%; margin-left: 1%; margin-right: 1%; background-color: #dfe3ee">Promotions</a>
 		<%
 			if (session.getAttribute("login") == null) {
@@ -121,21 +123,19 @@
 						type="text" class="form-control" id="search" name="search"
 						placeholder="ex : Cocktails au white spirit" <%=keywordHTML%>>
 					<input type="checkbox" name="searchbyname" value="true"
-						<%=searchByNameHTML%>>Par nom&nbsp;&nbsp;&nbsp;
-						<input
+						<%=searchByNameHTML%>>Par nom&nbsp;&nbsp;&nbsp; <input
 						type="checkbox" name="searchbybrand" value="true"
-						<%=searchByBrandHTML%> disabled>Par marque&nbsp;&nbsp;&nbsp;<input
-						type="checkbox" name="searchbycategory" value="true"
-						<%=searchByCategoryHTML%>>Par categorie
-						<br>
-						<label for="sortedby">Trie par :</label> <select name="sortedby"
-						onChange="combo(this, <%=sortedByHTML%>)">
+						<%=searchByBrandHTML%> disabled>Par
+					marque&nbsp;&nbsp;&nbsp;<input type="checkbox"
+						name="searchbycategory" value="true" <%=searchByCategoryHTML%>>Par
+					categorie <br> <label for="sortedby">Trie par :</label> <select
+						name="sortedby" onChange="combo(this, <%=sortedByHTML%>)">
 						<option>Nom</option>
 						<option>Categorie</option>
 						<option>Prix</option>
 						<option>Reduction</option>
-					</select><br>
-					<input type="submit" value="Rechercher" class="btn btn-primary">
+					</select><br> <input type="submit" value="Rechercher"
+						class="btn btn-primary">
 				</div>
 			</form>
 		</div>
@@ -166,7 +166,7 @@
 				style="width: 10%; height: 10%; display: inline-block;">
 			<div style="display: inline-block;">
 				<h3 style="margin-bottom: 1%">
-					<a href=Article.jsp?id= <%=article.getReference()%>><%=article.getName()%><small
+					<a href="<%="Article.jsp?id="+article.getReference()%>"><%=article.getName()%><small
 						style="margin-left: 5%;"><%=article.getPrice()%>&euro;</small></a>
 				</h3>
 				<p><%=article.getDescription()%></p>

@@ -393,8 +393,8 @@ public class Bridge {
 				 * rs.getDouble("discount"), rs.getInt("quantity")));
 				 */
 				articles.add(new Article(rs.getInt("idart"), rs.getString("libelle"), rs.getString("description"),
-						rs.getString("image"), "", rs.getString("category"), rs.getDouble("prix"), 0.0,
-						rs.getInt("stock")));
+						rs.getString("image"), "", rs.getString("category"), rs.getDouble("prix"),
+						rs.getDouble("discount"), rs.getInt("stock")));
 			}
 		} catch (Exception ex) {
 			System.out.println("<h1>Erreur : " + ex.getMessage() + "</h1>");
@@ -581,8 +581,8 @@ public class Bridge {
 				query = "SELECT * FROM order WHERE id=" + id + ";";
 				rs = executeQuery(query);
 				if (rs.next()) {
-					return new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("recipient"),
-							rs.getString("address"), rs.getInt("status"), rs.getDate("xdate"), references_quantity);
+					orders.add(new Order(rs.getInt("id"), rs.getInt("client"), rs.getString("recipient"),
+							rs.getString("address"), rs.getInt("status"), rs.getDate("xdate"), references_quantity));
 				}
 			}
 		} catch (Exception ex) {
